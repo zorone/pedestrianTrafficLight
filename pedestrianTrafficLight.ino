@@ -8,13 +8,29 @@ enum DeviceState {
   cooldown
 }
 
+enum LightSignal {
+  green,
+  orange,
+  red
+}
+
+enum CountdownDisplay {
+  hide,
+  show
+}
+
 DeviceState deviceStatus = ready;
+LightSignal carSignal        = green;
+LightSignal pedestrianSignal = red;
+CountdownDisplay carCountdown        = hide;
+CountdownDisplay pedestrianCountdown = hide;
 bool begSignal = false;
 unsigned long timingSchedule[] = {
   0, // 0: Time when car light signal is switched
   0, // 1: Time when car countdown signal is switched
   0, // 2: Time when pedestrian light signal is switched
-  0  // 3: Time when pedestrian countdown signal is switched
+  0, // 3: Time when pedestrian countdown signal is switched
+  0  // 4: Time when beg signal will available again
 }
 
 void setup() {
@@ -58,17 +74,57 @@ void loop() {
 
 void scheduleLightSignal() {
   unsigned long now = millis();
-  timingSchedule[0] = now + 20*1000 + 50; // Set due time for light signal to become orange, padding for briefly show '0'
-  timingSchedule[1] = now +  3*1000;      // Set due time to start car countdown
-  timingSchedule[2] = now + 28*1000 + 50; // Set due time for pedestrian light to become green
-  timingSchedule[3] = now;                // Set due time to start pedestrian countdown
+  timingSchedule[0] = now + 20*1000 + 50;   // Set due time for light signal to become orange, padding for briefly show '0'
+  timingSchedule[1] = now +  3*1000;        // Set due time to start car countdown
+  timingSchedule[2] = now + 28*1000 + 2*50; // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
+  timingSchedule[3] = now + 50;             // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
+  timingSchedule[4] = now + 43*1000 + 3*50; // Set due time for next beg signal, padding for brief '0' of each light signal
+}
+
+void changeCarSignal() {
+  if(isDue(timingSchedule[0])) {
+    switch(carSignal) {
+      case green: break;
+      case orange: break;
+      case red: break;
+      default: unreachable();
+    }
+  }
+}
+
+void changeCarCountdown() {
+  if(isDue(timingSchedule[1])) {
+    switch(carCountdown) {
+      case hide: break;
+      case show: break;
+      default: unreachable();
+    }
+  }
+}
+
+void changePedestrianSignal() {
+  if(isDue(timingSchedule[2])) {
+    switch(pedestrianSignal) {
+      case red: break;
+      case green: break;
+      case orange: default: unreachable();
+    }
+  }
+}
+
+void changePedestrianCountdown() {
+  if(isDue(timingSchedule[3])) {
+    switch(pedestrianCountdown) {
+      case hide: break;
+      case show: break;
+      default: unreachable();
+    }
+  }
 }
 
 bool isDue(unsigned long time) {
   unsigned long now  = millis();
-  unsigned long diff = now - time;
-   
-  return now-time
+  return now - time;                      // Always true, even when now is overflow
 }
 
 void begSignalInterrupt() {
