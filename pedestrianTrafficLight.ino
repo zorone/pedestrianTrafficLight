@@ -65,8 +65,10 @@ void scheduleLightSignal() {
 }
 
 bool isDue(unsigned long time) {
-  unsigned long now = millis();
-  return abs(now - time)
+  unsigned long now  = millis();
+  unsigned long diff = now - time;
+   
+  return now-time
 }
 
 void begSignalInterrupt() {
