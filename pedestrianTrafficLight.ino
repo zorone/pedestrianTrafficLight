@@ -97,21 +97,21 @@ void changeCarCountdown() {
             carCountdown = show;
             timingSchedule[1] = timingSchedule[0];  // Assume that changeCarCountdown() happens after changeCarSignal()
             break;
-          case orange: 
-            timingSchedule[1] = timingSchedule[0];
-            break;
-          case red:
-            // timingSchedule[1] = timingSchedule[0];
-            carCountdown = hide; 
-            break;
+          case orange: unreachable(); // Assume that changeCarSignal() happens beforehand, and doesn't get changed anywhere else.
+          case red: unreachable();
           default: unreachable();
         }
         break;
       case show: {
         switch(carSignal) {
-          case green: break;
-          case orange: break;
-          case red: break;
+          case green: unreachable();
+          case orange:
+            timingSchedule[1] = timingSchedule[0];    // Assume that carCountdown signal doesn't get changed anywhere else
+            break;
+          case red:
+            // timingSchedule[1] = timingSchedule[0]; // Return to idle state, no need to set
+            carCountdown = hide;
+            break;
           default: unreachable();
         }
       } 
@@ -124,8 +124,14 @@ void changeCarCountdown() {
 void changePedestrianSignal() {
   if(isDue(timingSchedule[2])) {
     switch(pedestrianSignal) {
-      case red: break;
-      case green: break;
+      case red:
+        timingSchedule[2] += 15*1000 + 50;
+        pedestrianSignal = green;
+        break;
+      case green:
+        // timingSchedule[2] += 0*1000 + 50;
+        pedestrianSignal = red;
+        break;
       case orange: default: unreachable();
     }
   }
@@ -134,8 +140,26 @@ void changePedestrianSignal() {
 void changePedestrianCountdown() {
   if(isDue(timingSchedule[3])) {
     switch(pedestrianCountdown) {
-      case hide: break;
-      case show: break;
+      case hide:
+        switch(pedestrianSignal) {
+          case red:
+            timingSchedule[3] = timingSchedule[2]; // Assume that changePedestrianCountdown() happens after changePedestrianSignal()
+            pedestrianCountdown = show;
+            break;
+          case green: unreachable(); // Assume that changePedestrianSignal() happens beforehand, and doesn't get changed anywhere else.
+          case orange: default: unreachable();
+        }
+        break;
+      case show:
+        switch(pedestrianSignal) {
+          case red: unreachable();
+          case green:
+            // imingSchedule[3] = timingSchedule[2]; // Return to idle state, no need to set
+            pedestrianCountdown = hide;
+            break;
+          case orange: default: unreachable();
+        }
+        break;
       default: unreachable();
     }
   }
