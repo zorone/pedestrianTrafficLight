@@ -98,7 +98,10 @@ void setup() {
 }
 
 void loop() {
-  if (isDue(debuggingSchedule)) enableTextOutput = true;
+  if (isDue(debuggingSchedule)) {
+    enableTextOutput = true;
+    debuggingSchedule = millis() + 250;
+  }
   printDeviceStatus();
   switch (deviceStatus) {
     case ready:
