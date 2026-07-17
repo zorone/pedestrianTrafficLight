@@ -217,10 +217,10 @@ void changeCarLightSignal(LightSignal signal) {
     digitalWrite(pin, LOW);
   }
   switch(signal) {
-    case GREEN: digitalWrite(carLightPin_GREEN, HIGH);
-    case ORANGE: digitalWrite(carLightPin_ORANGE, HIGH);
-    case RED: digitalWrite(carLightPin_RED, HIGH);
-    case default: unreachable();
+    case green: digitalWrite(carLightPin_GREEN, HIGH);
+    case orange: digitalWrite(carLightPin_ORANGE, HIGH);
+    case red: digitalWrite(carLightPin_RED, HIGH);
+    default: unreachable();
   }
 }
 
@@ -229,16 +229,16 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
   switch(signal) {
     case hide:
       switch(carSignal) {
-        case GREEN: digitalWrite(carCountdownPin_GREEN, LOW); break;
-        case ORANGE: digitalWrite(carCountdownPin_ORANGE, LOW); break;
-        case RED: digitalWrite(carCountdownPin_RED, LOW); break;
+        case green: digitalWrite(carCountdownPin_GREEN, LOW); break;
+        case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
+        case red: digitalWrite(carCountdownPin_RED, LOW); break;
         default: unreachable();
       }
     case show:
       switch(carSignal) {
-        case GREEN: digitalWrite(carCountdownPin_GREEN, HIGH); break;
-        case ORANGE: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
-        case RED: digitalWrite(carCountdownPin_RED, HIGH); break;
+        case green: digitalWrite(carCountdownPin_GREEN, HIGH); break;
+        case orange: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
+        case red: digitalWrite(carCountdownPin_RED, HIGH); break;
         default: unreachable();
       }
   }
@@ -247,10 +247,10 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
 void changePedestrianLightSignal(LightSignal lightSignal) {
   for(int pin = 3; pin <= 4; pin++) digitalWrite(pin, LOW);
   switch(signal) {
-    case GREEN: digitalWrite(pedestrianLightPin_GREEN, HIGH);
-    case ORANGE: digitalWrite(pedestrianLightPin_ORANGE, HIGH);
-    case RED: digitalWrite(pedestrianLightPin_RED, HIGH);
-    case default: unreachable();
+    case green: digitalWrite(pedestrianLightPin_GREEN, HIGH);
+    case orange: digitalWrite(pedestrianLightPin_ORANGE, HIGH);
+    case red: digitalWrite(pedestrianLightPin_RED, HIGH);
+    default: unreachable();
   }
 }
 
@@ -259,9 +259,9 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
   switch(signal) {
     case hide:
       switch(pedestrianSignal) {
-        case GREEN: digitalWrite(pedestrianCountdownPin_GREEN, LOW); break;
-        case ORANGE: digitalWrite(pedestrianCountdownPin_ORANGE, LOW); break;
-        case RED: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
+        case green: digitalWrite(pedestrianCountdownPin_GREEN, LOW); break;
+        case orange: digitalWrite(pedestrianCountdownPin_ORANGE, LOW); break;
+        case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
         default: unreachable();
       }
     case show:
