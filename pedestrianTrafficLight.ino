@@ -63,6 +63,11 @@ void halt();
 #define carCountdownPin_RED 13
 
 void setup() {
+  Serial.begin(9600);
+  Serial.println("deviceStatus = " + deviceStatus);
+  Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
+  Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
+
   pinMode(begSignalPin, INPUT_PULLUP);
   pinMode(pedestrianLightPin_GREEN, OUTPUT);
   pinMode(pedestrianLightPin_RED, OUTPUT);
@@ -83,8 +88,11 @@ void setup() {
 }
 
 void loop() {
+  Serial.println("deviceStatus = " + deviceStatus);
   switch(deviceStatus) {
     case ready:
+      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
+      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
       if(begSignal == true) {
         scheduleLightSignal();
         begSignal = false;
@@ -93,15 +101,25 @@ void loop() {
       break;
     case running:
       changeCarSignalState();
+      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
       changeCarLightSignal(carSignal);
       changePedestrianSignalState();
+      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
       changeCarCountdownSignal(carCountdown);
       changeCarCountdownState();
+      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
       changePedestrianLightSignal(pedestrianSignal);
       changePedestrianCountdownState();
+      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
       changePedestrianCountdownSignal(pedestrianCountdown);
+      if(isSignalSequenceFinish()) {
+        deviceStatus = cooldown;
+        Serial.println("Finish the sequence");
+      }
       break;
     case cooldown:
+      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
+      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
       if(isCooldownFinish()) deviceStatus = ready;
       break;
     default: unreachable();
@@ -291,7 +309,7 @@ void begSignalInterrupt() {
 }
 
 void unreachable() {
-  Serial.begin(9600);
+  // Serial.begin(9600);
   Serial.println("Error: Hardware have reached unreachable state!!!");
   halt();
 }
