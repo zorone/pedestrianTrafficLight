@@ -71,7 +71,7 @@ void halt();
 
 void setup() {
   Serial.begin(9600);
-  debuggingSchedule = millis() + 100;
+  debuggingSchedule = millis() + 250;
 
   pinMode(begSignalPin, INPUT_PULLUP);
   pinMode(pedestrianLightPin_GREEN, OUTPUT);
