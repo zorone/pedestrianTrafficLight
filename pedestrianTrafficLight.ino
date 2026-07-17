@@ -29,6 +29,9 @@ unsigned long timingSchedule[] = {
   0  // 4: Time when beg signal will available again
 };
 
+unsigned long debuggingSchedule = 0;
+bool enableTextOutput = true;
+
 void scheduleLightSignal();
 void changeCarSignalState();
 void changeCarCountdownState();
@@ -68,6 +71,7 @@ void halt();
 
 void setup() {
   Serial.begin(9600);
+  debuggingSchedule = millis() + 100;
   printDeviceStatus();
   printCarStatus();
   printPedestrianStatus();
@@ -89,9 +93,12 @@ void setup() {
   changeCarCountdownSignal(carCountdown);
   changePedestrianLightSignal(pedestrianSignal);
   changePedestrianCountdownSignal(pedestrianCountdown);
+
+  enableTextOutput = false;
 }
 
 void loop() {
+  if(isDue(debuggingSchedule)) enableTextOutput = true;
   printDeviceStatus();
   switch(deviceStatus) {
     case ready:
@@ -323,11 +330,13 @@ void halt() {
 }
 
 void printDeviceStatus() {
+  if(!enableTextOutput) return;
   Serial.print("deviceStatus = ");
   Serial.println(deviceStatus);
 }
 
 void printCarStatus() {
+  if(!enableTextOutput) return;
   Serial.print("carSignal = ");
   Serial.print(carSignal);
   Serial.print(" carCountdown = ");
@@ -335,6 +344,7 @@ void printCarStatus() {
 }
 
 void printPedestrianStatus() {
+  if(!enableTextOutput) return;
   Serial.print("pedestrianSignal = ");
   Serial.print(pedestrianSignal);
   Serial.print(" pedestrianCountdown = ");
