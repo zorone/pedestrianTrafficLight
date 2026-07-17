@@ -115,7 +115,6 @@ void loop() {
       if(isSignalSequenceFinish()) {
         deviceStatus = cooldown;
         Serial.println("Finish the sequence");
-      }
       break;
     case cooldown:
       Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
