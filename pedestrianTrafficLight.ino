@@ -38,7 +38,7 @@ bool isCooldownFinish();
 
 void changeCarLightSignal(LightSignal signal);
 void changeCarCountdownSignal(CountdownDisplay signal);
-void changePedestrianLightSignal(LightSignal lightSignal);
+void changePedestrianLightSignal(LightSignal signal);
 void changePedestrianCountdownSignal(CountdownDisplay signal);
 
 bool isDue(unsigned long time);
@@ -63,7 +63,7 @@ void halt();
 void setup() {
   pinMode(begSignalPin, INPUT_PULLUP);
   pinMode(pedestrianLightPin_GREEN, OUTPUT);
-  pinMode(pedestrianLight_RED, OUTPUT);
+  pinMode(pedestrianLightPin_RED, OUTPUT);
   pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
   pinMode(pedestrianCountdownPin_RED, OUTPUT);
   pinMode(carLightPin_GREEN, OUTPUT);
@@ -244,13 +244,12 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
   }
 }
 
-void changePedestrianLightSignal(LightSignal lightSignal) {
+void changePedestrianLightSignal(LightSignal signal) {
   for(int pin = 3; pin <= 4; pin++) digitalWrite(pin, LOW);
   switch(signal) {
     case green: digitalWrite(pedestrianLightPin_GREEN, HIGH);
-    case orange: digitalWrite(pedestrianLightPin_ORANGE, HIGH);
     case red: digitalWrite(pedestrianLightPin_RED, HIGH);
-    default: unreachable();
+    case orange: default: unreachable();
   }
 }
 
@@ -260,16 +259,14 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
     case hide:
       switch(pedestrianSignal) {
         case green: digitalWrite(pedestrianCountdownPin_GREEN, LOW); break;
-        case orange: digitalWrite(pedestrianCountdownPin_ORANGE, LOW); break;
         case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
-        default: unreachable();
+        case orange: default: unreachable();
       }
     case show:
       switch(pedestrianSignal) {
-        case GREEN: digitalWrite(pedestrianCountdownPin_GREEN, HIGH); break;
-        case ORANGE: digitalWrite(pedestrianCountdownPin_ORANGE, HIGH); break;
-        case RED: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
-        default: unreachable();
+        case green: digitalWrite(pedestrianCountdownPin_GREEN, HIGH); break;
+        case red: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
+        case orange: default: unreachable();
       }
   }
 }
