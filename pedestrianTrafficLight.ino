@@ -393,7 +393,7 @@ bool isCooldownFinish() {
 
 bool isDue(unsigned long time) {
   unsigned long now = millis();
-  return now - time;  // Always true, even when now is overflow
+  return (now - time) < time;  // Always true, even when now is overflow
 }
 
 void begSignalInterrupt() {
