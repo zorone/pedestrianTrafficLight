@@ -72,7 +72,7 @@ void setup() {
   pinMode(carCountdownPin_GREEN, OUTPUT);
   pinMode(carCountdownPin_ORANGE, OUTPUT);
   pinMode(carCountdownPin_RED, OUTPUT);
-  attachInterrupt(digitalPinToInterrupt(), begSignalInterrupt, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, RISING);
 
   changeCarLightSignal(carSignal);
   changeCarCountdownSignal(carCountdown);
