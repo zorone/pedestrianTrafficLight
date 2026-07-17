@@ -20,7 +20,7 @@ LightSignal carSignal        = green;
 LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown        = hide;
 CountdownDisplay pedestrianCountdown = hide;
-bool begSignal = false;
+volatile bool begSignal = false;
 unsigned long timingSchedule[] = {
   0, // 0: Time when car light signal is switched
   0, // 1: Time when car countdown signal is switched
@@ -30,11 +30,16 @@ unsigned long timingSchedule[] = {
 };
 
 void scheduleLightSignal();
-void changeCarSignal();
-void changeCarCountdown();
-void changePedestrianSignal();
-void changePedestrianCountdown();
+void changeCarSignalState();
+void changeCarCountdownState();
+void changePedestrianSignalState();
+void changePedestrianCountdownState();
 bool isCooldownFinish();
+
+void changeCarLightSignal(LightSignal signal);
+void changeCarCountdownSignal(CountdownDisplay signal);
+void changePedestrianLightSignal(LightSignal lightSignal);
+void changePedestrianCountdownSignal(CountdownDisplay signal);
 
 bool isDue(unsigned long time);
 void begSignalInterrupt();
@@ -42,8 +47,37 @@ void unreachable();
 
 void halt();
 
-void setup() {
+#define begSignalPin 2
+#define pedestrianLight_RED 3
+#define pedestrianLight_GREEN 4
+#define pedestrianCountdown_RED 5
+#define pedestrianCountdown_GREEN 6
 
+#define carLight_RED 8
+#define carLight_ORANGE 9
+#define carLight_GREEN 10
+#define carCountdown_RED 11
+#define carCountdown_ORANGE 12
+#define carCountdown_GREEN 13
+
+void setup() {
+  pinMode(begSignalPin, INPUT_PULLUP);
+  pinMode(pedestrianLight_RED, OUTPUT);
+  pinMode(pedestrianLight_GREEN, OUTPUT);
+  pinMode(pedestrianCountdown_RED, OUTPUT);
+  pinMode(pedestrianCountdown_GREEN, OUTPUT);
+  pinMode(carLight_RED, OUTPUT);
+  pinMode(carLight_ORANGE, OUTPUT);
+  pinMode(carLight_GREEN, OUTPUT);
+  pinMode(carCountdown_RED, OUTPUT);
+  pinMode(carCountdown_ORANGE, OUTPUT);
+  pinMode(carCountdown_GREEN, OUTPUT);
+  attachInterrupt(digitalPinToInterupt(), begSignalInterrupt, RISING);
+
+  changeCarLightSignal(carSignal);
+  changeCarCountdownSignal(carCountdown);
+  changePedestrianLightSignal(pedestrianSignal);
+  changePedestrianCountdownSignal(pedestrianCountdown);
 }
 
 void loop() {
@@ -56,10 +90,14 @@ void loop() {
       }
       break;
     case running:
-      changeCarSignal();
-      changeCarCountdown();
-      changePedestrianSignal();
-      changePedestrianCountdown();
+      changeCarSignalState();
+      changeCarLightSignal(carSignal);
+      changePedestrianSignalState();
+      changeCarCountdownSignal(carCountdown);
+      changeCarCountdownState();
+      changePedestrianLightSignal(pedestrianSignal);
+      changePedestrianCountdownState();
+      changePedestrianCountdownSignal(pedestrianCountdown);
       break;
     case cooldown:
       if(isCooldownFinish()) deviceStatus = ready;
@@ -77,7 +115,7 @@ void scheduleLightSignal() {
   timingSchedule[4] = now + 43*1000 + 3*50; // Set due time for next beg signal, padding for brief '0' of each light signal
 }
 
-void changeCarSignal() {
+void changeCarSignalState() {
   if(isDue(timingSchedule[0])) {
     switch(carSignal) {
       case green: 
@@ -97,16 +135,16 @@ void changeCarSignal() {
   }
 }
 
-void changeCarCountdown() {
+void changeCarCountdownState() {
   if(isDue(timingSchedule[1])) {
     switch(carCountdown) {
       case hide: 
         switch(carSignal) {
           case green: 
             carCountdown = show;
-            timingSchedule[1] = timingSchedule[0];  // Assume that changeCarCountdown() happens after changeCarSignal()
+            timingSchedule[1] = timingSchedule[0];  // Assume that changeCarCountdownState() happens after changeCarSignalState()
             break;
-          case orange: unreachable(); // Assume that changeCarSignal() happens beforehand, and doesn't get changed anywhere else.
+          case orange: unreachable(); // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
           case red: unreachable();
           default: unreachable();
         }
@@ -130,7 +168,7 @@ void changeCarCountdown() {
   }
 }
 
-void changePedestrianSignal() {
+void changePedestrianSignalState() {
   if(isDue(timingSchedule[2])) {
     switch(pedestrianSignal) {
       case red:
@@ -146,16 +184,16 @@ void changePedestrianSignal() {
   }
 }
 
-void changePedestrianCountdown() {
+void changePedestrianCountdownState() {
   if(isDue(timingSchedule[3])) {
     switch(pedestrianCountdown) {
       case hide:
         switch(pedestrianSignal) {
           case red:
-            timingSchedule[3] = timingSchedule[2]; // Assume that changePedestrianCountdown() happens after changePedestrianSignal()
+            timingSchedule[3] = timingSchedule[2]; // Assume that changePedestrianCountdownState() happens after changePedestrianSignalState()
             pedestrianCountdown = show;
             break;
-          case green: unreachable(); // Assume that changePedestrianSignal() happens beforehand, and doesn't get changed anywhere else.
+          case green: unreachable(); // Assume that changePedestrianSignalState() happens beforehand, and doesn't get changed anywhere else.
           case orange: default: unreachable();
         }
         break;
@@ -172,6 +210,28 @@ void changePedestrianCountdown() {
       default: unreachable();
     }
   }
+}
+
+void changeCarLightSignal(LightSignal signal) {
+  for(int pin = 8; pin <= 10; pin++) {
+    digitalWrite(pin, LOW);
+  }
+  digitalWrite(pin, HIGH);
+}
+
+void changeCarCountdownSignal(CountdownDisplay signal) {
+  for(int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
+  digitalWrite(pin, HIGH);
+}
+
+void changePedestrianLightSignal(LightSignal lightSignal) {
+  for(int pin = 3; pin <= 4; pin++) digitalWrite(pin, LOW);
+  digitalWrite(pin, HIGH);
+}
+
+void changePedestrianCountdownSignal(CountdownDisplay signal) {
+  for(int pin = 5; pin <= 6; pin++) digitalWrite(pin, LOW);
+  digitalWrite(pin, HIGH);
 }
 
 bool isCooldownFinish() {
