@@ -72,7 +72,7 @@ void setup() {
   pinMode(carCountdown_RED, OUTPUT);
   pinMode(carCountdown_ORANGE, OUTPUT);
   pinMode(carCountdown_GREEN, OUTPUT);
-  attachInterrupt(digitalPinToInterupt(), begSignalInterrupt, RISING);
+  attachInterrupt(digitalPinToInterrupt(), begSignalInterrupt, RISING);
 
   changeCarLightSignal(carSignal);
   changeCarCountdownSignal(carCountdown);
@@ -221,6 +221,9 @@ void changeCarLightSignal(LightSignal signal) {
 
 void changeCarCountdownSignal(CountdownDisplay signal) {
   for(int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
+  switch(signal) {
+    case hide: ;
+  }
   digitalWrite(pin, HIGH);
 }
 
