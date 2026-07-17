@@ -29,6 +29,9 @@ unsigned long timingSchedule[] = {
   0   // 4: Time when beg signal will available again
 };
 
+bool prevInput = false, currentInput = false;
+unsigned long inputTimeframe = 0;
+
 volatile unsigned long debuggingSchedule = 0;
 bool enableTextOutput = true;
 
@@ -71,6 +74,7 @@ void halt();
 
 void setup() {
   Serial.begin(9600);
+  inputTimeframe = millis() + 100;
   debuggingSchedule = millis() + 250;
 
   pinMode(begSignalPin, INPUT_PULLUP);
@@ -84,7 +88,6 @@ void setup() {
   pinMode(carCountdownPin_GREEN, OUTPUT);
   pinMode(carCountdownPin_ORANGE, OUTPUT);
   pinMode(carCountdownPin_RED, OUTPUT);
-  attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, RISING);
 
   changeCarLightSignal(carSignal);
   changeCarCountdownSignal(carCountdown);
@@ -98,9 +101,15 @@ void setup() {
 }
 
 void loop() {
+  if (isDue(inputTimeframe)) {
+    prevInput = currentInput;
+    currentInput = digitalRead(begSignalPin);
+    if(prevInput == currentInput && currentInput == HIGH) begSignalInterupt();
+    inputTimeframe += 100;
+  }
   if (isDue(debuggingSchedule)) {
     enableTextOutput = true;
-    debuggingSchedule = millis() + 250;
+    debuggingSchedule += 250;
   }
   printDeviceStatus();
   switch (deviceStatus) {
