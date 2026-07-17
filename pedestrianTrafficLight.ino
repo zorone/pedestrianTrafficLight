@@ -104,7 +104,7 @@ void loop() {
   if (isDue(inputTimeframe)) {
     prevInput = currentInput;
     currentInput = digitalRead(begSignalPin);
-    if(prevInput == currentInput && currentInput == HIGH) begSignalInterupt();
+    if(prevInput == currentInput && currentInput == HIGH) begSignalInterrupt();
     inputTimeframe += 100;
   }
   if (isDue(debuggingSchedule)) {
