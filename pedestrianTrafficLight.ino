@@ -1,23 +1,19 @@
-// พร้อมใช้งาน
-// ระหว่างคูลดาวน์
-// กำลังทำงาน
-
-enum DeviceState {
+typedef enum {
   ready,
   running,
   cooldown
-}
+} DeviceState;
 
-enum LightSignal {
+typedef enum {
   green,
   orange,
   red
-}
+} LightSignal;
 
-enum CountdownDisplay {
+typedef enum {
   hide,
   show
-}
+} CountdownDisplay;
 
 DeviceState deviceStatus = ready;
 LightSignal carSignal        = green;
@@ -31,7 +27,20 @@ unsigned long timingSchedule[] = {
   0, // 2: Time when pedestrian light signal is switched
   0, // 3: Time when pedestrian countdown signal is switched
   0  // 4: Time when beg signal will available again
-}
+};
+
+void scheduleLightSignal();
+void changeCarSignal();
+void changeCarCountdown();
+void changePedestrianSignal();
+void changePedestrianCountdown();
+bool isCooldownFinish();
+
+bool isDue(unsigned long time);
+void begSignalInterrupt();
+void unreachable();
+
+void halt();
 
 void setup() {
 
@@ -55,7 +64,7 @@ void loop() {
     case cooldown:
       if(isCooldownFinish()) deviceStatus = ready;
       break;
-    default unreachable();
+    default: unreachable();
   }
 }
 
@@ -163,6 +172,10 @@ void changePedestrianCountdown() {
       default: unreachable();
     }
   }
+}
+
+bool isCooldownFinish() {
+  return isDue(timingSchedule[4]);
 }
 
 bool isDue(unsigned long time) {
