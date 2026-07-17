@@ -46,6 +46,10 @@ bool isDue(unsigned long time);
 void begSignalInterrupt();
 void unreachable();
 
+void printDeviceStatus();
+void printCarStatus();
+void printPedestrianStatus();
+
 void halt();
 
 #define begSignalPin 2
@@ -64,10 +68,10 @@ void halt();
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("deviceStatus = " + deviceStatus);
-  Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
-  Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
-
+  printDeviceStatus();
+  printCarStatus();
+  printPedestrianStatus();
+  
   pinMode(begSignalPin, INPUT_PULLUP);
   pinMode(pedestrianLightPin_GREEN, OUTPUT);
   pinMode(pedestrianLightPin_RED, OUTPUT);
@@ -88,11 +92,11 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("deviceStatus = " + deviceStatus);
+  printDeviceStatus();
   switch(deviceStatus) {
     case ready:
-      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
-      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
+      printCarStatus();
+      printPedestrianStatus();
       if(begSignal == true) {
         scheduleLightSignal();
         begSignal = false;
@@ -101,24 +105,25 @@ void loop() {
       break;
     case running:
       changeCarSignalState();
-      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
+      printCarStatus();
       changeCarLightSignal(carSignal);
       changePedestrianSignalState();
-      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
+      printCarStatus();
       changeCarCountdownSignal(carCountdown);
       changeCarCountdownState();
-      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
+      printPedestrianStatus();
       changePedestrianLightSignal(pedestrianSignal);
       changePedestrianCountdownState();
-      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
+      printPedestrianStatus();
       changePedestrianCountdownSignal(pedestrianCountdown);
       if(isSignalSequenceFinish()) {
         deviceStatus = cooldown;
         Serial.println("Finish the sequence");
+      }
       break;
     case cooldown:
-      Serial.println("carSignal = " + carSignal + " carCountdown = " + carCountdown);
-      Serial.println("pedestrianSignal = " + pedestrianSignal + " pedestrianCountdown = " + pedestrianCountdown);
+      printCarStatus();
+      printPedestrianStatus();
       if(isCooldownFinish()) deviceStatus = ready;
       break;
     default: unreachable();
@@ -315,4 +320,23 @@ void unreachable() {
 
 void halt() {
   for(;;) {}
+}
+
+void printDeviceStatus() {
+  Serial.print("deviceStatus = ");
+  Serial.println(deviceStatus);
+}
+
+void printCarStatus() {
+  Serial.print("carSignal = ");
+  Serial.print(carSignal);
+  Serial.print(" carCountdown = ");
+  Serial.println(carCountdown);
+}
+
+void printPedestrianStatus() {
+  Serial.print("pedestrianSignal = ");
+  Serial.print(pedestrianSignal);
+  Serial.print(" pedestrianCountdown = ");
+  Serial.println(pedestrianCountdown);
 }
