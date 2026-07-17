@@ -138,6 +138,7 @@ void loop() {
       Serial.println(deviceStatus);
       unreachable();
   }
+  enableTextOutput = false;
 }
 
 void scheduleLightSignal() {
