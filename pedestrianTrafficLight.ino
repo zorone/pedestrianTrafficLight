@@ -59,9 +59,9 @@ void printCurrentInput();
 
 void halt();
 
-#define begSignalPin 2
+#define begSignalPin 4
 
-#define pedestrianLightPin_GREEN 4
+// #define pedestrianLightPin_GREEN 4
 #define pedestrianLightPin_RED 5
 #define pedestrianCountdownPin_GREEN 6
 #define pedestrianCountdownPin_RED 7
@@ -79,7 +79,7 @@ void setup() {
   debuggingSchedule = millis() + 250;
 
   pinMode(begSignalPin, INPUT_PULLUP);
-  pinMode(pedestrianLightPin_GREEN, OUTPUT);
+//  pinMode(pedestrianLightPin_GREEN, OUTPUT);
   pinMode(pedestrianLightPin_RED, OUTPUT);
   pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
   pinMode(pedestrianCountdownPin_RED, OUTPUT);
@@ -200,8 +200,8 @@ void changeCarCountdownState() {
             carCountdown = show;
             timingSchedule[1] = timingSchedule[0];  // Assume that changeCarCountdownState() happens after changeCarSignalState()
             break;
-          case orange:
-          case red:  // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
+          case red: break;  // Break once, as
+          case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
           default:
             Serial.print("changeCarCountdownState(): unreachable state: ");
             Serial.print(carSignal);
@@ -355,7 +355,7 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
 void changePedestrianLightSignal(LightSignal signal) {
   for (int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
   switch (signal) {
-    case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
+//    case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
     case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
     case orange:
     default:
