@@ -29,7 +29,7 @@ unsigned long timingSchedule[] = {
   0   // 4: Time when beg signal will available again
 };
 
-unsigned long debuggingSchedule = 0;
+volatile unsigned long debuggingSchedule = 0;
 bool enableTextOutput = true;
 
 void scheduleLightSignal();
