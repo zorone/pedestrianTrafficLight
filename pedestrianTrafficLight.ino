@@ -72,9 +72,6 @@ void halt();
 void setup() {
   Serial.begin(9600);
   debuggingSchedule = millis() + 100;
-  printDeviceStatus();
-  printCarStatus();
-  printPedestrianStatus();
   
   pinMode(begSignalPin, INPUT_PULLUP);
   pinMode(pedestrianLightPin_GREEN, OUTPUT);
@@ -94,6 +91,9 @@ void setup() {
   changePedestrianLightSignal(pedestrianSignal);
   changePedestrianCountdownSignal(pedestrianCountdown);
 
+  printDeviceStatus();
+  printCarStatus();
+  printPedestrianStatus();
   enableTextOutput = false;
 }
 
@@ -133,7 +133,10 @@ void loop() {
       printPedestrianStatus();
       if(isCooldownFinish()) deviceStatus = ready;
       break;
-    default: unreachable();
+    default:
+    Serial.print("loop(): unreachable state: ");
+    Serial.println(deviceStatus);
+     unreachable();
   }
 }
 
@@ -161,7 +164,10 @@ void changeCarSignalState() {
         // timingSchedule[0] +=  0*1000 + 50;
         carSignal = green;
         break;
-      default: unreachable();
+      default:
+        Serial.print("changeCarSignalState(): unreachable state: ");
+        Serial.println(carSignal);
+        unreachable();
     }
   }
 }
@@ -175,14 +181,17 @@ void changeCarCountdownState() {
             carCountdown = show;
             timingSchedule[1] = timingSchedule[0];  // Assume that changeCarCountdownState() happens after changeCarSignalState()
             break;
-          case orange: unreachable(); // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
-          case red: unreachable();
-          default: unreachable();
+          case orange: case red: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
+          default: 
+            Serial.print("changeCarCountdownState(): unreachable state: ");
+            Serial.print(carSignal);
+            Serial.print(" ");
+            Serial.println(carCountdown);
+            unreachable();
         }
         break;
       case show: {
         switch(carSignal) {
-          case green: unreachable();
           case orange:
             timingSchedule[1] = timingSchedule[0];    // Assume that carCountdown signal doesn't get changed anywhere else
             break;
@@ -190,11 +199,19 @@ void changeCarCountdownState() {
             // timingSchedule[1] = timingSchedule[0]; // Return to idle state, no need to set
             carCountdown = hide;
             break;
-          default: unreachable();
+          case green: default: 
+            Serial.print("changeCarCountdownState(): unreachable state: ");
+            Serial.print(carSignal);
+            Serial.print(" ");
+            Serial.println(carCountdown);
+            unreachable();
         }
       } 
         break;
-      default: unreachable();
+      default: 
+        Serial.print("changeCarCountdownState(): unreachable state: ");
+        Serial.println(carCountdown);
+        unreachable();
     }
   }
 }
@@ -210,7 +227,10 @@ void changePedestrianSignalState() {
         // timingSchedule[2] += 0*1000 + 50;
         pedestrianSignal = red;
         break;
-      case orange: default: unreachable();
+      case orange: default:
+        Serial.print("changePedestrianSignalState(): unreachable state: ");
+        Serial.println(pedestrianSignal);
+        unreachable();
     }
   }
 }
@@ -224,21 +244,33 @@ void changePedestrianCountdownState() {
             timingSchedule[3] = timingSchedule[2]; // Assume that changePedestrianCountdownState() happens after changePedestrianSignalState()
             pedestrianCountdown = show;
             break;
-          case green: unreachable(); // Assume that changePedestrianSignalState() happens beforehand, and doesn't get changed anywhere else.
-          case orange: default: unreachable();
+          case green: case orange: // Assume that changePedestrianSignalState() happens beforehand, and doesn't get changed anywhere else.
+          default: 
+            Serial.print("changePedestrianCountdownState(): unreachable state: ");
+            Serial.print(pedestrianSignal);
+            Serial.print(" ");
+            Serial.println(pedestrianCountdown);
+            unreachable();
         }
         break;
       case show:
         switch(pedestrianSignal) {
-          case red: unreachable();
           case green:
             // timingSchedule[3] = timingSchedule[2]; // Return to idle state, no need to set
             pedestrianCountdown = hide;
             break;
-          case orange: default: unreachable();
+          case red: case orange: default:
+            Serial.print("changePedestrianCountdownState(): unreachable state: ");
+            Serial.print(pedestrianSignal);
+            Serial.print(" ");
+            Serial.println(pedestrianCountdown);
+            unreachable();
         }
         break;
-      default: unreachable();
+      default:
+        Serial.print("changePedestrianCountdownState(): unreachable state: ");
+        Serial.println(pedestrianCountdown);
+        unreachable();
     }
   }
 }
@@ -251,7 +283,10 @@ void changeCarLightSignal(LightSignal signal) {
     case green: digitalWrite(carLightPin_GREEN, HIGH);
     case orange: digitalWrite(carLightPin_ORANGE, HIGH);
     case red: digitalWrite(carLightPin_RED, HIGH);
-    default: unreachable();
+    default:
+      Serial.print("changeCarLightSignal(): unreachable state: ");
+      Serial.println(signal);
+      unreachable();
   }
 }
 
@@ -263,35 +298,58 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
         case green: digitalWrite(carCountdownPin_GREEN, LOW); break;
         case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
         case red: digitalWrite(carCountdownPin_RED, LOW); break;
-        default: unreachable();
+        default:
+          Serial.print("changeCarCountdownSignal(): unreachable state: ");
+          Serial.println(carSignal);
+          Serial.print(" ");
+          Serial.print(signal);
+          unreachable();
       }
     case show:
       switch(carSignal) {
         case green: digitalWrite(carCountdownPin_GREEN, HIGH); break;
         case orange: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
         case red: digitalWrite(carCountdownPin_RED, HIGH); break;
-        default: unreachable();
+        default:
+          Serial.print("changeCarCountdownSignal(): unreachable state: ");
+          Serial.println(carSignal);
+          Serial.print(" ");
+          Serial.println(signal);
+          unreachable();
       }
+      default:
+        Serial.print("changeCarCountdownSignal(): unreachable state: ");
+        Serial.println(signal);
+        unreachable();
   }
 }
 
 void changePedestrianLightSignal(LightSignal signal) {
-  for(int pin = 3; pin <= 4; pin++) digitalWrite(pin, LOW);
+  for(int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
   switch(signal) {
     case green: digitalWrite(pedestrianLightPin_GREEN, HIGH);
     case red: digitalWrite(pedestrianLightPin_RED, HIGH);
-    case orange: default: unreachable();
+    case orange: default:
+      Serial.print("changePedestrianLightSignal(): unreachable state: ");
+      Serial.println(signal);
+      unreachable();
   }
 }
 
 void changePedestrianCountdownSignal(CountdownDisplay signal) {
-  for(int pin = 5; pin <= 6; pin++) digitalWrite(pin, LOW);
+  for(int pin = 6; pin <= 7; pin++) digitalWrite(pin, LOW);
   switch(signal) {
     case hide:
       switch(pedestrianSignal) {
         case green: digitalWrite(pedestrianCountdownPin_GREEN, LOW); break;
         case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
-        case orange: default: unreachable();
+        case orange: default:
+          Serial.print("changePedestrianCountdownSignal(): unreachable state: ");
+          Serial.println(carSignal);
+          Serial.print(" ");
+          Serial.println(signal);
+          unreachable();
+          unreachable();
       }
     case show:
       switch(pedestrianSignal) {
