@@ -55,6 +55,7 @@ void unreachable();
 void printDeviceStatus();
 void printCarStatus();
 void printPedestrianStatus();
+void printCurrentInput();
 
 void halt();
 
@@ -97,6 +98,7 @@ void setup() {
   printDeviceStatus();
   printCarStatus();
   printPedestrianStatus();
+  printCurrentInput();
   enableTextOutput = false;
 }
 
@@ -104,6 +106,7 @@ void loop() {
   if (isDue(inputTimeframe)) {
     prevInput = currentInput;
     currentInput = digitalRead(begSignalPin);
+    printCurrentInput();
     if(prevInput == currentInput && currentInput == HIGH) begSignalInterrupt();
     inputTimeframe += 100;
   }
@@ -116,10 +119,12 @@ void loop() {
     case ready:
       printCarStatus();
       printPedestrianStatus();
+      printCurrentInput();
       if (begSignal == true) {
         scheduleLightSignal();
         begSignal = false;
         deviceStatus = running;
+        enableTextOutput = true;
       }
       break;
     case running:
@@ -137,6 +142,7 @@ void loop() {
       changePedestrianCountdownSignal(pedestrianCountdown);
       if (isSignalSequenceFinish()) {
         deviceStatus = cooldown;
+        enableTextOutput = false;
         Serial.println("Finish the sequence");
       }
       break;
@@ -442,4 +448,9 @@ void printPedestrianStatus() {
   Serial.print(pedestrianSignal);
   Serial.print(" pedestrianCountdown = ");
   Serial.println(pedestrianCountdown);
+}
+
+void printCurrentInput() {
+  Serial.print("currentInput = ");
+  Serial.println(currentInput);
 }
