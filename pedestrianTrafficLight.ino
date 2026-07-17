@@ -59,7 +59,7 @@ void printCurrentInput();
 
 void halt();
 
-#define begSignalPin 4
+#define begSignalPin 2
 
 // #define pedestrianLightPin_GREEN 4
 #define pedestrianLightPin_RED 5
@@ -142,6 +142,8 @@ void loop() {
       changePedestrianCountdownSignal(pedestrianCountdown);
       if (isSignalSequenceFinish()) {
         deviceStatus = cooldown;
+        carCountdown = hide;
+        pedestrianCountdown = hide;
         enableTextOutput = false;
         Serial.println("Finish the sequence");
       }
@@ -200,7 +202,7 @@ void changeCarCountdownState() {
             carCountdown = show;
             timingSchedule[1] = timingSchedule[0];  // Assume that changeCarCountdownState() happens after changeCarSignalState()
             break;
-          case red: break;  // Break once, as
+          case red: break;  // Break once, 
           case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
           default:
             Serial.print("changeCarCountdownState(): unreachable state: ");
@@ -218,7 +220,7 @@ void changeCarCountdownState() {
               break;
             case red:
               // timingSchedule[1] = timingSchedule[0]; // Return to idle state, no need to set
-              carCountdown = hide;
+              // carCountdown = hide;
               break;
             case green:
             default:
@@ -281,7 +283,7 @@ void changePedestrianCountdownState() {
         switch (pedestrianSignal) {
           case green:
             // timingSchedule[3] = timingSchedule[2]; // Return to idle state, no need to set
-            pedestrianCountdown = hide;
+            // pedestrianCountdown = hide;
             break;
           case red:
           case orange:
