@@ -48,30 +48,30 @@ void unreachable();
 void halt();
 
 #define begSignalPin 2
-#define pedestrianLight_RED 3
-#define pedestrianLight_GREEN 4
-#define pedestrianCountdown_RED 5
-#define pedestrianCountdown_GREEN 6
+#define pedestrianLightPin_GREEN 3
+#define pedestrianLightPin_RED 4
+#define pedestrianCountdownPin_GREEN 5
+#define pedestrianCountdownPin_RED 6
 
-#define carLight_RED 8
-#define carLight_ORANGE 9
-#define carLight_GREEN 10
-#define carCountdown_RED 11
-#define carCountdown_ORANGE 12
-#define carCountdown_GREEN 13
+#define carLightPin_GREEN 8
+#define carLightPin_ORANGE 9
+#define carLightPin_RED 10
+#define carCountdownPin_GREEN 11
+#define carCountdownPin_ORANGE 12
+#define carCountdownPin_RED 13
 
 void setup() {
   pinMode(begSignalPin, INPUT_PULLUP);
+  pinMode(pedestrianLightPin_GREEN, OUTPUT);
   pinMode(pedestrianLight_RED, OUTPUT);
-  pinMode(pedestrianLight_GREEN, OUTPUT);
-  pinMode(pedestrianCountdown_RED, OUTPUT);
-  pinMode(pedestrianCountdown_GREEN, OUTPUT);
-  pinMode(carLight_RED, OUTPUT);
-  pinMode(carLight_ORANGE, OUTPUT);
-  pinMode(carLight_GREEN, OUTPUT);
-  pinMode(carCountdown_RED, OUTPUT);
-  pinMode(carCountdown_ORANGE, OUTPUT);
-  pinMode(carCountdown_GREEN, OUTPUT);
+  pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
+  pinMode(pedestrianCountdownPin_RED, OUTPUT);
+  pinMode(carLightPin_GREEN, OUTPUT);
+  pinMode(carLightPin_ORANGE, OUTPUT);
+  pinMode(carLightPin_RED, OUTPUT);
+  pinMode(carCountdownPin_GREEN, OUTPUT);
+  pinMode(carCountdownPin_ORANGE, OUTPUT);
+  pinMode(carCountdownPin_RED, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(), begSignalInterrupt, RISING);
 
   changeCarLightSignal(carSignal);
@@ -216,25 +216,62 @@ void changeCarLightSignal(LightSignal signal) {
   for(int pin = 8; pin <= 10; pin++) {
     digitalWrite(pin, LOW);
   }
-  digitalWrite(pin, HIGH);
+  switch(signal) {
+    case GREEN: digitalWrite(carLightPin_GREEN, HIGH);
+    case ORANGE: digitalWrite(carLightPin_ORANGE, HIGH);
+    case RED: digitalWrite(carLightPin_RED, HIGH);
+    case default: unreachable();
+  }
 }
 
 void changeCarCountdownSignal(CountdownDisplay signal) {
   for(int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
   switch(signal) {
-    case hide: ;
+    case hide:
+      switch(carSignal) {
+        case GREEN: digitalWrite(carCountdownPin_GREEN, LOW); break;
+        case ORANGE: digitalWrite(carCountdownPin_ORANGE, LOW); break;
+        case RED: digitalWrite(carCountdownPin_RED, LOW); break;
+        default: unreachable();
+      }
+    case show:
+      switch(carSignal) {
+        case GREEN: digitalWrite(carCountdownPin_GREEN, HIGH); break;
+        case ORANGE: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
+        case RED: digitalWrite(carCountdownPin_RED, HIGH); break;
+        default: unreachable();
+      }
   }
-  digitalWrite(pin, HIGH);
 }
 
 void changePedestrianLightSignal(LightSignal lightSignal) {
   for(int pin = 3; pin <= 4; pin++) digitalWrite(pin, LOW);
-  digitalWrite(pin, HIGH);
+  switch(signal) {
+    case GREEN: digitalWrite(pedestrianLightPin_GREEN, HIGH);
+    case ORANGE: digitalWrite(pedestrianLightPin_ORANGE, HIGH);
+    case RED: digitalWrite(pedestrianLightPin_RED, HIGH);
+    case default: unreachable();
+  }
 }
 
 void changePedestrianCountdownSignal(CountdownDisplay signal) {
   for(int pin = 5; pin <= 6; pin++) digitalWrite(pin, LOW);
-  digitalWrite(pin, HIGH);
+  switch(signal) {
+    case hide:
+      switch(pedestrianSignal) {
+        case GREEN: digitalWrite(pedestrianCountdownPin_GREEN, LOW); break;
+        case ORANGE: digitalWrite(pedestrianCountdownPin_ORANGE, LOW); break;
+        case RED: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
+        default: unreachable();
+      }
+    case show:
+      switch(pedestrianSignal) {
+        case GREEN: digitalWrite(pedestrianCountdownPin_GREEN, HIGH); break;
+        case ORANGE: digitalWrite(pedestrianCountdownPin_ORANGE, HIGH); break;
+        case RED: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
+        default: unreachable();
+      }
+  }
 }
 
 bool isCooldownFinish() {
