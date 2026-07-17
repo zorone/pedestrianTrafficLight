@@ -34,6 +34,7 @@ void changeCarSignalState();
 void changeCarCountdownState();
 void changePedestrianSignalState();
 void changePedestrianCountdownState();
+bool isSignalSequenceFinish();
 bool isCooldownFinish();
 
 void changeCarLightSignal(LightSignal signal);
@@ -48,10 +49,11 @@ void unreachable();
 void halt();
 
 #define begSignalPin 2
-#define pedestrianLightPin_GREEN 3
-#define pedestrianLightPin_RED 4
-#define pedestrianCountdownPin_GREEN 5
-#define pedestrianCountdownPin_RED 6
+
+#define pedestrianLightPin_GREEN 4
+#define pedestrianLightPin_RED 5
+#define pedestrianCountdownPin_GREEN 6
+#define pedestrianCountdownPin_RED 7
 
 #define carLightPin_GREEN 8
 #define carLightPin_ORANGE 9
@@ -201,7 +203,7 @@ void changePedestrianCountdownState() {
         switch(pedestrianSignal) {
           case red: unreachable();
           case green:
-            // imingSchedule[3] = timingSchedule[2]; // Return to idle state, no need to set
+            // timingSchedule[3] = timingSchedule[2]; // Return to idle state, no need to set
             pedestrianCountdown = hide;
             break;
           case orange: default: unreachable();
@@ -269,6 +271,10 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
         case orange: default: unreachable();
       }
   }
+}
+
+bool isSignalSequenceFinish() {
+  return (carSignal == green) && (carCountdown == hide) && (pedestrianSignal == red) && (pedestrianCountdown == hide);
 }
 
 bool isCooldownFinish() {
