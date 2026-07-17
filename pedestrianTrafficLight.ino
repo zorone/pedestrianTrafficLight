@@ -287,9 +287,9 @@ void changeCarLightSignal(LightSignal signal) {
     digitalWrite(pin, LOW);
   }
   switch (signal) {
-    case green: digitalWrite(carLightPin_GREEN, HIGH);
-    case orange: digitalWrite(carLightPin_ORANGE, HIGH);
-    case red: digitalWrite(carLightPin_RED, HIGH);
+    case green: digitalWrite(carLightPin_GREEN, HIGH); break;
+    case orange: digitalWrite(carLightPin_ORANGE, HIGH); break;
+    case red: digitalWrite(carLightPin_RED, HIGH); break;
     default:
       Serial.print("changeCarLightSignal(): unreachable state: ");
       Serial.println(signal);
@@ -312,6 +312,7 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
           Serial.print(signal);
           unreachable();
       }
+      break;
     case show:
       switch (carSignal) {
         case green: digitalWrite(carCountdownPin_GREEN, HIGH); break;
@@ -324,6 +325,7 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
           Serial.println(signal);
           unreachable();
       }
+      break;
     default:
       Serial.print("changeCarCountdownSignal(): unreachable state: ");
       Serial.println(signal);
@@ -334,8 +336,8 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
 void changePedestrianLightSignal(LightSignal signal) {
   for (int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
   switch (signal) {
-    case green: digitalWrite(pedestrianLightPin_GREEN, HIGH);
-    case red: digitalWrite(pedestrianLightPin_RED, HIGH);
+    case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
+    case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
     case orange:
     default:
       Serial.print("changePedestrianLightSignal(): unreachable state: ");
@@ -359,6 +361,7 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
           Serial.println(signal);
           unreachable();
       }
+      break;
     case show:
       switch (pedestrianSignal) {
         case green: digitalWrite(pedestrianCountdownPin_GREEN, HIGH); break;
@@ -371,6 +374,7 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
           Serial.println(signal);
           unreachable();
       }
+      break;
     default:
       Serial.print("changePedestrianCountdownSignal(): unreachable state: ");
       Serial.println(signal);
