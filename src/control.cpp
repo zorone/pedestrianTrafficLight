@@ -63,8 +63,9 @@ void changeCarCountdownState() {
                         carCountdown = show;
                         timingSchedule[1] = timingSchedule[0];    // Assume that changeCarCountdownState happens after changeCarSignalState()
                         break;
-                    case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     case red:
+                        break;   // transition back phase, skip once
+                    case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     default:
                         Serial.print("changeCarCountdownState: unreachable state: ");
                         Serial.print(carSignal);
@@ -147,7 +148,7 @@ void changePedestrianCountdownState() {
                         pedestrianCountdown = hide;
                         break;
                     case red:
-                        break;
+                        break;  // transition back phase, skip once
                     case orange:
                     default:
                         Serial.print("changePedestrianCountdownState(): unreachable state: ");
