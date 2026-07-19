@@ -25,10 +25,10 @@ bool enableTextOutput = true;
 void scheduleLightSignal() {
     unsigned long now = millis();
     timingSchedule[0] = now + 20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'
-    timingSchedule[1] = now;                                             // Set due time to start car countdown
-    timingSchedule[2] = now + 28 * 1000 + 2 * 50;    // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
-    timingSchedule[3] = now + 3 * 1000 + 50;             // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
-    timingSchedule[4] = now + 43ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
+    timingSchedule[1] = now;                             // Set due time to start car countdown
+    timingSchedule[2] = now + 25 * 1000 + 2 * 50;        // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
+    timingSchedule[3] = now +  0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
+    timingSchedule[4] = now + 40ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
 }
 
 void changeCarSignalState() {
@@ -43,7 +43,7 @@ void changeCarSignalState() {
                 carSignal = red;
                 break;
             case red:
-                // timingSchedule[0] +=    0*1000 + 50;
+                // timingSchedule[0] +=  0*1000 + 50;
                 carSignal = green;
                 break;
             default:

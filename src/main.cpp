@@ -60,15 +60,15 @@ void loop() {
         case running:
             changeCarSignalState();
             printCarStatus();
-            changeCarLightSignal(carSignal);
-            changePedestrianSignalState();
-            printCarStatus();
-            changeCarCountdownSignal(carCountdown);
             changeCarCountdownState();
+            printCarStatus();
+            changeCarLightSignal(carSignal);
+            changeCarCountdownSignal(carCountdown);
+            changePedestrianSignalState();
             printPedestrianStatus();
-            changePedestrianLightSignal(pedestrianSignal);
             changePedestrianCountdownState();
             printPedestrianStatus();
+            changePedestrianLightSignal(pedestrianSignal);
             changePedestrianCountdownSignal(pedestrianCountdown);
             if (isSignalSequenceFinish()) {
                 deviceStatus = cooldown;
