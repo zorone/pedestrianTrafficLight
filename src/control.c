@@ -1,3 +1,6 @@
+#include "common.h"
+#include "control.h"
+
 void scheduleLightSignal() {
     unsigned long now = millis();
     timingSchedule[0] = now + 20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'

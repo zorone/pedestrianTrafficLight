@@ -1,3 +1,6 @@
+#include "common.h"
+#include "debug.h"
+
 void printDeviceStatus() {
     if (!enableTextOutput) return;
     Serial.print("deviceStatus = ");
