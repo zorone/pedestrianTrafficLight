@@ -47,7 +47,7 @@ void changeCarSignalState() {
                 carSignal = green;
                 break;
             default:
-                Serial.print("changeCarSignalState(): unreachable state: ");
+                Serial.print("changeCarSignalState: unreachable state: ");
                 Serial.println(carSignal);
                 unreachable();
         }
@@ -56,17 +56,17 @@ void changeCarSignalState() {
 
 void changeCarCountdownState() {
     if (isDue(timingSchedule[1])) {
-        switch (carCountdown) {
+        switch(carCountdown) {
             case hide:
                 switch (carSignal) {
                     case green:
                         carCountdown = show;
-                        timingSchedule[1] = timingSchedule[0];    // Assume that changeCarCountdownState() happens after changeCarSignalState()
+                        timingSchedule[1] = timingSchedule[0];    // Assume that changeCarCountdownState happens after changeCarSignalState()
                         break;
                     case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     case red:
                     default:
-                        Serial.print("changeCarCountdownState(): unreachable state: ");
+                        Serial.print("changeCarCountdownState: unreachable state: ");
                         Serial.print(carSignal);
                         Serial.print(" ");
                         Serial.println(carCountdown);
@@ -85,7 +85,7 @@ void changeCarCountdownState() {
                             break;
                         case green:
                         default:
-                            Serial.print("changeCarCountdownState(): unreachable state: ");
+                            Serial.print("changeCarCountdownState: unreachable state: ");
                             Serial.print(carSignal);
                             Serial.print(" ");
                             Serial.println(carCountdown);
@@ -94,7 +94,7 @@ void changeCarCountdownState() {
                 }
                 break;
             default:
-                Serial.print("changeCarCountdownState(): unreachable state: ");
+                Serial.print("changeCarCountdownState: unreachable state: ");
                 Serial.println(carCountdown);
                 unreachable();
         }
@@ -114,7 +114,7 @@ void changePedestrianSignalState() {
                 break;
             case orange:
             default:
-                Serial.print("changePedestrianSignalState(): unreachable state: ");
+                Serial.print("changePedestrianSignalState: unreachable state: ");
                 Serial.println(pedestrianSignal);
                 unreachable();
         }
@@ -127,13 +127,13 @@ void changePedestrianCountdownState() {
             case hide:
                 switch (pedestrianSignal) {
                     case red:
-                        timingSchedule[3] = timingSchedule[2];    // Assume that changePedestrianCountdownState() happens after changePedestrianSignalState()
+                        timingSchedule[3] = timingSchedule[2];    // Assume that changePedestrianCountdownState happens after changePedestrianSignalState()
                         pedestrianCountdown = show;
                         break;
                     case green:
-                    case orange:    // Assume that changePedestrianSignalState() happens beforehand, and doesn't get changed anywhere else.
+                    case orange:    // Assume that changePedestrianSignalState happens beforehand, and doesn't get changed anywhere else.
                     default:
-                        Serial.print("changePedestrianCountdownState(): unreachable state: ");
+                        Serial.print("changePedestrianCountdownState: unreachable state: ");
                         Serial.print(pedestrianSignal);
                         Serial.print(" ");
                         Serial.println(pedestrianCountdown);
@@ -189,7 +189,7 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
                 case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
                 case red: digitalWrite(carCountdownPin_RED, LOW); break;
                 default:
-                    Serial.print("changeCarCountdownSignal(): unreachable state: ");
+                    Serial.print("changeCarCountdownSignal: unreachable state: ");
                     Serial.print(carSignal);
                     Serial.print(" ");
                     Serial.print(signal);
@@ -223,7 +223,7 @@ void changePedestrianLightSignal(LightSignal signal) {
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
         case orange:
         default:
-            Serial.print("changePedestrianLightSignal(): unreachable state: ");
+            Serial.print("changePedestrianLightSignal: unreachable state: ");
             Serial.println(signal);
             unreachable();
     }
@@ -238,7 +238,7 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
                 case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal(): unreachable state: ");
+                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
                     Serial.print(pedestrianSignal);
                     Serial.print(" ");
                     Serial.println(signal);
@@ -251,7 +251,7 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
                 case red: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal(): unreachable state: ");
+                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
                     Serial.print(pedestrianSignal);
                     Serial.print(" ");
                     Serial.println(signal);
@@ -259,7 +259,7 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
             }
             break;
         default:
-            Serial.print("changePedestrianCountdownSignal(): unreachable state: ");
+            Serial.print("changePedestrianCountdownSignal: unreachable state: ");
             Serial.println(signal);
             unreachable();
     }
