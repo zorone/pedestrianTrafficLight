@@ -55,9 +55,7 @@ void changeCarSignalState() {
                 unreachable();
         }
         if(debug) {
-            sprint
-            Serial.print(now);
-            Serial.print("transition")
+            DBG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", tmp, carSignal);
         }
     }
 }
