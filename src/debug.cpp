@@ -12,9 +12,9 @@ void printCarStatus() {
     DEBUG_INFO("carSignal = %d, carCountdown = %d\n", carSignal, carCountdown);
 }
 
-void printCarStatusTransition(LightSignal lastLightSignal) {
+void printCarStatusTransition(LightSignal lastCarSignal) {
     if (!debug) return;
-    DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", lastLightSignal, carSignal);
+    DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", lastCarSignal, carSignal);
     DEBUG_INFO("changeCarSignalState: Next Schedule: %lu", timingSchedule[0]);
 }
 
