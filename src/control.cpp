@@ -43,7 +43,7 @@ void changeCarSignalState() {
                 carSignal = red;
                 break;
             case red:
-                // timingSchedule[0] +=  0*1000 + 50;
+                timingSchedule[0] +=  timingSchedule[4];  // Set to finishing time, to circumvent from rerunning this function before reaching the end of cycle
                 carSignal = green;
                 break;
             default:
@@ -80,8 +80,8 @@ void changeCarCountdownState() {
                             timingSchedule[1] = timingSchedule[0];    // Assume that carCountdown signal doesn't get changed anywhere else
                             break;
                         case red:
-                            // timingSchedule[1] = timingSchedule[0]; // Return to idle state, no need to set
-                            // carCountdown = hide;
+                            timingSchedule[1] = timingSchedule[4];    // Return to idle state, set to end of cycle time
+                            carCountdown = hide;
                             break;
                         case green:
                         default:
@@ -109,7 +109,7 @@ void changePedestrianSignalState() {
                 pedestrianSignal = green;
                 break;
             case green:
-                // timingSchedule[2] += 0*1000 + 50;
+                timingSchedule[2] += timingSchedule[4];
                 pedestrianSignal = red;
                 break;
             case orange:
@@ -143,8 +143,8 @@ void changePedestrianCountdownState() {
             case show:
                 switch (pedestrianSignal) {
                     case green:
-                        // timingSchedule[3] = timingSchedule[2]; // Return to idle state, no need to set
-                        // pedestrianCountdown = hide;
+                        timingSchedule[3] = timingSchedule[4]; // Return to idle state, set to end cycle time
+                        pedestrianCountdown = hide;
                         break;
                     case red:
                         break;
