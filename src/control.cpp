@@ -35,11 +35,11 @@ void changeCarSignalState() {
     if (isDue(timingSchedule[0])) {
         switch (carSignal) {
             case green:
-                timingSchedule[0] += 3 * 1000 + 50;
+                timingSchedule[0] +=  3 * 1000 + 50;
                 carSignal = orange;
                 break;
             case orange:
-                timingSchedule[0] += 25 * 1000 + 50;
+                timingSchedule[0] += 19 * 1000 + 50;
                 carSignal = red;
                 break;
             case red:
