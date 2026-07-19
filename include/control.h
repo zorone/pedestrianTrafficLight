@@ -46,5 +46,5 @@
   extern unsigned long inputTimeframe;
 
   extern volatile unsigned long debuggingSchedule;
-  extern bool enableTextOutput;
+  extern bool debug, enableTextOutput;
 #endif

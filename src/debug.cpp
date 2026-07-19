@@ -4,27 +4,25 @@
 
 void printDeviceStatus() {
     if (!enableTextOutput) return;
-    Serial.print("deviceStatus = ");
-    Serial.println(deviceStatus);
+    DEBUG_INFO("deviceStatus = %d\n", deviceStatus);
 }
 
 void printCarStatus() {
     if (!enableTextOutput) return;
-    Serial.print("carSignal = ");
-    Serial.print(carSignal);
-    Serial.print(" carCountdown = ");
-    Serial.println(carCountdown);
+    DEBUG_INFO("carSignal = %d, carCountdown = %d\n", carSignal, carCountdown);
+}
+
+void printCarStatusTransition(LightSignal lastLightSignal) {
+    if (!debug) return;
+    DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", lastLightSignal, carSignal);
+    DEBUG_INFO("changeCarSignalState: Next Schedule: %lu", timingSchedule[0]);
 }
 
 void printPedestrianStatus() {
     if (!enableTextOutput) return;
-    Serial.print("pedestrianSignal = ");
-    Serial.print(pedestrianSignal);
-    Serial.print(" pedestrianCountdown = ");
-    Serial.println(pedestrianCountdown);
+    DEBUG_INFO("pedestrianSignal = %d, pedestrianCountdown = %d\n", pedestrianSignal, pedestrianCountdown);
 }
 
 void printCurrentInput() {
-    Serial.print("currentInput = ");
-    Serial.println(currentInput);
+    DEBUG_INFO("currentInput = %d\n", currentInput);
 }
