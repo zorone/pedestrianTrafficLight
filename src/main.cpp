@@ -46,7 +46,7 @@ void loop() {
         enableTextOutput = true;
         debuggingSchedule += 250;
     }
-    printDeviceStatus();
+    // printDeviceStatus();
     switch (deviceStatus) {
         case ready:
             printCarStatus();
