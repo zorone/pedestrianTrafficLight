@@ -1,4 +1,5 @@
 #include "common.h"
+#include "control.h"
 #include "debug.h"
 
 void printDeviceStatus() {

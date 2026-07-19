@@ -34,23 +34,17 @@
   bool isDue(unsigned long time);
   void begSignalInterrupt();
 
-  extern DeviceState deviceStatus = ready;
-  extern LightSignal carSignal = green;
-  extern LightSignal pedestrianSignal = red;
-  extern CountdownDisplay carCountdown = hide;
-  extern CountdownDisplay pedestrianCountdown = hide;
-  extern volatile bool begSignal = false;
-  extern unsigned long timingSchedule[] = {
-      0,    // 0: Time when car light signal is switched
-      0,    // 1: Time when car countdown signal is switched
-      0,    // 2: Time when pedestrian light signal is switched
-      0,    // 3: Time when pedestrian countdown signal is switched
-      0     // 4: Time when beg signal will available again
-  };
+  extern DeviceState deviceStatus;
+  extern LightSignal carSignal;
+  extern LightSignal pedestrianSignal;
+  extern CountdownDisplay carCountdown;
+  extern CountdownDisplay pedestrianCountdown;
+  extern volatile bool begSignal;
+  extern unsigned long timingSchedule[];
 
-  extern bool prevInput = false, currentInput = false;
-  extern unsigned long inputTimeframe = 0;
+  extern bool prevInput, currentInput;
+  extern unsigned long inputTimeframe;
 
-  extern volatile unsigned long debuggingSchedule = 0;
-  extern bool enableTextOutput = true;
+  extern volatile unsigned long debuggingSchedule;
+  extern bool enableTextOutput;
 #endif

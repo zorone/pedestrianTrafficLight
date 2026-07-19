@@ -1,5 +1,26 @@
 #include "common.h"
+#include "pin.h"
 #include "control.h"
+
+DeviceState deviceStatus = ready;
+LightSignal carSignal = green;
+LightSignal pedestrianSignal = red;
+CountdownDisplay carCountdown = hide;
+CountdownDisplay pedestrianCountdown = hide;
+volatile bool begSignal = false;
+unsigned long timingSchedule[] = {
+    0,    // 0: Time when car light signal is switched
+    0,    // 1: Time when car countdown signal is switched
+    0,    // 2: Time when pedestrian light signal is switched
+    0,    // 3: Time when pedestrian countdown signal is switched
+    0     // 4: Time when beg signal will available again
+};
+
+bool prevInput = false, currentInput = false;
+unsigned long inputTimeframe = 0;
+
+volatile unsigned long debuggingSchedule = 0;
+bool enableTextOutput = true;
 
 void scheduleLightSignal() {
     unsigned long now = millis();
