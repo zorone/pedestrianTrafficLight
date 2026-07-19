@@ -1,5 +1,3 @@
-#include <Arduino_DebugUtils.h>
-
 #include "common.h"
 #include "pin.h"
 #include "control.h"

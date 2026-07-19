@@ -33,8 +33,7 @@ void scheduleLightSignal() {
 }
 
 void changeCarSignalState() {
-    if (isDue(timingSchedule[0])) {
-        unsigned long now = millis(); 
+    if (isDue(timingSchedule[0])) { 
         LightSignal tmp = carSignal;
         switch (carSignal) {
             case green:
@@ -56,6 +55,7 @@ void changeCarSignalState() {
         }
         if(debug) {
             DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", tmp, carSignal);
+            DEBUG_INFO("changeCarSignalState: Next Schedule: %lu", timingSchedule[0]);
         }
     }
 }
