@@ -20,7 +20,8 @@ bool prevInput = false, currentInput = false;
 unsigned long inputTimeframe = 0;
 
 volatile unsigned long debuggingSchedule = 0;
-bool enableTextOutput = true;
+bool debug = true;
+bool enableTextOutput = debug;
 
 void scheduleLightSignal() {
     unsigned long now = millis();
@@ -33,6 +34,8 @@ void scheduleLightSignal() {
 
 void changeCarSignalState() {
     if (isDue(timingSchedule[0])) {
+        unsigned long now = millis(); 
+        LightSignal tmp = carSignal;
         switch (carSignal) {
             case green:
                 timingSchedule[0] +=  3 * 1000 + 50;
@@ -50,6 +53,11 @@ void changeCarSignalState() {
                 Serial.print("changeCarSignalState: unreachable state: ");
                 Serial.println(carSignal);
                 unreachable();
+        }
+        if(debug) {
+            sprint
+            Serial.print(now);
+            Serial.print("transition")
         }
     }
 }

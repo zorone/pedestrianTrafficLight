@@ -1,3 +1,5 @@
+#include <Arduino_DebugUtils.h>
+
 #include "common.h"
 #include "pin.h"
 #include "control.h"
@@ -29,6 +31,8 @@ void setup() {
     printCarStatus();
     printPedestrianStatus();
     printCurrentInput();
+
+    Debug.timestampOn();
     enableTextOutput = false;
 }
 
@@ -59,15 +63,11 @@ void loop() {
             break;
         case running:
             changeCarSignalState();
-            printCarStatus();
             changeCarCountdownState();
-            printCarStatus();
             changeCarLightSignal(carSignal);
             changeCarCountdownSignal(carCountdown);
             changePedestrianSignalState();
-            printPedestrianStatus();
             changePedestrianCountdownState();
-            printPedestrianStatus();
             changePedestrianLightSignal(pedestrianSignal);
             changePedestrianCountdownSignal(pedestrianCountdown);
             if (isSignalSequenceFinish()) {
