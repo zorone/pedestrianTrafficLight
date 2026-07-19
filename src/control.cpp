@@ -55,7 +55,7 @@ void changeCarSignalState() {
                 unreachable();
         }
         if(debug) {
-            DBG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", tmp, carSignal);
+            DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d\n", tmp, carSignal);
         }
     }
 }
