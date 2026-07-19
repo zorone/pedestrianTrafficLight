@@ -5,7 +5,9 @@
   void printDeviceStatus();
   void printCarStatus();
   void printCarStatusTransition(LightSignal lastCarSignal);
-  void printCarStatusTransition(LightSignal lastCarSignal, CountdownDisplay lastCarCountdown);
+  void printCarCountdownTransition(CountdownDisplay lastCarCountdown);
   void printPedestrianStatus();
+  void printPedestrianStatusTransition(LightSignal lastPedestrianSignal);
+  void printPedestrianCountdownTransition(CountdownDisplay lastPedestrianCountdown);
   void printCurrentInput();
 #endif

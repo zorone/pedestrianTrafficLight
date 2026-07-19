@@ -1,6 +1,7 @@
 #include "common.h"
 #include "pin.h"
 #include "control.h"
+#include "debug.h"
 
 DeviceState deviceStatus = ready;
 LightSignal carSignal = green;
@@ -34,7 +35,7 @@ void scheduleLightSignal() {
 
 void changeCarSignalState() {
     if (isDue(timingSchedule[0])) { 
-        LightSignal tmp = carSignal;
+        LightSignal lastCarSignal = carSignal;
         switch (carSignal) {
             case green:
                 timingSchedule[0] +=  3 * 1000 + 50;
@@ -53,14 +54,14 @@ void changeCarSignalState() {
                 Serial.println(carSignal);
                 unreachable();
         }
-        if(debug) {
-            
-        }
+        printCarStatusTransition(lastCarSignal);
     }
 }
 
 void changeCarCountdownState() {
     if (isDue(timingSchedule[1])) {
+        LightSignal lastCarSignal = carSignal;
+        CountdownDisplay lastCarCountdown = carCountdown;
         switch(carCountdown) {
             case hide:
                 switch (carSignal) {
@@ -104,11 +105,14 @@ void changeCarCountdownState() {
                 Serial.println(carCountdown);
                 unreachable();
         }
+        printCarStatusTransition(lastCarSignal);
+        printCarCountdownTransition(lastCarCountdown);
     }
 }
 
 void changePedestrianSignalState() {
     if (isDue(timingSchedule[2])) {
+        LightSignal lastPedestrianSignal = pedestrianSignal;
         switch (pedestrianSignal) {
             case red:
                 timingSchedule[2] += 15 * 1000 + 50;
@@ -124,11 +128,14 @@ void changePedestrianSignalState() {
                 Serial.println(pedestrianSignal);
                 unreachable();
         }
+        printPedestrianStatusTransition(lastPedestrianSignal);
     }
 }
 
 void changePedestrianCountdownState() {
     if (isDue(timingSchedule[3])) {
+        LightSignal lastPedestrianSignal = pedestrianSignal;
+        CountdownDisplay lastPedestrianCountdown = pedestrianCountdown;
         switch (pedestrianCountdown) {
             case hide:
                 switch (pedestrianSignal) {
@@ -168,6 +175,8 @@ void changePedestrianCountdownState() {
                 Serial.println(pedestrianCountdown);
                 unreachable();
         }
+        printPedestrianStatusTransition(lastPedestrianSignal);
+        printPedestrianCountdownTransition(lastPedestrianCountdown);
     }
 }
 
