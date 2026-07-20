@@ -51,20 +51,27 @@ void loop() {
             }
             break;
         case running:
-            changeCarSignalState();
-            changeCarCountdownState();
-            changeCarLightSignal(carSignal);
-            changeCarCountdownSignal(carCountdown);
-            changePedestrianSignalState();
-            changePedestrianCountdownState();
-            changePedestrianLightSignal(pedestrianSignal);
-            changePedestrianCountdownSignal(pedestrianCountdown);
             if (isSignalSequenceFinish()) {
                 deviceStatus = cooldown;
+                carSignal = green;
                 carCountdown = hide;
+                pedestrianSignal = red;
                 pedestrianCountdown = hide;
+                changeCarCountdownSignal(carCountdown);
+                changeCarLightSignal(carSignal);
+                changePedestrianCountdownSignal(pedestrianCountdown);
+                changePedestrianLightSignal(pedestrianSignal);
                 Serial.println("Finish the sequence");
+                break;
             }
+            changeCarCountdownState();
+            changeCarSignalState();
+            changeCarCountdownSignal(carCountdown);
+            changeCarLightSignal(carSignal);
+            changePedestrianCountdownState();
+            changePedestrianSignalState();
+            changePedestrianCountdownSignal(pedestrianCountdown);
+            changePedestrianLightSignal(pedestrianSignal);
             break;
         case cooldown:
             printCarStatus();

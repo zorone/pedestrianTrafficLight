@@ -14,7 +14,8 @@ unsigned long timingSchedule[] = {
     0,    // 1: Time when car countdown signal is switched
     0,    // 2: Time when pedestrian light signal is switched
     0,    // 3: Time when pedestrian countdown signal is switched
-    0     // 4: Time when beg signal will available again
+    0,    // 4: Time when the cycle will end
+    0     // 5: Time when beg signal will available again
 };
 
 volatile unsigned long debuggingSchedule = 0;
@@ -29,12 +30,14 @@ void scheduleLightSignal() {
     timingSchedule[1] = now;                              // Set due time to start car countdown
     timingSchedule[2] = now +  25 * 1000 + 2 * 50;        // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
     timingSchedule[3] = now +   0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
-    timingSchedule[4] = now + 100ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
+    timingSchedule[4] = now +  42ul * 1000ul + 3 * 50;    // Set when the cycle will end
+    timingSchedule[5] = now + 100ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
     DEBUG_INFO("timingSchedule[0] = %lu", timingSchedule[0]);
     DEBUG_INFO("timingSchedule[1] = %lu", timingSchedule[1]);
     DEBUG_INFO("timingSchedule[2] = %lu", timingSchedule[2]);
     DEBUG_INFO("timingSchedule[3] = %lu", timingSchedule[3]);
     DEBUG_INFO("timingSchedule[4] = %lu", timingSchedule[4]);
+    DEBUG_INFO("timingSchedule[5] = %lu", timingSchedule[5]);
 }
 
 void changeCarSignalState() {
@@ -281,11 +284,11 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
 }
 
 bool isSignalSequenceFinish() {
-    return (carSignal == green) && (carCountdown == hide) && (pedestrianSignal == red) && (pedestrianCountdown == hide);
+    return isDue(timingSchedule[4]);
 }
 
 bool isCooldownFinish() {
-    return isDue(timingSchedule[4]);
+    return isDue(timingSchedule[5]);
 }
 
 bool isDue(unsigned long time) {
