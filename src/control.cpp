@@ -17,7 +17,7 @@ unsigned long timingSchedule[] = {
     0     // 4: Time when beg signal will available again
 };
 
-bool prevInput = false, currentInput = false;
+int prevInput = false, currentInput = false;
 unsigned long inputTimeframe = 0;
 
 volatile unsigned long debuggingSchedule = 0;

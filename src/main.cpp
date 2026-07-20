@@ -37,9 +37,13 @@ void setup() {
 void loop() {
     if (isDue(inputTimeframe)) {
         prevInput = currentInput;
-        currentInput = digitalRead(begSignalPin);
+        currentInput = analogRead(begSignalPin);
         printCurrentInput();
-        if(prevInput == currentInput && currentInput == HIGH) begSignalInterrupt();
+
+        if(currentInput <= 255) currentInput = 0;
+        else if(currentInput >= 768 && currentInput <= 1023) currentInput = 1023;
+        else currentInput = -1;
+        if(prevInput == currentInput && currentInput == 1023) begSignalInterrupt();
         inputTimeframe += 100;
     }
     if (isDue(debuggingSchedule)) {
