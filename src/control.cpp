@@ -312,7 +312,7 @@ bool isCooldownFinish() {
 
 bool isDue(unsigned long time, unsigned long duration) {
     unsigned long now = millis();
-    return now - time <= duration;
+    return (now - time) <= duration;
 }
 
 void begSignalInterrupt() {
