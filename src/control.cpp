@@ -313,8 +313,8 @@ bool isCooldownFinish() {
 bool isDue(unsigned long time, unsigned long duration) {
     unsigned long now = millis();
     unsigned long diff = now - time;
-    if((now - time) >= duration) DEBUG_INFO("%lu - %lu >= %lu", now, time, duration);
-    else DEBUG_INFO("%lu - %lu < %lu", now, time, duration);
+    // if((now - time) >= duration) DEBUG_INFO("%lu - %lu >= %lu", now, time, duration);
+    // else DEBUG_INFO("%lu - %lu < %lu", now, time, duration);
     if (time <= now) return diff >= duration;
     return (diff <= time) && (diff >= duration);
 }
