@@ -25,11 +25,11 @@ void scheduleLightSignal() {
     DEBUG_INFO("Beg signal is registered");
     DEBUG_INFO("Schedule Light Signal");
     unsigned long now = millis();
-    timingSchedule[0] = now + 20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'
-    timingSchedule[1] = now;                             // Set due time to start car countdown
-    timingSchedule[2] = now + 25 * 1000 + 2 * 50;        // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
-    timingSchedule[3] = now +  0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
-    timingSchedule[4] = now + 40ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
+    timingSchedule[0] = now +  20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'
+    timingSchedule[1] = now;                              // Set due time to start car countdown
+    timingSchedule[2] = now +  25 * 1000 + 2 * 50;        // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
+    timingSchedule[3] = now +   0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
+    timingSchedule[4] = now + 100ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
     DEBUG_INFO("timingSchedule[0] = %lu", timingSchedule[0]);
     DEBUG_INFO("timingSchedule[1] = %lu", timingSchedule[1]);
     DEBUG_INFO("timingSchedule[2] = %lu", timingSchedule[2]);
@@ -71,10 +71,9 @@ void changeCarCountdownState() {
                 switch (carSignal) {
                     case green:
                         carCountdown = show;
-                        timingSchedule[1] = timingSchedule[0];    // Assume that changeCarCountdownState happens after changeCarSignalState()
+                        timingSchedule[1] = timingSchedule[4];    // Assume that changeCarCountdownState happens after changeCarSignalState()
                         break;
                     case red:
-                        break;   // transition back phase, skip once
                     case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     default:
                         Serial.print("changeCarCountdownState: unreachable state: ");
@@ -87,14 +86,12 @@ void changeCarCountdownState() {
             case show:
                 {
                     switch (carSignal) {
-                        case green:
-                        case orange:
-                            timingSchedule[1] = timingSchedule[0];    // Assume that carCountdown signal doesn't get changed anywhere else
-                            break;
                         case red:
-                            timingSchedule[1] = timingSchedule[4];    // Return to idle state, set to end of cycle time
+                            // timingSchedule[1] = timingSchedule[4];    // Return to idle state, set to end of cycle time
                             carCountdown = hide;
                             break;
+                        case green:
+                        case orange:
                         default:
                             Serial.print("changeCarCountdownState: unreachable state: ");
                             Serial.print(carSignal);
@@ -123,7 +120,7 @@ void changePedestrianSignalState() {
                 pedestrianSignal = green;
                 break;
             case green:
-                timingSchedule[2] += timingSchedule[4];
+                timingSchedule[2] = timingSchedule[4];
                 pedestrianSignal = red;
                 break;
             case orange:
@@ -143,12 +140,11 @@ void changePedestrianCountdownState() {
         switch (pedestrianCountdown) {
             case hide:
                 switch (pedestrianSignal) {
-                    case green:
-                        break;
                     case red:
-                        timingSchedule[3] = timingSchedule[2];    // Assume that changePedestrianCountdownState happens after changePedestrianSignalState()
+                        timingSchedule[3] = timingSchedule[4];    // Assume that changePedestrianCountdownState happens after changePedestrianSignalState()
                         pedestrianCountdown = show;
                         break;
+                    case green:
                     case orange:    // Assume that changePedestrianSignalState happens beforehand, and doesn't get changed anywhere else.
                     default:
                         Serial.print("changePedestrianCountdownState: unreachable state: ");
@@ -161,11 +157,10 @@ void changePedestrianCountdownState() {
             case show:
                 switch (pedestrianSignal) {
                     case green:
-                        timingSchedule[3] = timingSchedule[4]; // Return to idle state, set to end cycle time
+                        // timingSchedule[3] = timingSchedule[4]; // Return to idle state, set to end cycle time
                         pedestrianCountdown = hide;
                         break;
                     case red:
-                        break;  // transition back phase, skip once
                     case orange:
                     default:
                         Serial.print("changePedestrianCountdownState(): unreachable state: ");
