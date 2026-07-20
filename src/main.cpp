@@ -35,16 +35,16 @@ void setup() {
 }
 
 void loop() {
-    if (isDue(inputTimeframe)) {
+    if (isDue(inputTimeframe, inputInterval)) {
         prevInput = currentInput;
         currentInput = digitalRead(begSignalPin);
         // printCurrentInput();
         if(prevInput == currentInput && currentInput == HIGH) begSignalInterrupt();
-        inputTimeframe += 100;
+        inputTimeframe += inputInterval;
     }
-    if (isDue(debuggingSchedule)) {
+    if (isDue(debuggingSchedule, debuggingInterval)) {
         enableTextOutput = true;
-        debuggingSchedule += 250;
+        debuggingSchedule += debuggingInterval;
     }
     // printDeviceStatus();
     switch (deviceStatus) {

@@ -16,11 +16,18 @@ unsigned long timingSchedule[] = {
     0,    // 3: Time when pedestrian countdown signal is switched
     0     // 4: Time when beg signal will available again
 };
+unsigned long timingDuration[] = {
+    0,    // 0: Time when car light signal is switched
+    0,    // 1: Time when car countdown signal is switched
+    0,    // 2: Time when pedestrian light signal is switched
+    0,    // 3: Time when pedestrian countdown signal is switched
+    0     // 4: Time when beg signal will available again
+};
 
 bool prevInput = false, currentInput = false;
-unsigned long inputTimeframe = 0;
+unsigned long inputTimeframe = 0, inputInterval = 100;
 
-volatile unsigned long debuggingSchedule = 0;
+volatile unsigned long debuggingSchedule = 0, debuggingInterval = 250;
 bool debug = true;
 bool enableTextOutput = debug;
 
@@ -28,11 +35,16 @@ void scheduleLightSignal() {
     DEBUG_INFO("Beg signal is registered");
     DEBUG_INFO("Schedule Light Signal");
     unsigned long now = millis();
-    timingSchedule[0] = now +  20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'
-    timingSchedule[1] = now;                              // Set due time to start car countdown
-    timingSchedule[2] = now +  25 * 1000 + 2 * 50;        // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
-    timingSchedule[3] = now +   0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
-    timingSchedule[4] = now + 100ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
+    timingDuration[0] =  20 * 1000 + 50;
+    timingDuration[1] =   0;
+    timingDuration[2] =  25 * 1000 + 2 * 50;
+    timingDuration[3] =   0 * 1000 + 50;
+    timingDuration[4] = 100ul * 1000ul + 3 * 50;
+    timingSchedule[0] = now + timingDuration[0];    // Set due time for light signal to become orange, padding for briefly show '0'
+    timingSchedule[1] = now + timingDuration[1];    // Set due time to start car countdown
+    timingSchedule[2] = now + timingDuration[2];    // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
+    timingSchedule[3] = now + timingDuration[3];    // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
+    timingSchedule[4] = now + timingDuration[4];    // Set due time for next beg signal, padding for brief '0' of each light signal
     DEBUG_INFO("timingSchedule[0] = %lu", timingSchedule[0]);
     DEBUG_INFO("timingSchedule[1] = %lu", timingSchedule[1]);
     DEBUG_INFO("timingSchedule[2] = %lu", timingSchedule[2]);
@@ -41,19 +53,21 @@ void scheduleLightSignal() {
 }
 
 void changeCarSignalState() {
-    if (isDue(timingSchedule[0])) { 
+    if (isDue(timingSchedule[0], timingDuration[0])) { 
         LightSignal lastCarSignal = carSignal;
         switch (carSignal) {
             case green:
-                timingSchedule[0] +=  3 * 1000 + 50;
+                timingDuration[0] +=  3 * 1000 + 50;
+                timingSchedule[0] += timingDuration[0];
                 carSignal = orange;
                 break;
             case orange:
-                timingSchedule[0] += 19 * 1000 + 50;
+                timingDuration[0] += 19 * 1000 + 50;
+                timingSchedule[0] += timingDuration[0];
                 carSignal = red;
                 break;
             case red:
-                timingSchedule[0] +=  timingSchedule[4];  // Set to finishing time, to circumvent from rerunning this function before reaching the end of cycle
+                timingSchedule[0] =  timingSchedule[4];  // Set to finishing time, to circumvent from rerunning this function before reaching the end of cycle
                 carSignal = green;
                 break;
             default:
@@ -66,7 +80,7 @@ void changeCarSignalState() {
 }
 
 void changeCarCountdownState() {
-    if (isDue(timingSchedule[1])) {
+    if (isDue(timingSchedule[1], timingDuration[1])) {
         LightSignal lastCarSignal = carSignal;
         CountdownDisplay lastCarCountdown = carCountdown;
         switch(carCountdown) {
@@ -118,15 +132,16 @@ void changeCarCountdownState() {
 }
 
 void changePedestrianSignalState() {
-    if (isDue(timingSchedule[2])) {
+    if (isDue(timingSchedule[2], timingDuration[2])) {
         LightSignal lastPedestrianSignal = pedestrianSignal;
         switch (pedestrianSignal) {
             case red:
-                timingSchedule[2] += 15 * 1000 + 50;
+                timingDuration[2] += 15 * 1000 + 50;
+                timingSchedule[2] += timingDuration[2];
                 pedestrianSignal = green;
                 break;
             case green:
-                timingSchedule[2] += timingSchedule[4];
+                timingSchedule[2] = timingSchedule[4];
                 pedestrianSignal = red;
                 break;
             case orange:
@@ -140,7 +155,7 @@ void changePedestrianSignalState() {
 }
 
 void changePedestrianCountdownState() {
-    if (isDue(timingSchedule[3])) {
+    if (isDue(timingSchedule[3], timingDuration[3])) {
         LightSignal lastPedestrianSignal = pedestrianSignal;
         CountdownDisplay lastPedestrianCountdown = pedestrianCountdown;
         switch (pedestrianCountdown) {
@@ -292,14 +307,12 @@ bool isSignalSequenceFinish() {
 }
 
 bool isCooldownFinish() {
-    return isDue(timingSchedule[4]);
+    return isDue(timingSchedule[4], timingDuration[4]);
 }
 
-bool isDue(unsigned long time) {
+bool isDue(unsigned long time, unsigned long duration) {
     unsigned long now = millis();
-    unsigned long diff = now - time;
-    if (time <= now) return diff <= now;
-    return diff <= time;
+    return now - time <= duration;
 }
 
 void begSignalInterrupt() {
