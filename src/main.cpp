@@ -38,7 +38,7 @@ void loop() {
     if (isDue(inputTimeframe)) {
         prevInput = currentInput;
         currentInput = digitalRead(begSignalPin);
-        printCurrentInput();
+        // printCurrentInput();
         if(prevInput == currentInput && currentInput == HIGH) begSignalInterrupt();
         inputTimeframe += 100;
     }
@@ -51,7 +51,6 @@ void loop() {
         case ready:
             printCarStatus();
             printPedestrianStatus();
-            printCurrentInput();
             if (begSignal == true) {
                 scheduleLightSignal();
                 begSignal = false;
