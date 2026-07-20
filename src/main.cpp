@@ -86,7 +86,7 @@ void loop() {
             }
             break;
         default:
-            DEBUG_ERROR("loop(): unreachable state: %d", deviceStatus);
+            // DEBUG_ERROR("loop(): unreachable state: %d", deviceStatus);
             unreachable();
     }
     enableTextOutput = false;
