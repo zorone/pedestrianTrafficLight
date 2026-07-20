@@ -321,6 +321,6 @@ bool isDue(unsigned long time, unsigned long duration) {
 }
 
 void begSignalInterrupt() {
-    DEBUG_INFO("Receive beg signal");
+    // DEBUG_INFO("Receive beg signal");
     begSignal = true;
 }
