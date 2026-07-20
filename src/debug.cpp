@@ -45,7 +45,3 @@ void printPedestrianStatus() {
     if (!enableTextOutput) return;
     DEBUG_INFO("pedestrianSignal = %d, pedestrianCountdown = %d", pedestrianSignal, pedestrianCountdown);
 }
-
-void printCurrentInput() {
-    DEBUG_INFO("currentInput = %d", currentInput);
-}

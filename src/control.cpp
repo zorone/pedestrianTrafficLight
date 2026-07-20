@@ -17,9 +17,6 @@ unsigned long timingSchedule[] = {
     0     // 4: Time when beg signal will available again
 };
 
-int prevInput = false, currentInput = false;
-unsigned long inputTimeframe = 0;
-
 volatile unsigned long debuggingSchedule = 0;
 bool debug = true;
 bool enableTextOutput = debug;
@@ -302,5 +299,6 @@ bool isDue(unsigned long time) {
 }
 
 void begSignalInterrupt() {
+    Serial.println("Interrupted!");
     begSignal = true;
 }

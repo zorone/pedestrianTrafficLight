@@ -5,7 +5,6 @@
 
 void setup() {
     Serial.begin(9600);
-    inputTimeframe = millis() + 100;
     debuggingSchedule = millis() + 250;
 
     pinMode(begSignalPin, INPUT_PULLUP);
@@ -19,6 +18,7 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
+    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, RISING);
 
     changeCarLightSignal(carSignal);
     changeCarCountdownSignal(carCountdown);
@@ -28,24 +28,12 @@ void setup() {
     printDeviceStatus();
     printCarStatus();
     printPedestrianStatus();
-    printCurrentInput();
 
     Debug.timestampOn();
     enableTextOutput = false;
 }
 
 void loop() {
-    if (isDue(inputTimeframe)) {
-        prevInput = currentInput;
-        currentInput = analogRead(begSignalPin);
-        printCurrentInput();
-
-        if(currentInput <= 255) currentInput = 0;
-        else if(currentInput >= 768 && currentInput <= 1023) currentInput = 1023;
-        else currentInput = -1;
-        if(prevInput == currentInput && currentInput == 1023) begSignalInterrupt();
-        inputTimeframe += 100;
-    }
     if (isDue(debuggingSchedule)) {
         enableTextOutput = true;
         debuggingSchedule += 250;
@@ -55,7 +43,6 @@ void loop() {
         case ready:
             printCarStatus();
             printPedestrianStatus();
-            printCurrentInput();
             if (begSignal == true) {
                 scheduleLightSignal();
                 begSignal = false;
@@ -76,7 +63,6 @@ void loop() {
                 deviceStatus = cooldown;
                 carCountdown = hide;
                 pedestrianCountdown = hide;
-                enableTextOutput = false;
                 Serial.println("Finish the sequence");
             }
             break;

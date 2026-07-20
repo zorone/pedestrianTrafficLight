@@ -42,9 +42,6 @@
   extern volatile bool begSignal;
   extern unsigned long timingSchedule[];
 
-  extern int prevInput, currentInput;
-  extern unsigned long inputTimeframe;
-
   extern volatile unsigned long debuggingSchedule;
   extern bool debug, enableTextOutput;
 #endif
