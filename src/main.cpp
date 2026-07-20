@@ -49,8 +49,8 @@ void loop() {
     // printDeviceStatus();
     switch (deviceStatus) {
         case ready:
-            printCarStatus();
-            printPedestrianStatus();
+            // printCarStatus();
+            // printPedestrianStatus();
             if (begSignal == true) {
                 scheduleLightSignal();
                 begSignal = false;
@@ -72,13 +72,18 @@ void loop() {
                 carCountdown = hide;
                 pedestrianCountdown = hide;
                 enableTextOutput = false;
-                Serial.println("Finish the sequence");
+                DEBUG_INFO("Finish the sequence");
+                DEBUG_INFO("Beg Signal will become available at %lu", timingSchedule[4]);
             }
             break;
         case cooldown:
-            printCarStatus();
-            printPedestrianStatus();
-            if (isCooldownFinish()) deviceStatus = ready;
+            // printCarStatus();
+            // printPedestrianStatus();
+            if (isCooldownFinish()) {
+                deviceStatus = ready;
+                DEBUG_INFO("%lu is due", timingSchedule[4]);
+                DEBUG_INFO("Beg signal is now available");
+            }
             break;
         default:
             Serial.print("loop(): unreachable state: ");

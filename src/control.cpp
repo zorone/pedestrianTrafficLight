@@ -25,12 +25,18 @@ bool debug = true;
 bool enableTextOutput = debug;
 
 void scheduleLightSignal() {
+    DEBUG_INFO("Schedule Light Signal");
     unsigned long now = millis();
     timingSchedule[0] = now + 20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'
     timingSchedule[1] = now;                             // Set due time to start car countdown
     timingSchedule[2] = now + 25 * 1000 + 2 * 50;        // Set due time for pedestrian light to become green, need to pad signal down as it need to account for orange light of car traffic
     timingSchedule[3] = now +  0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
     timingSchedule[4] = now + 40ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
+    DEBUG_INFO("timingSchedule[0] = %lu", timingSchedule[0]);
+    DEBUG_INFO("timingSchedule[1] = %lu", timingSchedule[1]);
+    DEBUG_INFO("timingSchedule[2] = %lu", timingSchedule[2]);
+    DEBUG_INFO("timingSchedule[3] = %lu", timingSchedule[3]);
+    DEBUG_INFO("timingSchedule[4] = %lu", timingSchedule[4]);
 }
 
 void changeCarSignalState() {
@@ -294,5 +300,6 @@ bool isDue(unsigned long time) {
 }
 
 void begSignalInterrupt() {
+    DEBUG_INFO("Receive beg signal");
     begSignal = true;
 }
