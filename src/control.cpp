@@ -312,6 +312,8 @@ bool isCooldownFinish() {
 
 bool isDue(unsigned long time, unsigned long duration) {
     unsigned long now = millis();
+    if((now - time) >= duration) DEBUG_INFO("%lu - %lu >= %lu", now, time, duration);
+    else DEBUG_INFO("%lu - %lu < %lu", now, time, duration);
     return (now - time) >= duration;
 }
 
