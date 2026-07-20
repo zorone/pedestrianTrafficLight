@@ -35,22 +35,23 @@ void setup() {
 }
 
 void loop() {
-    if (isDue(inputTimeframe, inputInterval)) {
+    if (isDue(inputTimeframe)) {
         prevInput = currentInput;
         currentInput = digitalRead(begSignalPin);
-        // printCurrentInput();
+        printCurrentInput();
         if(prevInput == currentInput && currentInput == HIGH) begSignalInterrupt();
-        inputTimeframe += inputInterval;
+        inputTimeframe += 100;
     }
-    if (isDue(debuggingSchedule, debuggingInterval)) {
+    if (isDue(debuggingSchedule)) {
         enableTextOutput = true;
-        debuggingSchedule += debuggingInterval;
+        debuggingSchedule += 250;
     }
     // printDeviceStatus();
     switch (deviceStatus) {
         case ready:
-            // printCarStatus();
-            // printPedestrianStatus();
+            printCarStatus();
+            printPedestrianStatus();
+            printCurrentInput();
             if (begSignal == true) {
                 scheduleLightSignal();
                 begSignal = false;
@@ -72,18 +73,13 @@ void loop() {
                 carCountdown = hide;
                 pedestrianCountdown = hide;
                 enableTextOutput = false;
-                DEBUG_INFO("Finish the sequence");
-                DEBUG_INFO("Beg Signal will become available at %lu", timingSchedule[4]);
+                Serial.println("Finish the sequence");
             }
             break;
         case cooldown:
-            // printCarStatus();
-            // printPedestrianStatus();
-            if (isCooldownFinish()) {
-                deviceStatus = ready;
-                DEBUG_INFO("%lu is due", timingSchedule[4]);
-                DEBUG_INFO("Beg signal is now available");
-            }
+            printCarStatus();
+            printPedestrianStatus();
+            if (isCooldownFinish()) deviceStatus = ready;
             break;
         default:
             Serial.print("loop(): unreachable state: ");

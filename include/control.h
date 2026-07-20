@@ -31,7 +31,7 @@
   void changePedestrianLightSignal(LightSignal signal);
   void changePedestrianCountdownSignal(CountdownDisplay signal);
 
-  bool isDue(unsigned long time, unsigned long duration);
+  bool isDue(unsigned long time);
   void begSignalInterrupt();
 
   extern DeviceState deviceStatus;
@@ -40,11 +40,11 @@
   extern CountdownDisplay carCountdown;
   extern CountdownDisplay pedestrianCountdown;
   extern volatile bool begSignal;
-  extern volatile unsigned long timingSchedule[], timingDuration[];
+  extern unsigned long timingSchedule[];
 
   extern bool prevInput, currentInput;
-  extern unsigned long inputTimeframe, inputInterval;
+  extern unsigned long inputTimeframe;
 
-  extern volatile unsigned long debuggingSchedule, debuggingInterval;
+  extern volatile unsigned long debuggingSchedule;
   extern bool debug, enableTextOutput;
 #endif
