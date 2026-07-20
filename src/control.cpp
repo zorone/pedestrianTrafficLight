@@ -93,7 +93,7 @@ void changeCarCountdownState() {
                         break;   // transition back phase, skip once
                     case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     default:
-                        DEBUG_INFO("changeCarCountdownState: unreachable state: %u %u", carSignal, carCountdown);
+                        // DEBUG_ERROR("changeCarCountdownState: unreachable state: %u %u", carSignal, carCountdown);
                         unreachable();
                 }
                 break;
@@ -110,13 +110,13 @@ void changeCarCountdownState() {
                             carCountdown = hide;
                             break;
                         default:
-                            DEBUG_INFO("changeCarCountdownState: unreachable state: %u %u", carSignal, carCountdown);
+                            // DEBUG_ERROR("changeCarCountdownState: unreachable state: %u %u", carSignal, carCountdown);
                             unreachable();
                     }
                 }
                 break;
             default:
-                DEBUG_INFO("changeCarCountdownState: unreachable state: %u", carCountdown);
+                // DEBUG_ERROR("changeCarCountdownState: unreachable state: %u", carCountdown);
                 unreachable();
         }
         printCarStatusTransition(lastCarSignal);
