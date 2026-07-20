@@ -9,14 +9,14 @@ LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
 volatile bool begSignal = false;
-unsigned long timingSchedule[] = {
+volatile unsigned long timingSchedule[] = {
     0,    // 0: Time when car light signal is switched
     0,    // 1: Time when car countdown signal is switched
     0,    // 2: Time when pedestrian light signal is switched
     0,    // 3: Time when pedestrian countdown signal is switched
     0     // 4: Time when beg signal will available again
 };
-unsigned long timingDuration[] = {
+volatile unsigned long timingDuration[] = {
     0,    // 0: Time when car light signal is switched
     0,    // 1: Time when car countdown signal is switched
     0,    // 2: Time when pedestrian light signal is switched

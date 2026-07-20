@@ -40,7 +40,7 @@
   extern CountdownDisplay carCountdown;
   extern CountdownDisplay pedestrianCountdown;
   extern volatile bool begSignal;
-  extern unsigned long timingSchedule[], timingDuration[];
+  extern volatile unsigned long timingSchedule[], timingDuration[];
 
   extern bool prevInput, currentInput;
   extern unsigned long inputTimeframe, inputInterval;
