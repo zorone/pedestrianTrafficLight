@@ -71,8 +71,7 @@ void changeCarSignalState() {
                 carSignal = green;
                 break;
             default:
-                Serial.print("changeCarSignalState: unreachable state: ");
-                Serial.println(carSignal);
+                DEBUG_ERROR("changeCarSignalState: unreachable state: %d", carSignal);
                 unreachable();
         }
         printCarStatusTransition(lastCarSignal);
@@ -94,10 +93,7 @@ void changeCarCountdownState() {
                         break;   // transition back phase, skip once
                     case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     default:
-                        Serial.print("changeCarCountdownState: unreachable state: ");
-                        Serial.print(carSignal);
-                        Serial.print(" ");
-                        Serial.println(carCountdown);
+                        DEBUG_ERROR("changeCarCountdownState: unreachable state: %d %d", carSignal, carCountdown);
                         unreachable();
                 }
                 break;
@@ -114,17 +110,13 @@ void changeCarCountdownState() {
                             carCountdown = hide;
                             break;
                         default:
-                            Serial.print("changeCarCountdownState: unreachable state: ");
-                            Serial.print(carSignal);
-                            Serial.print(" ");
-                            Serial.println(carCountdown);
+                            DEBUG_ERROR("changeCarCountdownState: unreachable state: %d %d", carSignal, carCountdown);
                             unreachable();
                     }
                 }
                 break;
             default:
-                Serial.print("changeCarCountdownState: unreachable state: ");
-                Serial.println(carCountdown);
+                DEBUG_ERROR("changeCarCountdownState: unreachable state: %d", carCountdown);
                 unreachable();
         }
         printCarStatusTransition(lastCarSignal);
@@ -147,8 +139,7 @@ void changePedestrianSignalState() {
                 break;
             case orange:
             default:
-                Serial.print("changePedestrianSignalState: unreachable state: ");
-                Serial.println(pedestrianSignal);
+                DEBUG_ERROR("changePedestrianSignalState: unreachable state: %d", pedestrianSignal);
                 unreachable();
         }
         printPedestrianStatusTransition(lastPedestrianSignal);
@@ -169,10 +160,7 @@ void changePedestrianCountdownState() {
                     case green:
                     case orange:    // Assume that changePedestrianSignalState happens beforehand, and doesn't get changed anywhere else.
                     default:
-                        Serial.print("changePedestrianCountdownState: unreachable state: ");
-                        Serial.print(pedestrianSignal);
-                        Serial.print(" ");
-                        Serial.println(pedestrianCountdown);
+                        DEBUG_ERROR("changePedestrianCountdownState: unreachable state: %d %d", pedestrianSignal, pedestrianCountdown);
                         unreachable();
                 }
                 break;
@@ -186,16 +174,12 @@ void changePedestrianCountdownState() {
                         break;  // transition back phase, skip once
                     case orange:
                     default:
-                        Serial.print("changePedestrianCountdownState(): unreachable state: ");
-                        Serial.print(pedestrianSignal);
-                        Serial.print(" ");
-                        Serial.println(pedestrianCountdown);
+                        DEBUG_ERROR("changePedestrianCountdownState(): unreachable state: %d %d", pedestrianSignal, pedestrianCountdown);
                         unreachable();
                 }
                 break;
             default:
-                Serial.print("changePedestrianCountdownState(): unreachable state: ");
-                Serial.println(pedestrianCountdown);
+                DEBUG_ERROR("changePedestrianCountdownState(): unreachable state: %d", pedestrianCountdown);
                 unreachable();
         }
         printPedestrianStatusTransition(lastPedestrianSignal);
@@ -212,8 +196,7 @@ void changeCarLightSignal(LightSignal signal) {
         case orange: digitalWrite(carLightPin_ORANGE, HIGH); break;
         case red: digitalWrite(carLightPin_RED, HIGH); break;
         default:
-            Serial.print("changeCarLightSignal(): unreachable state: ");
-            Serial.println(signal);
+            DEBUG_ERROR("changeCarLightSignal(): unreachable state: %d", signal);
             unreachable();
     }
 }
@@ -227,10 +210,7 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
                 case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
                 case red: digitalWrite(carCountdownPin_RED, LOW); break;
                 default:
-                    Serial.print("changeCarCountdownSignal: unreachable state: ");
-                    Serial.print(carSignal);
-                    Serial.print(" ");
-                    Serial.print(signal);
+                    DEBUG_ERROR("changeCarCountdownSignal: unreachable state: %d %d", carSignal, signal);
                     unreachable();
             }
             break;
@@ -240,16 +220,12 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
                 case orange: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
                 case red: digitalWrite(carCountdownPin_RED, HIGH); break;
                 default:
-                    Serial.print("changeCarCountdownSignal(): unreachable state: ");
-                    Serial.print(carSignal);
-                    Serial.print(" ");
-                    Serial.println(signal);
+                    DEBUG_ERROR("changeCarCountdownSignal: unreachable state: %d %d", carSignal, signal);
                     unreachable();
             }
             break;
         default:
-            Serial.print("changeCarCountdownSignal(): unreachable state: ");
-            Serial.println(signal);
+            DEBUG_ERROR("changeCarCountdownSignal(): unreachable state: %d", signal);
             unreachable();
     }
 }
@@ -261,8 +237,7 @@ void changePedestrianLightSignal(LightSignal signal) {
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
         case orange:
         default:
-            Serial.print("changePedestrianLightSignal: unreachable state: ");
-            Serial.println(signal);
+            DEBUG_ERROR("changePedestrianLightSignal: unreachable state: %d", signal);
             unreachable();
     }
 }
@@ -276,10 +251,7 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
                 case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(pedestrianSignal);
-                    Serial.print(" ");
-                    Serial.println(signal);
+                    DEBUG_ERROR("changePedestrianCountdownSignal: unreachable state: %d %d", pedestrianSignal, signal);
                     unreachable();
             }
             break;
@@ -289,16 +261,12 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
                 case red: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(pedestrianSignal);
-                    Serial.print(" ");
-                    Serial.println(signal);
+                    DEBUG_ERROR("changePedestrianCountdownSignal: unreachable state: %d %d", pedestrianSignal, signal);
                     unreachable();
             }
             break;
         default:
-            Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-            Serial.println(signal);
+            DEBUG_ERROR("changePedestrianCountdownSignal: unreachable state: %d", signal);
             unreachable();
     }
 }

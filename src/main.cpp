@@ -86,8 +86,7 @@ void loop() {
             }
             break;
         default:
-            Serial.print("loop(): unreachable state: ");
-            Serial.println(deviceStatus);
+            DEBUG_ERROR("loop(): unreachable state: %d", deviceStatus);
             unreachable();
     }
     enableTextOutput = false;
