@@ -2,7 +2,7 @@
 
 void unreachable() {
     // Serial.begin(9600);
-    DEBUG_ERROR("Error: Hardware have reached unreachable state!!!");
+    Serial.println("Error: Hardware have reached unreachable state!!!");
     halt();
 }
 
