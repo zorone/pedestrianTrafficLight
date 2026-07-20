@@ -4,7 +4,7 @@
 #include "debug.h"
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
     inputTimeframe = millis() + 100;
     debuggingSchedule = millis() + 250;
 
