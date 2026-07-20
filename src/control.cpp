@@ -104,6 +104,8 @@ void changeCarCountdownState() {
             case show:
                 {
                     switch (carSignal) {
+                        case green:
+                            break;                                    // transition once
                         case orange:
                             timingSchedule[1] = timingSchedule[0];    // Assume that carCountdown signal doesn't get changed anywhere else
                             break;
@@ -111,7 +113,6 @@ void changeCarCountdownState() {
                             timingSchedule[1] = timingSchedule[4];    // Return to idle state, set to end of cycle time
                             carCountdown = hide;
                             break;
-                        case green:
                         default:
                             Serial.print("changeCarCountdownState: unreachable state: ");
                             Serial.print(carSignal);
