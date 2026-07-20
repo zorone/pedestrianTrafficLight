@@ -164,6 +164,8 @@ void changePedestrianCountdownState() {
                         pedestrianCountdown = hide;
                         break;
                     case red:
+                        timingSchedule[3] = timingSchedule[4];
+                        break;
                     case orange:
                     default:
                         Serial.print("changePedestrianCountdownState(): unreachable state: ");
