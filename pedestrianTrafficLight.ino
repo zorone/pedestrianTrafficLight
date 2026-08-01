@@ -1,5 +1,3 @@
-#include <Arduino_DebugUtils.h>
-  
 void unreachable();
 void halt();
 
@@ -55,7 +53,7 @@ LightSignal carSignal = green;
 LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
-volatile bool begSignal = false;
+volatile bool begSignal = false, registeredBegSignal = false;
 unsigned long timingSchedule[] = {
     0,    // 0: Time when car light signal is switched
     0,    // 1: Time when car countdown signal is switched
@@ -65,22 +63,7 @@ unsigned long timingSchedule[] = {
     0     // 5: Time when beg signal will available again
 };
 
-volatile unsigned long debuggingSchedule = 0;
-bool debug = true;
-bool enableTextOutput = debug;
-
-void printDeviceStatus();
-void printCarStatus();
-void printCarStatusTransition(LightSignal lastCarSignal);
-void printCarCountdownTransition(CountdownDisplay lastCarCountdown);
-void printPedestrianStatus();
-void printPedestrianStatusTransition(LightSignal lastPedestrianSignal);
-void printPedestrianCountdownTransition(CountdownDisplay lastPedestrianCountdown);
-
 void setup() {
-    Serial.begin(9600);
-    debuggingSchedule = millis() + 250;
-
     pinMode(begSignalPin, INPUT_PULLUP);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
     pinMode(pedestrianLightPin_RED, OUTPUT);
@@ -92,36 +75,25 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
-    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, RISING);
+    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, CHANGE);
 
     changeCarLightSignal(carSignal);
     changeCarCountdownSignal(carCountdown);
     changePedestrianLightSignal(pedestrianSignal);
     changePedestrianCountdownSignal(pedestrianCountdown);
-
-    printDeviceStatus();
-    printCarStatus();
-    printPedestrianStatus();
-
-    Debug.timestampOn();
-    enableTextOutput = false;
 }
 
 void loop() {
-    if (isDue(debuggingSchedule)) {
-        enableTextOutput = true;
-        debuggingSchedule += 250;
+    if (begSignal) {
+        registeredBegSignal = begSignal;
+        begSignal = false;
     }
-    // printDeviceStatus();
     switch (deviceStatus) {
         case ready:
-            printCarStatus();
-            printPedestrianStatus();
-            if (begSignal == true) {
+            if (registeredBegSignal == true) {
                 scheduleLightSignal();
-                begSignal = false;
+                registeredBegSignal = false;
                 deviceStatus = running;
-                enableTextOutput = true;
             }
             break;
         case running:
@@ -135,7 +107,6 @@ void loop() {
                 changeCarLightSignal(carSignal);
                 changePedestrianCountdownSignal(pedestrianCountdown);
                 changePedestrianLightSignal(pedestrianSignal);
-                Serial.println("Finish the sequence");
                 break;
             }
             changeCarCountdownState();
@@ -148,21 +119,14 @@ void loop() {
             changePedestrianLightSignal(pedestrianSignal);
             break;
         case cooldown:
-            printCarStatus();
-            printPedestrianStatus();
             if (isCooldownFinish()) deviceStatus = ready;
             break;
         default:
-            Serial.print("loop(): unreachable state: ");
-            Serial.println(deviceStatus);
             unreachable();
     }
-    enableTextOutput = false;
 }
 
 void unreachable() {
-    // Serial.begin(9600);
-    Serial.println("Error: Hardware have reached unreachable state!!!");
     halt();
 }
 
@@ -171,8 +135,6 @@ void halt() {
 }
 
 void scheduleLightSignal() {
-    DEBUG_INFO("Beg signal is registered");
-    DEBUG_INFO("Schedule Light Signal");
     unsigned long now = millis();
     timingSchedule[0] = now +  20 * 1000 + 50;            // Set due time for light signal to become orange, padding for briefly show '0'
     timingSchedule[1] = now;                              // Set due time to start car countdown
@@ -180,12 +142,6 @@ void scheduleLightSignal() {
     timingSchedule[3] = now +   0 * 1000 + 50;            // Set due time to start pedestrian countdown, need to pad down due to orange signal from car traffic
     timingSchedule[4] = now +  42ul * 1000ul + 3 * 50;    // Set when the cycle will end
     timingSchedule[5] = now + 100ul * 1000ul + 3 * 50;    // Set due time for next beg signal, padding for brief '0' of each light signal
-    DEBUG_INFO("timingSchedule[0] = %lu", timingSchedule[0]);
-    DEBUG_INFO("timingSchedule[1] = %lu", timingSchedule[1]);
-    DEBUG_INFO("timingSchedule[2] = %lu", timingSchedule[2]);
-    DEBUG_INFO("timingSchedule[3] = %lu", timingSchedule[3]);
-    DEBUG_INFO("timingSchedule[4] = %lu", timingSchedule[4]);
-    DEBUG_INFO("timingSchedule[5] = %lu", timingSchedule[5]);
 }
 
 void changeCarSignalState() {
@@ -205,11 +161,8 @@ void changeCarSignalState() {
                 carSignal = green;
                 break;
             default:
-                Serial.print("changeCarSignalState: unreachable state: ");
-                Serial.println(carSignal);
                 unreachable();
         }
-        printCarStatusTransition(lastCarSignal);
     }
 }
 
@@ -227,10 +180,6 @@ void changeCarCountdownState() {
                     case red:
                     case orange: // Assume that changeCarSignalState() happens beforehand, and doesn't get changed anywhere else.
                     default:
-                        Serial.print("changeCarCountdownState: unreachable state: ");
-                        Serial.print(carSignal);
-                        Serial.print(" ");
-                        Serial.println(carCountdown);
                         unreachable();
                 }
                 break;
@@ -244,21 +193,13 @@ void changeCarCountdownState() {
                         case green:
                         case orange:
                         default:
-                            Serial.print("changeCarCountdownState: unreachable state: ");
-                            Serial.print(carSignal);
-                            Serial.print(" ");
-                            Serial.println(carCountdown);
                             unreachable();
                     }
                 }
                 break;
             default:
-                Serial.print("changeCarCountdownState: unreachable state: ");
-                Serial.println(carCountdown);
                 unreachable();
         }
-        printCarStatusTransition(lastCarSignal);
-        printCarCountdownTransition(lastCarCountdown);
     }
 }
 
@@ -276,11 +217,8 @@ void changePedestrianSignalState() {
                 break;
             case orange:
             default:
-                Serial.print("changePedestrianSignalState: unreachable state: ");
-                Serial.println(pedestrianSignal);
                 unreachable();
         }
-        printPedestrianStatusTransition(lastPedestrianSignal);
     }
 }
 
@@ -298,10 +236,6 @@ void changePedestrianCountdownState() {
                     case green:
                     case orange:    // Assume that changePedestrianSignalState happens beforehand, and doesn't get changed anywhere else.
                     default:
-                        Serial.print("changePedestrianCountdownState: unreachable state: ");
-                        Serial.print(pedestrianSignal);
-                        Serial.print(" ");
-                        Serial.println(pedestrianCountdown);
                         unreachable();
                 }
                 break;
@@ -316,20 +250,12 @@ void changePedestrianCountdownState() {
                         break;
                     case orange:
                     default:
-                        Serial.print("changePedestrianCountdownState(): unreachable state: ");
-                        Serial.print(pedestrianSignal);
-                        Serial.print(" ");
-                        Serial.println(pedestrianCountdown);
                         unreachable();
                 }
                 break;
             default:
-                Serial.print("changePedestrianCountdownState(): unreachable state: ");
-                Serial.println(pedestrianCountdown);
                 unreachable();
         }
-        printPedestrianStatusTransition(lastPedestrianSignal);
-        printPedestrianCountdownTransition(lastPedestrianCountdown);
     }
 }
 
@@ -342,8 +268,6 @@ void changeCarLightSignal(LightSignal signal) {
         case orange: digitalWrite(carLightPin_ORANGE, HIGH); break;
         case red: digitalWrite(carLightPin_RED, HIGH); break;
         default:
-            Serial.print("changeCarLightSignal(): unreachable state: ");
-            Serial.println(signal);
             unreachable();
     }
 }
@@ -357,10 +281,6 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
                 case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
                 case red: digitalWrite(carCountdownPin_RED, LOW); break;
                 default:
-                    Serial.print("changeCarCountdownSignal: unreachable state: ");
-                    Serial.print(carSignal);
-                    Serial.print(" ");
-                    Serial.print(signal);
                     unreachable();
             }
             break;
@@ -370,16 +290,10 @@ void changeCarCountdownSignal(CountdownDisplay signal) {
                 case orange: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
                 case red: digitalWrite(carCountdownPin_RED, HIGH); break;
                 default:
-                    Serial.print("changeCarCountdownSignal(): unreachable state: ");
-                    Serial.print(carSignal);
-                    Serial.print(" ");
-                    Serial.println(signal);
                     unreachable();
             }
             break;
         default:
-            Serial.print("changeCarCountdownSignal(): unreachable state: ");
-            Serial.println(signal);
             unreachable();
     }
 }
@@ -391,8 +305,6 @@ void changePedestrianLightSignal(LightSignal signal) {
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
         case orange:
         default:
-            Serial.print("changePedestrianLightSignal: unreachable state: ");
-            Serial.println(signal);
             unreachable();
     }
 }
@@ -406,10 +318,6 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
                 case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(pedestrianSignal);
-                    Serial.print(" ");
-                    Serial.println(signal);
                     unreachable();
             }
             break;
@@ -419,16 +327,10 @@ void changePedestrianCountdownSignal(CountdownDisplay signal) {
                 case red: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(pedestrianSignal);
-                    Serial.print(" ");
-                    Serial.println(signal);
                     unreachable();
             }
             break;
         default:
-            Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-            Serial.println(signal);
             unreachable();
     }
 }
@@ -447,50 +349,5 @@ bool isDue(unsigned long time) {
 }
 
 void begSignalInterrupt() {
-    Serial.println("Interrupted!");
-    begSignal = true;
-}
-
-void printDeviceStatus() {
-    if (!enableTextOutput) return;
-    DEBUG_INFO("deviceStatus = %d", deviceStatus);
-}
-
-void printCarStatus() {
-    if (!enableTextOutput) return;
-    DEBUG_INFO("carSignal = %d, carCountdown = %d", carSignal, carCountdown);
-}
-
-// TODO: How would I track its real function name?
-void printCarStatusTransition(LightSignal lastCarSignal) {
-    if (!debug) return;
-    if (carSignal == lastCarSignal) return;
-    DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d", lastCarSignal, carSignal);
-    DEBUG_INFO("changeCarSignalState: Next Schedule: %lu", timingSchedule[0]);
-}
-
-void printCarCountdownTransition(CountdownDisplay lastCarCountdown) {
-    if (!debug) return;
-    if (carCountdown == lastCarCountdown) return;
-    DEBUG_INFO("changeCarCountdownState: transition carCountdown from %d to %d", lastCarCountdown, carCountdown);
-    DEBUG_INFO("changeCarCountdownState: Next Schedule: %lu", timingSchedule[1]);
-}
-
-void printPedestrianStatusTransition(LightSignal lastPedestrianSignal) {
-    if (!debug) return;
-    if (pedestrianSignal == lastPedestrianSignal) return;
-    DEBUG_INFO("changePedestrianSignalState: transition PedestrianSignal from %d to %d", lastPedestrianSignal, pedestrianSignal);
-    DEBUG_INFO("changePedestrianSignalState: Next Schedule: %lu", timingSchedule[2]);
-}
-
-void printPedestrianCountdownTransition(CountdownDisplay lastPedestrianCountdown) {
-    if (!debug) return;
-    if (pedestrianCountdown == lastPedestrianCountdown) return;
-    DEBUG_INFO("changePedestrianCountdownState: transition PedestrianCountdown from %d to %d", lastPedestrianCountdown, pedestrianCountdown);
-    DEBUG_INFO("changePedestrianCountdownState: Next Schedule: %lu", timingSchedule[3]);
-}
-
-void printPedestrianStatus() {
-    if (!enableTextOutput) return;
-    DEBUG_INFO("pedestrianSignal = %d, pedestrianCountdown = %d", pedestrianSignal, pedestrianCountdown);
+    begSignal = digitalRead(begSignalPin);
 }
