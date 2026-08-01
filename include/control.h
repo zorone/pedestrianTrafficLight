@@ -39,7 +39,7 @@
   extern LightSignal pedestrianSignal;
   extern CountdownDisplay carCountdown;
   extern CountdownDisplay pedestrianCountdown;
-  extern volatile bool begSignal;
+  extern volatile bool begSignal, registeredBegSignal;
   extern unsigned long timingSchedule[];
 
   extern volatile unsigned long debuggingSchedule;

@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "common.h"
 #include "pin.h"
 #include "control.h"
@@ -8,7 +9,7 @@ LightSignal carSignal = green;
 LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
-volatile bool begSignal = false;
+volatile bool begSignal = false, registeredBegSignal = false;
 unsigned long timingSchedule[] = {
     0,    // 0: Time when car light signal is switched
     0,    // 1: Time when car countdown signal is switched
@@ -300,5 +301,5 @@ bool isDue(unsigned long time) {
 
 void begSignalInterrupt() {
     Serial.println("Interrupted!");
-    begSignal = true;
+    begSignal = digitalRead(begSignalPin);
 }
