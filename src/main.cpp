@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "common.h"
 #include "pin.h"
 #include "control.h"
@@ -18,7 +19,7 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
-    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, RISING);
+    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, CHANGE);
 
     changeCarLightSignal(carSignal);
     changeCarCountdownSignal(carCountdown);
@@ -38,14 +39,18 @@ void loop() {
         enableTextOutput = true;
         debuggingSchedule += 250;
     }
+    if (begSignal) {
+        registeredBegSignal = begSignal;
+        begSignal = false;
+    }
     // printDeviceStatus();
     switch (deviceStatus) {
         case ready:
             printCarStatus();
             printPedestrianStatus();
-            if (begSignal == true) {
+            if (registeredBegSignal == true) {
                 scheduleLightSignal();
-                begSignal = false;
+                registeredBegSignal = false;
                 deviceStatus = running;
                 enableTextOutput = true;
             }
