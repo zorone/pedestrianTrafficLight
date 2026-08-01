@@ -1,7 +1,54 @@
-#include "common.h"
-#include "pin.h"
-#include "control.h"
-#include "debug.h"
+#include <Arduino_DebugUtils.h>
+  
+void unreachable();
+void halt();
+
+#define begSignalPin 2
+
+#define pedestrianLightPin_GREEN 4
+#define pedestrianLightPin_RED 5
+#define pedestrianCountdownPin_GREEN 6
+#define pedestrianCountdownPin_RED 7
+
+#define carLightPin_GREEN 8
+#define carLightPin_ORANGE 9
+#define carLightPin_RED 10
+#define carCountdownPin_GREEN 11
+#define carCountdownPin_ORANGE 12
+#define carCountdownPin_RED 13
+
+typedef enum {
+    ready,
+    running,
+    cooldown
+} DeviceState;
+
+typedef enum {
+    green,
+    orange,
+    red
+} LightSignal;
+
+typedef enum {
+    hide,
+    show
+} CountdownDisplay;
+
+void scheduleLightSignal();
+void changeCarSignalState();
+void changeCarCountdownState();
+void changePedestrianSignalState();
+void changePedestrianCountdownState();
+bool isSignalSequenceFinish();
+bool isCooldownFinish();
+
+void changeCarLightSignal(LightSignal signal);
+void changeCarCountdownSignal(CountdownDisplay signal);
+void changePedestrianLightSignal(LightSignal signal);
+void changePedestrianCountdownSignal(CountdownDisplay signal);
+
+bool isDue(unsigned long time);
+void begSignalInterrupt();
 
 DeviceState deviceStatus = ready;
 LightSignal carSignal = green;
@@ -21,6 +68,107 @@ unsigned long timingSchedule[] = {
 volatile unsigned long debuggingSchedule = 0;
 bool debug = true;
 bool enableTextOutput = debug;
+
+void printDeviceStatus();
+void printCarStatus();
+void printCarStatusTransition(LightSignal lastCarSignal);
+void printCarCountdownTransition(CountdownDisplay lastCarCountdown);
+void printPedestrianStatus();
+void printPedestrianStatusTransition(LightSignal lastPedestrianSignal);
+void printPedestrianCountdownTransition(CountdownDisplay lastPedestrianCountdown);
+
+void setup() {
+    Serial.begin(9600);
+    debuggingSchedule = millis() + 250;
+
+    pinMode(begSignalPin, INPUT_PULLUP);
+    pinMode(pedestrianLightPin_GREEN, OUTPUT);
+    pinMode(pedestrianLightPin_RED, OUTPUT);
+    pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
+    pinMode(pedestrianCountdownPin_RED, OUTPUT);
+    pinMode(carLightPin_GREEN, OUTPUT);
+    pinMode(carLightPin_ORANGE, OUTPUT);
+    pinMode(carLightPin_RED, OUTPUT);
+    pinMode(carCountdownPin_GREEN, OUTPUT);
+    pinMode(carCountdownPin_ORANGE, OUTPUT);
+    pinMode(carCountdownPin_RED, OUTPUT);
+    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, RISING);
+
+    changeCarLightSignal(carSignal);
+    changeCarCountdownSignal(carCountdown);
+    changePedestrianLightSignal(pedestrianSignal);
+    changePedestrianCountdownSignal(pedestrianCountdown);
+
+    printDeviceStatus();
+    printCarStatus();
+    printPedestrianStatus();
+
+    Debug.timestampOn();
+    enableTextOutput = false;
+}
+
+void loop() {
+    if (isDue(debuggingSchedule)) {
+        enableTextOutput = true;
+        debuggingSchedule += 250;
+    }
+    // printDeviceStatus();
+    switch (deviceStatus) {
+        case ready:
+            printCarStatus();
+            printPedestrianStatus();
+            if (begSignal == true) {
+                scheduleLightSignal();
+                begSignal = false;
+                deviceStatus = running;
+                enableTextOutput = true;
+            }
+            break;
+        case running:
+            if (isSignalSequenceFinish()) {
+                deviceStatus = cooldown;
+                carSignal = green;
+                carCountdown = hide;
+                pedestrianSignal = red;
+                pedestrianCountdown = hide;
+                changeCarCountdownSignal(carCountdown);
+                changeCarLightSignal(carSignal);
+                changePedestrianCountdownSignal(pedestrianCountdown);
+                changePedestrianLightSignal(pedestrianSignal);
+                Serial.println("Finish the sequence");
+                break;
+            }
+            changeCarCountdownState();
+            changeCarSignalState();
+            changeCarCountdownSignal(carCountdown);
+            changeCarLightSignal(carSignal);
+            changePedestrianCountdownState();
+            changePedestrianSignalState();
+            changePedestrianCountdownSignal(pedestrianCountdown);
+            changePedestrianLightSignal(pedestrianSignal);
+            break;
+        case cooldown:
+            printCarStatus();
+            printPedestrianStatus();
+            if (isCooldownFinish()) deviceStatus = ready;
+            break;
+        default:
+            Serial.print("loop(): unreachable state: ");
+            Serial.println(deviceStatus);
+            unreachable();
+    }
+    enableTextOutput = false;
+}
+
+void unreachable() {
+    // Serial.begin(9600);
+    Serial.println("Error: Hardware have reached unreachable state!!!");
+    halt();
+}
+
+void halt() {
+    for (;;) {}
+}
 
 void scheduleLightSignal() {
     DEBUG_INFO("Beg signal is registered");
@@ -301,4 +449,48 @@ bool isDue(unsigned long time) {
 void begSignalInterrupt() {
     Serial.println("Interrupted!");
     begSignal = true;
+}
+
+void printDeviceStatus() {
+    if (!enableTextOutput) return;
+    DEBUG_INFO("deviceStatus = %d", deviceStatus);
+}
+
+void printCarStatus() {
+    if (!enableTextOutput) return;
+    DEBUG_INFO("carSignal = %d, carCountdown = %d", carSignal, carCountdown);
+}
+
+// TODO: How would I track its real function name?
+void printCarStatusTransition(LightSignal lastCarSignal) {
+    if (!debug) return;
+    if (carSignal == lastCarSignal) return;
+    DEBUG_INFO("changeCarSignalState: transition carSignal from %d to %d", lastCarSignal, carSignal);
+    DEBUG_INFO("changeCarSignalState: Next Schedule: %lu", timingSchedule[0]);
+}
+
+void printCarCountdownTransition(CountdownDisplay lastCarCountdown) {
+    if (!debug) return;
+    if (carCountdown == lastCarCountdown) return;
+    DEBUG_INFO("changeCarCountdownState: transition carCountdown from %d to %d", lastCarCountdown, carCountdown);
+    DEBUG_INFO("changeCarCountdownState: Next Schedule: %lu", timingSchedule[1]);
+}
+
+void printPedestrianStatusTransition(LightSignal lastPedestrianSignal) {
+    if (!debug) return;
+    if (pedestrianSignal == lastPedestrianSignal) return;
+    DEBUG_INFO("changePedestrianSignalState: transition PedestrianSignal from %d to %d", lastPedestrianSignal, pedestrianSignal);
+    DEBUG_INFO("changePedestrianSignalState: Next Schedule: %lu", timingSchedule[2]);
+}
+
+void printPedestrianCountdownTransition(CountdownDisplay lastPedestrianCountdown) {
+    if (!debug) return;
+    if (pedestrianCountdown == lastPedestrianCountdown) return;
+    DEBUG_INFO("changePedestrianCountdownState: transition PedestrianCountdown from %d to %d", lastPedestrianCountdown, pedestrianCountdown);
+    DEBUG_INFO("changePedestrianCountdownState: Next Schedule: %lu", timingSchedule[3]);
+}
+
+void printPedestrianStatus() {
+    if (!enableTextOutput) return;
+    DEBUG_INFO("pedestrianSignal = %d, pedestrianCountdown = %d", pedestrianSignal, pedestrianCountdown);
 }
