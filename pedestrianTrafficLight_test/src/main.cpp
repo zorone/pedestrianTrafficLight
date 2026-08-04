@@ -21,9 +21,20 @@ char* light[] = {
   "RED"
 }
 
-char+ signal[] = {
+char* signal[] = {
   "off",
   "on"
+}
+
+char lightPin[2][2][3] = {
+  {
+    {carLightPin_GREEN, carLightPin_ORANGE, carLightPin_RED},
+    {carCountdownPin_GREEN, carCountdownPin_ORANGE, carCountdownPin_RED}
+  },
+  {
+    {pedestrianLightPin_GREEN, 0, pedestrianLightPin_RED},
+    {pedestrianCountdownPin_GREEN, 0, pedestrianCountdownPin_RED}
+  }
 }
 
 void setup() {
@@ -62,12 +73,110 @@ void normalTest() {
   digitalWrite(begSignalPin, HIGH);
   DEBUG_INFO("%s: %s: %s: %s",
     travel[0], outputType[1], light[0],
-    signal[digitalRead(carCountdownPin_GREEN)]);
+    signal[digitalRead(lightPin[0][1][0])]);
   DEBUG_INFO("%s: %s: %s: %s",
     travel[1], outputType[1], light[2],
-    signal[digitalRead(carCountdownPin_RED)]);
-  
+    signal[digitalRead(lightPin[1][1][2])]);
+
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[0], light[0],
+    pulseIn(lightPin[0][0][0], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[1],
+    signal[digitalRead(lightPin[0][1][1])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[0], light[1],
+    pulseIn(lightPin[0][0][1], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[0], light[2],
+    signal[digitalRead(lightPin[0][0][2])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[2],
+    signal[digitalRead(lightPin[0][1][2])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[1], outputType[0], light[2],
+    pulseIn(lightPin[1][0][2], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[1], light[0],
+    signal[digitalRead(lightPin[1][1][0])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[1], outputType[0], light[0],
+    pulseIn(lightPin[1][0][0], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[0], light[2],
+    signal[digitalRead(lightPin[1][0][2])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[1], light[2],
+    signal[digitalRead(lightPin[1][1][2])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[0], light[2],
+    pulseIn(lightPin[0][0][2], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[0], light[0],
+    signal[digitalRead(lightPin[0][0][0])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[0],
+    signal[digitalRead(lightPin[1][0][0])]);
+
   DEBUG_INFO("%s: %s: %s: %lu", 
     travel[0], outputType[1], light[0],
-    pulseIn(carCountdownPin_GREEN, HIGH));
+    pulseIn(lightPin[0][1][0], LOW));
+  
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[0],
+    signal[digitalRead(lightPin[0][1][0])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[1], light[2],
+    signal[digitalRead(lightPin[1][1][2])]);
+
+  digitalWrite(begSignalPin, LOW);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[0], light[0],
+    pulseIn(lightPin[0][0][0], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[1],
+    signal[digitalRead(lightPin[0][1][1])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[0], light[1],
+    pulseIn(lightPin[0][0][1], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[0], light[2],
+    signal[digitalRead(lightPin[0][0][2])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[2],
+    signal[digitalRead(lightPin[0][1][2])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[1], outputType[0], light[2],
+    pulseIn(lightPin[1][0][2], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[1], light[0],
+    signal[digitalRead(lightPin[1][1][0])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[1], outputType[0], light[0],
+    pulseIn(lightPin[1][0][0], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[0], light[2],
+    signal[digitalRead(lightPin[1][0][2])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[1], light[2],
+    signal[digitalRead(lightPin[1][1][2])]);
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[0], light[2],
+    pulseIn(lightPin[0][0][2], HIGH));
+
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[0], light[0],
+    signal[digitalRead(lightPin[0][0][0])]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[0],
+    signal[digitalRead(lightPin[1][0][0])]);
 }
