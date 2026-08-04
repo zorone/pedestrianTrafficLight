@@ -21,6 +21,11 @@ char* light[] = {
   "RED"
 }
 
+char+ signal[] = {
+  "off",
+  "on"
+}
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -55,5 +60,14 @@ void loop() {
 
 void normalTest() {
   digitalWrite(begSignalPin, HIGH);
-  DEBUG_INFO("car: countdown: GREEN: %lu", pulseIn(carCountdownPin_GREEN, HIGH));
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[0], outputType[1], light[0],
+    signal[digitalRead(carCountdownPin_GREEN)]);
+  DEBUG_INFO("%s: %s: %s: %s",
+    travel[1], outputType[1], light[2],
+    signal[digitalRead(carCountdownPin_RED)]);
+  
+  DEBUG_INFO("%s: %s: %s: %lu", 
+    travel[0], outputType[1], light[0],
+    pulseIn(carCountdownPin_GREEN, HIGH));
 }
