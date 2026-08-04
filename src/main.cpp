@@ -7,7 +7,7 @@ unsigned long timeout = 0;
 void setup() {
     Serial.begin(9600);
 
-    pinMode(begSignalPin, INPUT_PULLUP);
+    pinMode(begSignalPin, INPUT);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
     pinMode(pedestrianLightPin_RED, OUTPUT);
     pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
@@ -23,6 +23,7 @@ void setup() {
     changePedestrianLightSignal(red);
 
     pulseIn(begSignalPin, HIGH);
+    Serial.println(digitalRead(begSignalPin));
 }
 
 void loop() {
@@ -51,5 +52,6 @@ void loop() {
 
     timeout = millis() + 60ul * 1000;
     pulseIn(begSignalPin, HIGH);
+    Serial.println(digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
 }
