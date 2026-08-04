@@ -1,3 +1,5 @@
+#include <limits.h>
+
 #include "Arduino.h"
 #include "pin.h"
 #include "control.h"
@@ -7,7 +9,7 @@ unsigned long timeout = 0;
 void setup() {
     Serial.begin(9600);
 
-    pinMode(begSignalPin, INPUT);
+    pinMode(begSignalPin, INPUT_PULLUP);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
     pinMode(pedestrianLightPin_RED, OUTPUT);
     pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
@@ -22,7 +24,7 @@ void setup() {
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
 
-    pulseIn(begSignalPin, HIGH);
+    pulseIn(begSignalPin, LOW, ULONG_MAX);
     Serial.println(digitalRead(begSignalPin));
 }
 
@@ -51,7 +53,7 @@ void loop() {
     changeCarCountdownSignal(hide);
 
     timeout = millis() + 60ul * 1000;
-    pulseIn(begSignalPin, HIGH);
+    pulseIn(begSignalPin, LOW, ULONG_MAX);
     Serial.println(digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
 }
