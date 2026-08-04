@@ -1,30 +1,31 @@
 #include <Arduino.h>
 #include <Arduino_DebugUtils.h>
 
+#include "WString.h"
 #include "pin.h"
 
 char mode = -1; 
 
-char* travel[] = {
+String travel[] = {
   "car",
   "pedestrian"
-}
+};
 
-char* outputType[] = {
+String outputType[] = {
   "light",
   "countdown"
-}
+};
 
-char* light[] = {
+String light[] = {
   "GREEN",
   "ORANGE",
   "RED"
-}
+};
 
-char* signal[] = {
+String signal[] = {
   "off",
   "on"
-}
+};
 
 char lightPin[2][2][3] = {
   {
@@ -35,7 +36,9 @@ char lightPin[2][2][3] = {
     {pedestrianLightPin_GREEN, 0, pedestrianLightPin_RED},
     {pedestrianCountdownPin_GREEN, 0, pedestrianCountdownPin_RED}
   }
-}
+};
+
+void normalTest();
 
 void setup() {
   // put your setup code here, to run once:
@@ -60,7 +63,7 @@ void setup() {
 
 void loop() {
   if(Serial.available() <= 0) return;
-  Serial.read(mode);
+  mode = Serial.read();
 
   switch(mode) {
     case '\n':
