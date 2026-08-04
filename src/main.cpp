@@ -19,7 +19,10 @@ void setup() {
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
 
-    pulseIn(begSignalPin, LOW);
+    changeCarLightSignal(green);
+    changePedestrianLightSignal(red);
+
+    pulseIn(begSignalPin, HIGH);
 }
 
 void loop() {
@@ -47,6 +50,6 @@ void loop() {
     changeCarCountdownSignal(hide);
 
     timeout = millis() + 60ul * 1000;
-    pulseIn(begSignalPin, LOW);
+    pulseIn(begSignalPin, HIGH);
     while(!isDue(timeout)) {;}
 }
