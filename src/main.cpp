@@ -24,7 +24,7 @@ void setup() {
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
 
-    pulseIn(begSignalPin, LOW, ULONG_MAX);
+    while(digitalRead(begSignalPin) != HIGH) {;}
     Serial.println(digitalRead(begSignalPin));
 }
 
@@ -53,7 +53,7 @@ void loop() {
     changeCarCountdownSignal(hide);
 
     timeout = millis() + 60ul * 1000;
-    pulseIn(begSignalPin, LOW, ULONG_MAX);
+    while(digitalRead(begSignalPin) != HIGH) {;}
     Serial.println(digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
 }
