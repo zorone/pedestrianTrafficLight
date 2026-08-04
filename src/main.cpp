@@ -2,7 +2,7 @@
 #include "pin.h"
 #include "control.h"
 
-unsigned long now = 0;
+unsigned long timeout = 0;
 
 void setup() {
     Serial.begin(9600);
@@ -46,7 +46,7 @@ void loop() {
     changeCarLightSignal(green);
     changeCarCountdownSignal(hide);
 
-    now = millis();
+    timeout = millis() + 60ul * 1000;
     pulseIn(begSignalPin, LOW);
-    while(!isDue(now)) {;}
+    while(!isDue(timeout)) {;}
 }

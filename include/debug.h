@@ -9,4 +9,6 @@
   void printPedestrianStatus();
   void printPedestrianStatusTransition(LightSignal lastPedestrianSignal);
   void printPedestrianCountdownTransition(CountdownDisplay lastPedestrianCountdown);
+
+  extern bool enableTextOutput, debug;
 #endif
