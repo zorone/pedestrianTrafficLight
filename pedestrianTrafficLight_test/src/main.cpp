@@ -1,24 +1,59 @@
 #include <Arduino.h>
+#include <Arduino_DebugUtils.h>
 
-int mode = -1; 
+#include "pin.h"
+
+char mode = -1; 
+
+char* travel[] = {
+  "car",
+  "pedestrian"
+}
+
+char* outputType[] = {
+  "light",
+  "countdown"
+}
+
+char* light[] = {
+  "GREEN",
+  "ORANGE",
+  "RED"
+}
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  while(!Serial) {
-    ;
-  }
-  Serial.println("Select testing mode, press enter to testing from the start");
+  pinMode(begSignalPin, OUTPUT);
+  pinMode(pedestrianLightPin_GREEN, INPUT_PULLUP);
+  pinMode(pedestrianLightPin_RED, INPUT_PULLUP);
+  pinMode(pedestrianCountdownPin_GREEN, INPUT_PULLUP);
+  pinMode(pedestrianCountdownPin_RED, INPUT_PULLUP);
+  pinMode(carLightPin_GREEN, INPUT_PULLUP);
+  pinMode(carLightPin_ORANGE, INPUT_PULLUP);
+  pinMode(carLightPin_RED, INPUT_PULLUP);
+  pinMode(carCountdownPin_GREEN, INPUT_PULLUP);
+  pinMode(carCountdownPin_ORANGE, INPUT_PULLUP);
+  pinMode(carCountdownPin_RED, INPUT_PULLUP);
+
+  Debug.timestampOn();
+
+  while(!Serial) {;}
+  Serial.println("Select testing mode, press enter to test from the start");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  if(Serial.available() > 0) {
-    
+  if(Serial.available() <= 0) return;
+  Serial.read(mode);
+
+  switch(mode) {
+    case '\n':
+      normalTest();
+    default: return;
   }
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void normalTest() {
+  digitalWrite(begSignalPin, HIGH);
+  DEBUG_INFO("car: countdown: GREEN: %lu", pulseIn(carCountdownPin_GREEN, HIGH));
 }
