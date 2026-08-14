@@ -108,6 +108,16 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
     }
 }
 
+bool detectSignal(int pin, unsigned int damp) {
+    unsigned int initial = 0;
+    while(initial < damp) {
+        DEBUG_INFO("%u", initial);
+        if(digitalRead(begSignalPin) != HIGH) initial++;
+        else if(initial > 0) initial--;
+    }
+    return true;
+}
+
 bool isDue(unsigned long time) {
     unsigned long now = millis();
     return (now - time) < time;    // Always true, even when now is overflow

@@ -16,6 +16,7 @@
   void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
   void changePedestrianLightSignal(LightSignal signal);
   void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
+  bool detectSignal(int pin, unsigned int damp);
   bool isDue(unsigned long time);
 
   extern LightSignal carSignal;
