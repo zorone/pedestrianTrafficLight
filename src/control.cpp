@@ -112,7 +112,7 @@ bool detectSignal(int pin, unsigned int damp) {
     unsigned int initial = 0;
     while(initial < damp) {
         DEBUG_INFO("%u", initial);
-        if(digitalRead(pin) != HIGH) initial++;
+        if(digitalRead(pin) == HIGH) initial++;
         else if(initial > 0) initial--;
     }
     return true;

@@ -29,7 +29,7 @@ void setup() {
     changePedestrianCountdownSignal(red, hide);
 
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 65535);
+    detectSignal(begSignalPin, 30);
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     DEBUG_INFO("Start!");
 }
@@ -60,7 +60,7 @@ void loop() {
 
     timeout = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 65535);
+    detectSignal(begSignalPin, 30);
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
     DEBUG_INFO("Start!");
