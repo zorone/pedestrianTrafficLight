@@ -1,33 +1,32 @@
 #include <Arduino.h>
 #include <Arduino_DebugUtils.h>
 
-#include "WString.h"
 #include "pin.h"
 
 char mode = -1; 
 
-String travel[] = {
+const char* travel[] = {
   "car",
   "pedestrian"
 };
 
-String outputType[] = {
+const char* outputType[] = {
   "light",
   "countdown"
 };
 
-String light[] = {
+const char* light[] = {
   "GREEN",
   "ORANGE",
   "RED"
 };
 
-String signal[] = {
+const char* signal[] = {
   "off",
   "on"
 };
 
-char lightPin[2][2][3] = {
+const char lightPin[2][2][3] = {
   {
     {carLightPin_GREEN, carLightPin_ORANGE, carLightPin_RED},
     {carCountdownPin_GREEN, carCountdownPin_ORANGE, carCountdownPin_RED}
