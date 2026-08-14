@@ -25,35 +25,38 @@ void setup() {
 
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
+    changeCarCountdownSignal(green, hide);
+    changePedestrianCountdownSignal(red, hide);
 
+    DEBUG_INFO("Ready");
     while(digitalRead(begSignalPin) != HIGH) {;}
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     DEBUG_INFO("Start!");
 }
 
 void loop() {
-    changeCarCountdownSignal(show);
-    changePedestrianCountdownSignal(show);
+    changeCarCountdownSignal(green, show);
+    changePedestrianCountdownSignal(red, show);
 
     delay(20 * 1000 + 50);
     changeCarLightSignal(orange);
-    changeCarCountdownSignal(show);
+    changeCarCountdownSignal(orange, show);
 
     delay(3 * 1000 + 50);
     changeCarLightSignal(red);
-    changeCarCountdownSignal(show);
+    changeCarCountdownSignal(red, show);
 
     delay(2 * 1000 + 50);
     changePedestrianLightSignal(green);
-    changePedestrianCountdownSignal(show);
+    changePedestrianCountdownSignal(green, show);
 
     delay(15 * 1000 + 50);
     changePedestrianLightSignal(red);
-    changePedestrianCountdownSignal(hide);
+    changePedestrianCountdownSignal(red, hide);
 
     delay(2 * 1000 + 50);
     changeCarLightSignal(green);
-    changeCarCountdownSignal(hide);
+    changeCarCountdownSignal(green, hide);
 
     timeout = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");

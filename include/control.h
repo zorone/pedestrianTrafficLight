@@ -13,10 +13,9 @@
   } CountdownDisplay;
 
   void changeCarLightSignal(LightSignal signal);
-  void changeCarCountdownSignal(CountdownDisplay signal);
+  void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
   void changePedestrianLightSignal(LightSignal signal);
-  void changePedestrianCountdownSignal(CountdownDisplay signal);
-
+  void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
   bool isDue(unsigned long time);
 
   extern LightSignal carSignal;

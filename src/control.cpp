@@ -23,38 +23,38 @@ void changeCarLightSignal(LightSignal signal) {
     }
 }
 
-void changeCarCountdownSignal(CountdownDisplay signal) {
+void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
     for (int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
-    switch (signal) {
+    switch (displaySignal) {
         case hide:
-            switch (carSignal) {
+            switch (lightSignal) {
                 case green: digitalWrite(carCountdownPin_GREEN, LOW); break;
                 case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
                 case red: digitalWrite(carCountdownPin_RED, LOW); break;
                 default:
                     Serial.print("changeCarCountdownSignal: unreachable state: ");
-                    Serial.print(carSignal);
+                    Serial.print(lightSignal);
                     Serial.print(" ");
-                    Serial.print(signal);
+                    Serial.print(displaySignal);
                     unreachable();
             }
             break;
         case show:
-            switch (carSignal) {
+            switch (lightSignal) {
                 case green: digitalWrite(carCountdownPin_GREEN, HIGH); break;
                 case orange: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
                 case red: digitalWrite(carCountdownPin_RED, HIGH); break;
                 default:
                     Serial.print("changeCarCountdownSignal(): unreachable state: ");
-                    Serial.print(carSignal);
+                    Serial.print(lightSignal);
                     Serial.print(" ");
-                    Serial.println(signal);
+                    Serial.println(displaySignal);
                     unreachable();
             }
             break;
         default:
             Serial.print("changeCarCountdownSignal(): unreachable state: ");
-            Serial.println(signal);
+            Serial.println(displaySignal);
             unreachable();
     }
 }
@@ -72,38 +72,38 @@ void changePedestrianLightSignal(LightSignal signal) {
     }
 }
 
-void changePedestrianCountdownSignal(CountdownDisplay signal) {
+void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
     for (int pin = 6; pin <= 7; pin++) digitalWrite(pin, LOW);
-    switch (signal) {
+    switch (displaySignal) {
         case hide:
-            switch (pedestrianSignal) {
+            switch (lightSignal) {
                 case green: digitalWrite(pedestrianCountdownPin_GREEN, LOW); break;
                 case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
                 case orange:
                 default:
                     Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(pedestrianSignal);
+                    Serial.print(lightSignal);
                     Serial.print(" ");
-                    Serial.println(signal);
+                    Serial.println(displaySignal);
                     unreachable();
             }
             break;
         case show:
-            switch (pedestrianSignal) {
+            switch (lightSignal) {
                 case green: digitalWrite(pedestrianCountdownPin_GREEN, HIGH); break;
                 case red: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
                 case orange:
                 default:
                     Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(pedestrianSignal);
+                    Serial.print(lightSignal);
                     Serial.print(" ");
-                    Serial.println(signal);
+                    Serial.println(displaySignal);
                     unreachable();
             }
             break;
         default:
             Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-            Serial.println(signal);
+            Serial.println(displaySignal);
             unreachable();
     }
 }
