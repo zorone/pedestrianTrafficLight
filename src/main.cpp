@@ -1,6 +1,7 @@
 #include <limits.h>
 
-#include "Arduino.h"
+#include <Arduino.h>
+#include <Arduino_DebugUtils.h>
 #include "pin.h"
 #include "control.h"
 
@@ -8,6 +9,7 @@ unsigned long timeout = 0;
 
 void setup() {
     Serial.begin(9600);
+    Debug.timestampOn();
 
     pinMode(begSignalPin, INPUT_PULLUP);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
@@ -25,8 +27,8 @@ void setup() {
     changePedestrianLightSignal(red);
 
     while(digitalRead(begSignalPin) != HIGH) {;}
-    Serial.println(digitalRead(begSignalPin));
-    Serial.println("Start!");
+    DEBUG_INFO("%d", digitalRead(begSignalPin));
+    DEBUG_INFO("Start!");
 }
 
 void loop() {
@@ -55,7 +57,7 @@ void loop() {
 
     timeout = millis() + 60ul * 1000;
     while(digitalRead(begSignalPin) != HIGH) {;}
-    Serial.println(digitalRead(begSignalPin));
+    DEBUG_INFO("%d", digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
-    Serial.println("Start!");
+    DEBUG_INFO("Start!");
 }
