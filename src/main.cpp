@@ -56,6 +56,7 @@ void loop() {
     changeCarCountdownSignal(hide);
 
     timeout = millis() + 60ul * 1000;
+    DEBUG_INFO("Ready");
     while(digitalRead(begSignalPin) != HIGH) {;}
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
