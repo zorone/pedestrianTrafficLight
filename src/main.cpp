@@ -26,6 +26,7 @@ void setup() {
 
     while(digitalRead(begSignalPin) != HIGH) {;}
     Serial.println(digitalRead(begSignalPin));
+    Serial.println("Start!");
 }
 
 void loop() {
@@ -56,4 +57,5 @@ void loop() {
     while(digitalRead(begSignalPin) != HIGH) {;}
     Serial.println(digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
+    Serial.println("Start!");
 }
