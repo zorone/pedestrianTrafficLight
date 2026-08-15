@@ -1,12 +1,15 @@
-#include "Arduino.h"
-#include "common.h"
+#include <limits.h>
+
+#include <Arduino.h>
+#include <Arduino_DebugUtils.h>
 #include "pin.h"
 #include "control.h"
-#include "debug.h"
+
+unsigned long timeout = 0;
 
 void setup() {
     Serial.begin(9600);
-    debuggingSchedule = millis() + 250;
+    Debug.timestampOn();
 
     pinMode(begSignalPin, INPUT_PULLUP);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
@@ -19,74 +22,46 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
-    attachInterrupt(digitalPinToInterrupt(2), begSignalInterrupt, CHANGE);
 
-    changeCarLightSignal(carSignal);
-    changeCarCountdownSignal(carCountdown);
-    changePedestrianLightSignal(pedestrianSignal);
-    changePedestrianCountdownSignal(pedestrianCountdown);
+    changeCarLightSignal(green);
+    changePedestrianLightSignal(red);
+    changeCarCountdownSignal(green, hide);
+    changePedestrianCountdownSignal(red, hide);
 
-    printDeviceStatus();
-    printCarStatus();
-    printPedestrianStatus();
-
-    Debug.timestampOn();
-    enableTextOutput = false;
+    DEBUG_INFO("Ready");
+    detectSignal(begSignalPin, 30);
+    DEBUG_INFO("%d", digitalRead(begSignalPin));
+    DEBUG_INFO("Start!");
 }
 
 void loop() {
-    if (isDue(debuggingSchedule)) {
-        enableTextOutput = true;
-        debuggingSchedule += 250;
-    }
-    if (begSignal) {
-        registeredBegSignal = begSignal;
-        begSignal = false;
-    }
-    // printDeviceStatus();
-    switch (deviceStatus) {
-        case ready:
-            printCarStatus();
-            printPedestrianStatus();
-            if (registeredBegSignal == true) {
-                scheduleLightSignal();
-                registeredBegSignal = false;
-                deviceStatus = running;
-                enableTextOutput = true;
-            }
-            break;
-        case running:
-            if (isSignalSequenceFinish()) {
-                deviceStatus = cooldown;
-                carSignal = green;
-                carCountdown = hide;
-                pedestrianSignal = red;
-                pedestrianCountdown = hide;
-                changeCarCountdownSignal(carCountdown);
-                changeCarLightSignal(carSignal);
-                changePedestrianCountdownSignal(pedestrianCountdown);
-                changePedestrianLightSignal(pedestrianSignal);
-                Serial.println("Finish the sequence");
-                break;
-            }
-            changeCarCountdownState();
-            changeCarSignalState();
-            changeCarCountdownSignal(carCountdown);
-            changeCarLightSignal(carSignal);
-            changePedestrianCountdownState();
-            changePedestrianSignalState();
-            changePedestrianCountdownSignal(pedestrianCountdown);
-            changePedestrianLightSignal(pedestrianSignal);
-            break;
-        case cooldown:
-            printCarStatus();
-            printPedestrianStatus();
-            if (isCooldownFinish()) deviceStatus = ready;
-            break;
-        default:
-            Serial.print("loop(): unreachable state: ");
-            Serial.println(deviceStatus);
-            unreachable();
-    }
-    enableTextOutput = false;
+    changeCarCountdownSignal(green, show);
+    changePedestrianCountdownSignal(red, show);
+
+    delay(20 * 1000 + 50);
+    changeCarLightSignal(orange);
+    changeCarCountdownSignal(orange, show);
+
+    delay(3 * 1000 + 50);
+    changeCarLightSignal(red);
+    changeCarCountdownSignal(red, show);
+
+    delay(2 * 1000 + 50);
+    changePedestrianLightSignal(green);
+    changePedestrianCountdownSignal(green, show);
+
+    delay(15 * 1000 + 50);
+    changePedestrianLightSignal(red);
+    changePedestrianCountdownSignal(red, hide);
+
+    delay(2 * 1000 + 50);
+    changeCarLightSignal(green);
+    changeCarCountdownSignal(green, hide);
+
+    timeout = millis() + 60ul * 1000;
+    DEBUG_INFO("Ready");
+    detectSignal(begSignalPin, 30);
+    DEBUG_INFO("%d", digitalRead(begSignalPin));
+    while(!isDue(timeout)) {;}
+    DEBUG_INFO("Start!");
 }
