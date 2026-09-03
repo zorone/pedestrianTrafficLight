@@ -75,9 +75,9 @@ void loop() {
     digitalWrite(carCountdownPin_ORANGE, HIGH);
     delay(1000);
     digitalWrite(carCountdownPin_ORANGE, LOW);
-    digitalWrite(carCountdownPin_GREEN,  HIGH);
+    digitalWrite(carCountdownPin_RED,    HIGH);
     delay(1000);
-    digitalWrite(carCountdownPin_GREEN,  LOW);
+    digitalWrite(carCountdownPin_RED,    LOW);
 
     // changeCarCountdownSignal(green, show);
     // changePedestrianCountdownSignal(red, show);
