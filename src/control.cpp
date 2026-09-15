@@ -11,7 +11,7 @@ CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
 
 const char* operation[] = {"Clear", "Set"};
-char buf_b[11], buf_d[0];
+char buf_b[11], buf_d[11];
 volatile uint8_t PORTB_PRE, PORTB_POST, PORTD_PRE, PORTD_POST;
 
 void changeCarLightSignal(LightSignal signal) {
@@ -21,9 +21,8 @@ void changeCarLightSignal(LightSignal signal) {
     for (int pin = 8; pin <= 10; pin++) {
         digitalWrite(pin, LOW);
     }
-    binaryToStr(PORTB, buf_b);
-    binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
+
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     
     switch (signal) {
         case green: digitalWrite(carLightPin_GREEN, HIGH); break;
@@ -38,7 +37,7 @@ void changeCarLightSignal(LightSignal signal) {
     PORTD_POST = PORTD;
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
     DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
@@ -50,7 +49,7 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
     for (int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     switch (displaySignal) {
         case hide:
@@ -89,7 +88,7 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
     PORTD_POST = PORTD;
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
     DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
@@ -101,7 +100,7 @@ void changePedestrianLightSignal(LightSignal signal) {
     for (int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     switch (signal) {
         case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
@@ -116,7 +115,7 @@ void changePedestrianLightSignal(LightSignal signal) {
     PORTD_POST = PORTD;
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
     DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
@@ -128,7 +127,7 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
     for (int pin = 6; pin <= 7; pin++) digitalWrite(pin, LOW);
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     switch (displaySignal) {
         case hide:
             switch (lightSignal) {
@@ -166,7 +165,7 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
     PORTD_POST = PORTD;
     binaryToStr(PORTB, buf_b);
     binaryToStr(PORTD, buf_d);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
     DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
