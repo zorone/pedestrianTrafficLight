@@ -1,4 +1,6 @@
-#include "Arduino.h"
+#include <Arduino.h>
+#include <Arduino_DebugUtils.h>
+
 #include "common.h"
 #include "pin.h"
 #include "control.h"
@@ -8,10 +10,15 @@ LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
 
+const char* operation[] = {"Clear", "Set"};
+
 void changeCarLightSignal(LightSignal signal) {
+    const char* funcName = "changeCarLightSignal";
     for (int pin = 8; pin <= 10; pin++) {
         digitalWrite(pin, LOW);
     }
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
+    
     switch (signal) {
         case green: digitalWrite(carLightPin_GREEN, HIGH); break;
         case orange: digitalWrite(carLightPin_ORANGE, HIGH); break;
@@ -21,10 +28,14 @@ void changeCarLightSignal(LightSignal signal) {
             Serial.println(signal);
             unreachable();
     }
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
 }
 
 void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
+    const char* funcName = "changeCarCountdownSignal";
     for (int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
+
     switch (displaySignal) {
         case hide:
             switch (lightSignal) {
@@ -57,10 +68,14 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
             Serial.println(displaySignal);
             unreachable();
     }
+
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
 }
 
 void changePedestrianLightSignal(LightSignal signal) {
+    const char* funcName = "changePedestrianLightSignal";
     for (int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
     switch (signal) {
         case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
@@ -70,10 +85,13 @@ void changePedestrianLightSignal(LightSignal signal) {
             Serial.println(signal);
             unreachable();
     }
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
 }
 
 void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
+    const char* funcName = "changePedestrianCountdownSignal";
     for (int pin = 6; pin <= 7; pin++) digitalWrite(pin, LOW);
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
     switch (displaySignal) {
         case hide:
             switch (lightSignal) {
@@ -106,6 +124,7 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
             Serial.println(displaySignal);
             unreachable();
     }
+    DEBUG_INFO("%31s: %31s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
 }
 
 bool detectSignal(int pin, unsigned int damp) {
