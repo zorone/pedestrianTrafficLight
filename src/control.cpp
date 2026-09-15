@@ -186,8 +186,8 @@ bool isDue(unsigned long time) {
     return (now - time) < time;    // Always true, even when now is overflow
 }
 
-char* binaryToStr(volatile uint8_t *value, char* buffer) {
-    uint8_t tmp = *value;
+char* binaryToStr(volatile uint8_t value, char* buffer) {
+    uint8_t tmp = value;
     strncpy(buffer, "0x00000000", 11);
     for(int i = 9; i >= 2; i--) {
         buffer[i] = '0' + (0x00000001 & tmp);
