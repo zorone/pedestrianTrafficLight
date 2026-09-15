@@ -7,6 +7,15 @@
 #include "control.h"
 
 unsigned long timeout = 0;
+char buf_b[11], buf_d[11];
+
+char* binaryToStr(volatile uint8_t value, char* buffer);
+
+byte reload = 0x4E;
+ISR(TIMER2_COMPA_vect) {
+    DEBUG_INFO("B: %s, D: %s", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    OCR2A = reload;
+}
 
 void setup() {
     Serial.begin(9600);
@@ -23,6 +32,14 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
+
+    cli();
+    TCCR0B = 0; 
+    OCR2A = reload;
+    TCCR2A = 1<<WGM21;
+    TCCR2B = (1<<CS22) | (1<<CS21) | (1<<CS20);
+    TIMSK2 = (1<<OCIE2A);
+    sei();
 
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
@@ -65,4 +82,14 @@ void loop() {
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
     DEBUG_INFO("Start!");
+}
+
+char* binaryToStr(volatile uint8_t value, char* buffer) {
+    uint8_t tmp = value;
+    strncpy(buffer, "0x00000000", 11);
+    for(int i = 9; i >= 2; i--) {
+        buffer[i] = '0' + (0x00000001 & tmp);
+        tmp >>= 1;
+    }
+    return buffer;
 }
