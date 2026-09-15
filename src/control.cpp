@@ -18,7 +18,7 @@ void changeCarLightSignal(LightSignal signal) {
     for (int pin = 8; pin <= 10; pin++) {
         digitalWrite(pin, LOW);
     }
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], binaryToStr(&PORTB, buf_b), binaryToStr(&PORTD, buf_d));
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     
     switch (signal) {
         case green: digitalWrite(carLightPin_GREEN, HIGH); break;
@@ -143,11 +143,12 @@ bool isDue(unsigned long time) {
     return (now - time) < time;    // Always true, even when now is overflow
 }
 
-char* binaryToStr(uint8_t value, char* buffer) {
+char* binaryToStr(volatile uint8_t *value, char* buffer) {
+    uint8_t tmp = *value;
     strncpy(buffer, "0x00000000", 11);
     for(int i = 9; i >= 2; i--) {
-        buffer[i] = '0' + (0x1 & value);
-        value >>= 1;
+        buffer[i] = '0' + (0x1 & tmp);
+        tmp >>= 1;
     }
 
     return buffer;

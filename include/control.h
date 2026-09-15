@@ -1,5 +1,6 @@
 #ifndef __PEDESTRIAN_LIGHT_CONTROL_
   #define __PEDESTRIAN_LIGHT_CONTROL_
+  #include <stdint.h>
 
   typedef enum {
     green,
@@ -18,6 +19,8 @@
   void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
   bool detectSignal(int pin, unsigned int damp);
   bool isDue(unsigned long time);
+
+  char* binaryToStr(volatile uint8_t *value, char* buffer);
 
   extern LightSignal carSignal;
   extern LightSignal pedestrianSignal;
