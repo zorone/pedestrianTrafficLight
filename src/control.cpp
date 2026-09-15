@@ -11,7 +11,7 @@ CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
 
 const char* operation[] = {"Clear", "Set"};
-char* buf_b[11], buf_d[0];
+char buf_b[11], buf_d[0];
 
 void changeCarLightSignal(LightSignal signal) {
     const char* funcName = "changeCarLightSignal";
@@ -29,13 +29,13 @@ void changeCarLightSignal(LightSignal signal) {
             Serial.println(signal);
             unreachable();
     }
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 }
 
 void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
     const char* funcName = "changeCarCountdownSignal";
     for (int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     switch (displaySignal) {
         case hide:
@@ -70,13 +70,13 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
             unreachable();
     }
 
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 }
 
 void changePedestrianLightSignal(LightSignal signal) {
     const char* funcName = "changePedestrianLightSignal";
     for (int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     switch (signal) {
         case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
@@ -86,13 +86,13 @@ void changePedestrianLightSignal(LightSignal signal) {
             Serial.println(signal);
             unreachable();
     }
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 }
 
 void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
     const char* funcName = "changePedestrianCountdownSignal";
     for (int pin = 6; pin <= 7; pin++) digitalWrite(pin, LOW);
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     switch (displaySignal) {
         case hide:
             switch (lightSignal) {
@@ -125,7 +125,7 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
             Serial.println(displaySignal);
             unreachable();
     }
-    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], PORTB, PORTD);
+    DEBUG_INFO("%31s: %5s: B: %#b, D: %#b", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 }
 
 bool detectSignal(int pin, unsigned int damp) {

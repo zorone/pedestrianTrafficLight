@@ -33,7 +33,6 @@ void setup() {
     detectSignal(begSignalPin, 30);
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     DEBUG_INFO("Start!");
-    DEBUG_INFO("%b", PORTB);
 }
 
 void loop() {
