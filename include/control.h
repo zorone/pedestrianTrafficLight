@@ -19,8 +19,6 @@
   bool detectSignal(int pin, unsigned int damp);
   bool isDue(unsigned long time);
 
-  char* binaryToStr(volatile uint8_t value, char* buffer);
-
   extern LightSignal carSignal;
   extern LightSignal pedestrianSignal;
   extern CountdownDisplay carCountdown;
