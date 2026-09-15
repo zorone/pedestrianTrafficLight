@@ -80,12 +80,12 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
-    DEBUG_INFO("%15s: B: %s, D: %s", "start", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    DEBUG_INFO("%15s B: %s, D: %s", "start:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
-    PORTD &= 0b00100111;  // Pedestrian: Display: off     (00), Light: Red     (10)
-    DEBUG_INFO("%15s: B: %s, D: %s", "PED: RED: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
-    PORTB &= 0b11000001;  // Car:        Display: off    (000), Light: Green  (001)
-    DEBUG_INFO("%15s: B: %s, D: %s", "CAR: GRN: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTD |= 0b00100000;  // Pedestrian: Display: off     (00), Light: Red     (10)
+    DEBUG_INFO("%15s B: %s, D: %s", "PED: RED: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB |= 0b00000001;  // Car:        Display: off    (000), Light: Green  (001)
+    DEBUG_INFO("%15s B: %s, D: %s", "CAR: GRN: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     DEBUG_INFO("Ready");
     detectSignal(begSignalPin, 30);
@@ -94,30 +94,30 @@ void setup() {
 }
 
 void loop() {
-    PORTD &= 0b10100111;  // Pedestrian: Display: RED     (10), Light: Red     (10)
-    DEBUG_INFO("%15s: B: %s, D: %s", "PED: RED: RED:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
-    PORTB &= 0b11001001;  // Car:        Display: GREEN  (001), Light: Green  (001)
-    DEBUG_INFO("%15s: B: %s, D: %s", "CAR: GRN: GRN:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTD |= 0b10100000;  // Pedestrian: Display: RED     (10), Light: Red     (10)
+    DEBUG_INFO("%15s B: %s, D: %s", "PED: RED: RED:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB |= 0b00001001;  // Car:        Display: GREEN  (001), Light: Green  (001)
+    DEBUG_INFO("%15s B: %s, D: %s", "CAR: GRN: GRN:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     delay(20 * 1000 + 50);
-    PORTB &= 0b11010010;  // Car:        Display: ORANGE (010), Light: Orange (010)
-    DEBUG_INFO("%15s: B: %s, D: %s", "CAR: ORN: ORN:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB |= 0b00010010;  // Car:        Display: ORANGE (010), Light: Orange (010)
+    DEBUG_INFO("%15s B: %s, D: %s", "CAR: ORN: ORN:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     delay(3 * 1000 + 50);
-    PORTB &= 0b11100100;  // Car:        Display: RED    (100), Light: Red    (100)
-    DEBUG_INFO("%15s: B: %s, D: %s", "CAR: RED: RED:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB |= 0b00100100;  // Car:        Display: RED    (100), Light: Red    (100)
+    DEBUG_INFO("%15s B: %s, D: %s", "CAR: RED: RED:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     
     delay(2 * 1000 + 50);
-    PORTD &= 0b01010111;  // Pedestrian: Display: GREEN   (01), Light: Green   (01)
-    DEBUG_INFO("%15s: B: %s, D: %s", "PED: GRN: GRN:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTD |= 0b01010000;  // Pedestrian: Display: GREEN   (01), Light: Green   (01)
+    DEBUG_INFO("%15s B: %s, D: %s", "PED: GRN: GRN:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     delay(15 * 1000 + 50);
-    PORTD &= 0b00100111;  // Pedestrian: Display: off     (00), Light: Red     (10)
-    DEBUG_INFO("%15s: B: %s, D: %s", "PED: RED: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTD |= 0b00100000;  // Pedestrian: Display: off     (00), Light: Red     (10)
+    DEBUG_INFO("%15s B: %s, D: %s", "PED: RED: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
 
     delay(2 * 1000 + 50);
-    PORTB &= 0b11000001;  // Car:        Display: off    (000), Light: Green  (001)
-    DEBUG_INFO("%15s: B: %s, D: %s", "CAR: GRN: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB |= 0b00000001;  // Car:        Display: off    (000), Light: Green  (001)
+    DEBUG_INFO("%15s B: %s, D: %s", "CAR: GRN: off:", binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
     
     timeout = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
