@@ -145,11 +145,11 @@ bool isDue(unsigned long time) {
 
 char* binaryToStr(volatile uint8_t *value, char* buffer) {
     uint8_t tmp = *value;
+    DEBUG_INFO("%#x", tmp);
     strncpy(buffer, "0x00000000", 11);
     for(int i = 9; i >= 2; i--) {
-        buffer[i] = '0' + (0x1 & tmp);
+        buffer[i] = '0' + (0x00000001 & tmp);
         tmp >>= 1;
     }
-
     return buffer;
 }
