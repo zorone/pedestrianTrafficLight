@@ -143,7 +143,7 @@ bool isDue(unsigned long time) {
     return (now - time) < time;    // Always true, even when now is overflow
 }
 
-char* binaryToStr(int8_t value, char* buffer) {
+char* binaryToStr(uint8_t value, char* buffer) {
     strncpy(buffer, "0x00000000", 11);
     for(int i = 9; i >= 2; i--) {
         buffer[i] = '0' + (0x1 & value);
