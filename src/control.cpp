@@ -12,13 +12,18 @@ CountdownDisplay pedestrianCountdown = hide;
 
 const char* operation[] = {"Clear", "Set"};
 char buf_b[11], buf_d[0];
+volatile uint8_t PORTB_PRE, PORTB_POST, PORTD_PRE, PORTD_POST;
 
 void changeCarLightSignal(LightSignal signal) {
     const char* funcName = "changeCarLightSignal";
+    PORTB_PRE = PORTB;
+    PORTD_PRE = PORTD;
     for (int pin = 8; pin <= 10; pin++) {
         digitalWrite(pin, LOW);
     }
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
     
     switch (signal) {
         case green: digitalWrite(carLightPin_GREEN, HIGH); break;
@@ -29,13 +34,23 @@ void changeCarLightSignal(LightSignal signal) {
             Serial.println(signal);
             unreachable();
     }
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB_POST = PORTB;
+    PORTD_POST = PORTD;
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
+    DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
 
 void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
     const char* funcName = "changeCarCountdownSignal";
+    PORTB_PRE = PORTB;
+    PORTD_PRE = PORTD;
     for (int pin = 11; pin <= 13; pin++) digitalWrite(pin, LOW);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
 
     switch (displaySignal) {
         case hide:
@@ -70,13 +85,23 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
             unreachable();
     }
 
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    PORTB_POST = PORTB;
+    PORTD_POST = PORTD;
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
+    DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
 
 void changePedestrianLightSignal(LightSignal signal) {
+    PORTB_PRE = PORTB;
+    PORTD_PRE = PORTD;
     const char* funcName = "changePedestrianLightSignal";
     for (int pin = 4; pin <= 5; pin++) digitalWrite(pin, LOW);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
     switch (signal) {
         case green: digitalWrite(pedestrianLightPin_GREEN, HIGH); break;
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
@@ -86,13 +111,24 @@ void changePedestrianLightSignal(LightSignal signal) {
             Serial.println(signal);
             unreachable();
     }
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+
+    PORTB_POST = PORTB;
+    PORTD_POST = PORTD;
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
+    DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
 
 void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal) {
+    PORTB_PRE = PORTB;
+    PORTD_PRE = PORTD;
     const char* funcName = "changePedestrianCountdownSignal";
     for (int pin = 6; pin <= 7; pin++) digitalWrite(pin, LOW);
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[0], buf_b, buf_d);
     switch (displaySignal) {
         case hide:
             switch (lightSignal) {
@@ -125,7 +161,14 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
             Serial.println(displaySignal);
             unreachable();
     }
-    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], binaryToStr(PORTB, buf_b), binaryToStr(PORTD, buf_d));
+
+    PORTB_POST = PORTB;
+    PORTD_POST = PORTD;
+    binaryToStr(PORTB, buf_b);
+    binaryToStr(PORTD, buf_d);
+    DEBUG_INFO("%31s: %5s: B: %s, D: %s", funcName, operation[1], buf_b, buf_d);
+    DEBUG_INFO("B: %#x %#x", PORTB_PRE, PORTB_POST);
+    DEBUG_INFO("D: %#x %#x", PORTD_PRE, PORTD_POST);
 }
 
 bool detectSignal(int pin, unsigned int damp) {
@@ -145,7 +188,6 @@ bool isDue(unsigned long time) {
 
 char* binaryToStr(volatile uint8_t *value, char* buffer) {
     uint8_t tmp = *value;
-    DEBUG_INFO("%#x", tmp);
     strncpy(buffer, "0x00000000", 11);
     for(int i = 9; i >= 2; i--) {
         buffer[i] = '0' + (0x00000001 & tmp);
