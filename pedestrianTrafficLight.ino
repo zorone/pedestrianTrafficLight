@@ -53,7 +53,7 @@ void setup() {
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
 
-    delay(10 * 1000ul); // delay to let other devices warm up.
+    delay(1 * 1000ul); // delay to let other devices warm up.
     
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
