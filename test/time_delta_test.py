@@ -3,11 +3,11 @@ for i in range(256):
     for j in range(256):
         k = i - j
         res = int()
-        t = ((i - j) < k)
         if(k >= 0):
             res = k
         else:
             res = 256 + k
+        t = ((i - j) < (~k))
 
         if(k >= 0):
             if(t):
