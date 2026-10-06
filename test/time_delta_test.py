@@ -10,7 +10,7 @@ for i in range(256):
             res = k
         else:
             res = 256 + k
-        tcond = xor(((-1) & (-1 >> 1)), ~k)
+        tcond = xor(((-1) & (-1 >> 1)), ~int(k))+1
         t = ((i - j) < tcond)
 
         if(k >= 0):
@@ -33,7 +33,7 @@ for i in range(256):
                     print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {tcond:4}: STRICTLY PASS')
                     count['strict_pass'] += 1
                 else:
-                    print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {tcond:4}: STRICTLY FAIL (delta: {abs(k)-~k:4}')
+                    print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {tcond:4}: STRICTLY FAIL (delta: {abs(k)-~k:4})')
                     count['strict_fail'] += 1
 print(f'STRICTLY PASS: {count['strict_pass']}')
 print(f'STRICTLY FAIL: {count['strict_fail']}')
