@@ -1,3 +1,6 @@
+    def xor(a, b):
+        return (a & ~int(b)) | (~int(a) & b)
+
 count = { 'strict_pass': 0, 'strict_fail': 0, 'loosen_pass': 0, 'loosen_fail': 0}
 for i in range(256):
     for j in range(256):
@@ -7,7 +10,7 @@ for i in range(256):
             res = k
         else:
             res = 256 + k
-        tcond = ((-1) & (-1 >> 1)) ^ ~k
+        tcond = xor(((-1) & (-1 >> 1)), ~k)
         t = ((i - j) < tcond)
 
         if(k >= 0):
