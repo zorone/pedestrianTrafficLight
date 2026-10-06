@@ -7,8 +7,8 @@ for i in range(256):
             res = k
         else:
             res = 256 + k
-        tcond = ((-1) & (-1 >> 1)) & ~k
-        t = ((i - j) < tcond
+        tcond = ((-1) & (-1 >> 1)) ^ ~k
+        t = ((i - j) < tcond)
 
         if(k >= 0):
             if(t):
