@@ -10,27 +10,27 @@ count = { 'strict_pass': 0, 'strict_fail': 0, 'loosen_pass': 0, 'loosen_fail': 0
 ...
         if(k >= 0):
             if(t):
-                print(f'{i:3} - {j:3} = {k:3} ({res:4}): STRICTLY PASS')
+                print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {j:4}: STRICTLY PASS')
                 count['strict_pass'] += 1
             else:
-                print(f'{i:3} - {j:3} = {k:3} ({res:4}): STRICTLY FAIL')
+                print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {j:4}: STRICTLY FAIL')
                 count['strict_fail'] += 1
         else:
             if(abs(i - j) >= 128):
                 if(t):
-                    print(f'{i:3} - {j:3} = {k:3} ({res:4}): LOOSENLY PASS')
+                    print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {j:4}: LOOSENLY PASS')
                     count['loosen_pass'] += 1
                 else:
-                    print(f'{i:3} - {j:3} = {k:3} ({res:4}): LOOSENLY FAIL (delta: {abs(k)-res:4}')
+                    print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {j:4}: LOOSENLY FAIL (delta: {abs(k)-res:4}')
                     count['loosen_fail'] += 1
             else:
                 if(t):
-                    print(f'{i:3} - {j:3} = {k:3} ({res:4}): STRICTLY PASS')
+                    print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {j:4}: STRICTLY PASS')
                     count['strict_pass'] += 1
                 else:
-                    print(f'{i:3} - {j:3} = {k:3} ({res:4}): STRICTLY FAIL (delta: {abs(k)-res:4}')
+                    print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {j:4}: STRICTLY FAIL (delta: {abs(k)-j:4}')
                     count['strict_fail'] += 1
-print(f'STRICTLY PASS: {count[strict_pass]}')
-print(f'STRICTLY FAIL: {count[strict_fail]}')
-print(f'LOOSENLY PASS: {count[loosen_pass]}')
-print(f'LOOSENLY FAIL: {count[loosen_fail]}')
+print(f'STRICTLY PASS: {count['strict_pass']}')
+print(f'STRICTLY FAIL: {count['strict_fail']}')
+print(f'LOOSENLY PASS: {count['loosen_pass']}')
+print(f'LOOSENLY FAIL: {count['loosen_fail']}')
