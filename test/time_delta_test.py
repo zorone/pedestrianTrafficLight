@@ -11,7 +11,7 @@ for i in range(256):
         else:
             res = 256 + k
         tcond = xor(((-1) & (-1 >> 1)), ~int(k))+1
-        t = ((i - j) < tcond)
+        t = (res < tcond)
 
         if(k >= 0):
             if(t):
