@@ -1,3 +1,5 @@
+#include <limits.h>
+
 #include "Arduino.h"
 #include "common.h"
 #include "pin.h"
@@ -121,7 +123,7 @@ bool detectSignal(int pin, unsigned int damp) {
 bool isDue(unsigned long time) {
     unsigned long now = millis();
     unsigned long diff = now - time;
-    bool cond1 = (diff == 255);         // Arduino Uno were using 8-bit
-    bool cond2 = ((((uint8_t)(-1) & ((uint8_t)-1 >> 1))^(~diff))+129);
+    bool cond1 = (diff == ULONG_MAX);
+    bool cond2 = ((((unsigned long)(-1) & ((unsigned long)-1 >> 1))^(~diff))+129);
     return cond1 || cond2;              // Always true, even when now is overflow
 }
