@@ -7,7 +7,7 @@ for i in range(256):
             res = k
         else:
             res = 256 + k
-        t = ((i - j) < (~k))
+        t = ((i - j) < ((~0 - 1) & ~k))
 
         if(k >= 0):
             if(t):
