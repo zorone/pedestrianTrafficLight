@@ -13,8 +13,12 @@ for i in range(256):
         tcond = xor(((-1) & (-1 >> 1)), ~int(k))+1
         if(tcond < 0):
             tcond += 256
-        t = (res < tcond or j-i==1)
+        t = (res < tcond)
+        t2 = (j-i==1)
 
+        if(t2):
+            print(f'{i:3} - {j:3} = {k:4} ({res:4}): {j:3} - {i:3} == 1: STRICTLY PASS')
+            continue
         if(k >= 0):
             if(t):
                 print(f'{i:3} - {j:3} = {k:4} ({res:4}): {res:3} < {tcond:4}: STRICTLY PASS')
