@@ -120,5 +120,8 @@ bool detectSignal(int pin, unsigned int damp) {
 
 bool isDue(unsigned long time) {
     unsigned long now = millis();
-    return (now - time) < time;    // Always true, even when now is overflow
+    unsigned long diff = now - time;
+    bool cond1 = (diff == 1);
+    bool cond2 = (diff < ((((-1) & (-1 >> 1))^(~diff))+1));
+    return cond1 || cond2;    // Always true, even when now is overflow
 }

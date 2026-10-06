@@ -18,6 +18,7 @@ for i in range(256):
 
         if(t2):
             print(f'{i:3} - {j:3} = {k:4} ({res:4}): {j:3} - {i:3} == 1: STRICTLY PASS')
+            count['strict_pass'] += 1
             continue
         if(k >= 0):
             if(t):
