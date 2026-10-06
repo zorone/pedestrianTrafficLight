@@ -1,5 +1,5 @@
-    def xor(a, b):
-        return (a & ~int(b)) | (~int(a) & b)
+def xor(a, b):
+    return (a & ~int(b)) | (~int(a) & b)
 
 count = { 'strict_pass': 0, 'strict_fail': 0, 'loosen_pass': 0, 'loosen_fail': 0}
 for i in range(256):
