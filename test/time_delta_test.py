@@ -13,7 +13,7 @@ for i in range(256):
         tcond = xor(((-1) & (-1 >> 1)), ~int(k))+1
         if(tcond < 0):
             tcond += 256
-        t = (res < tcond)
+        t = (res < tcond or j-i==1)
 
         if(k >= 0):
             if(t):
