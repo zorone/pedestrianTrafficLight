@@ -10,7 +10,7 @@ int main(void) {
             uint8_t m = i, n = j;
             uint8_t k = m-n;
             int16_t k2 = m-n;
-            uint8_t tcond = ((((uint8_t)(-1) & ((uint8_t)-1 >> 1))^(~k))+127);
+            uint8_t tcond = ((((uint8_t)(-1) & ((uint8_t)-1 >> 1))^(~k))+129);
             bool cond1 = (k == 255);
             bool cond2 = (k < tcond);
             
