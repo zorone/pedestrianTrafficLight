@@ -1,7 +1,7 @@
 #include<stdio.h>
-#include<stdint.h>
 #include<stdbool.h>
 #include<stdlib.h>
+#include<limits.h>
 
 int main(void) {
     int count[4] = {0, 0, 0, 0};
@@ -9,10 +9,10 @@ int main(void) {
         for(int j = 0; j < 256; j++) {
             unsigned long m = i, n = j;
             unsigned long k = m-n;
-            unsigned long mostSigBit = (unsigned long)(-1) & ((unsigned long)-1 >> 1); 
+            unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
             long long k2 = m-n;
             unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
-            bool cond1 = (k == (unsigned long)-1);
+            bool cond1 = (k == ULONG_MAX);
             bool cond2 = (k < tcond);
             
             if(cond1) {
