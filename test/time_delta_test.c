@@ -11,7 +11,7 @@ int main(void) {
             unsigned long k = m-n;
             unsigned long mostSigBit = (unsigned long)(-1) & ((unsigned long)-1 >> 1); 
             long long k2 = m-n;
-            unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+1);
+            unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
             bool cond1 = (k == 255);
             bool cond2 = (k < tcond);
             
