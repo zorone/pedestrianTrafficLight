@@ -12,7 +12,7 @@ int main(void) {
             unsigned long mostSigBit = (unsigned long)(-1) & ((unsigned long)-1 >> 1); 
             long long k2 = m-n;
             unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
-            bool cond1 = (k == (mostSigBit+2));
+            bool cond1 = (k == (mostSigBit-2));
             bool cond2 = (k < tcond);
             
             if(cond1) {
