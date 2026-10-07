@@ -9,8 +9,9 @@ int main(void) {
         for(int j = 0; j < 256; j++) {
             unsigned long m = i, n = j;
             unsigned long k = m-n;
+            unsigned long mostSigBit = (unsigned long)(-1) & ((unsigned long)-1 >> 1); 
             long long k2 = m-n;
-            unsigned long tcond = ((((unsigned long)(-1) & ((unsigned long)-1 >> 1))^(~k))+129);
+            unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+1);
             bool cond1 = (k == 255);
             bool cond2 = (k < tcond);
             
