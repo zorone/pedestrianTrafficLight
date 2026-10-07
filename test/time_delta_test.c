@@ -1,17 +1,18 @@
 #include<stdio.h>
-#include<stdint.h>
 #include<stdbool.h>
 #include<stdlib.h>
+#include<limits.h>
 
 int main(void) {
     int count[4] = {0, 0, 0, 0};
     for(int i = 0; i < 256; i++) {
         for(int j = 0; j < 256; j++) {
-            uint8_t m = i, n = j;
-            uint8_t k = m-n;
-            int16_t k2 = m-n;
-            uint8_t tcond = ((((uint8_t)(-1) & ((uint8_t)-1 >> 1))^(~k))+129);
-            bool cond1 = (k == 255);
+            unsigned long m = i, n = j;
+            unsigned long k = m-n;
+            unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
+            long long k2 = m-n;
+            unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
+            bool cond1 = (k == ULONG_MAX);
             bool cond2 = (k < tcond);
             
             if(cond1) {
