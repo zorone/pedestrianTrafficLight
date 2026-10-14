@@ -30,57 +30,32 @@ void uint8Test() {
             bool targetCond2 = (k >= 0);
             bool targetCond3 = (abs(k2) <= ((uint8_t)(-1)/2)+1);
             
-            if(targetCond1) {
+            if(targetCond1 || targetCond3) {
                 if(targetCond2 == finalCond) {
-                    printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u: %3u: %c: %c\n", m, n, k, k,
+                    printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[0]++;
                     continue;
                 }
                 else {
-                    printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u: %3u: %c: %c\n", m, n, k, k,
-                            targetCond2 ? 'T': 'F', finalCond ? 'T': 'F'););
+                    printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                            targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[1]++;
                     continue;
                 }
             }
-            else if(targetCond3) {
-                
-            }
-
-            if(cond1) {
-                printf("%3u - %3u = %4u: %3u - %3u == 1: STRICTLY PASS\n", m, n, k, n, m);
-                count[0]++;
-                continue;
-            }
-            if(k2>=0) {
-                if(cond2) {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY PASS\n", m, n, k, k, tcond);
-                    count[0]++;
-                }
-                else {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY FAIL\n", m, n, k, k, tcond);
-                    count[1]++;
-                }
-            }
-            else if (abs(i-j) >= 128) {
-                if(cond2) {
-                    printf("%3u - %3u = %4u: %3u < %4u: LOOSENLY PASS\n", m, n, k, k, tcond);
-                    count[2]++;
-                }
-                else {
-                    printf("%3u - %3u = %4u: %3u < %4u: LOOSENLY FAIL (delta: %4u\n", m, n, k, k, tcond, abs(i-j)-k);
-                    count[3]++;
-                }
-            }
             else {
-                if(cond2) {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY PASS\n", m, n, k, k, tcond);
-                    count[0]++;
+                if(targetCond2 == finalCond) {
+                    printf("LOOSENLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                            targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
+                    count[2]++;
+                    continue;
                 }
                 else {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY FAIL (delta: %4u\n", m, n, k, k, tcond, abs(i-j)-k);
-                    count[1]++;
+                    printf("LOOSENLY FAIL: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                            targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
+                    count[3]++;
+                    continue;
                 }
             }
         }
@@ -93,49 +68,51 @@ void uint8Test() {
 
 void ulongTest() {
     int count[4] = {0, 0, 0, 0};
-    for(int i = 0; i < 256; i++) {
-        for(int j = 0; j < 256; j++) {
-            unsigned long m = i, n = j;
-            unsigned long k = m-n;
-            unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
-            long long k2 = m-n;
-            unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
-            bool cond1 = (k == ULONG_MAX);
-            bool cond2 = (k < tcond);
-            
-            if(cond1) {
-                printf("%3u - %3u = %4u: %3u - %3u == 1: STRICTLY PASS\n", m, n, k, n, m);
-                count[0]++;
-                continue;
-            }
-            if(k2>=0) {
-                if(cond2) {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY PASS\n", m, n, k, k, tcond);
-                    count[0]++;
+    unsigned long testPairMin[3] = {0, ((ULONG_MAX/2)+1-256), ULONG_MAX-256};
+    unsigned long testPairMax[3] = {255, ((ULONG_MAX/2)+1+256), ULONG_MAX};
+    for(int testPairIdx = 0; testPairIdx < 3; testPairIdx++){
+        for(int i = testPairMin[testPairIdx]; i <= testPairMax[testPairIdx]; i++) {
+            for(int j = testPairMin[testPairIdx]; j <= testPairMax[testPairIdx]; j++) {
+                unsigned long m = i, n = j;
+                unsigned long k = m-n;
+                unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
+                long long k2 = m-n;
+                unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
+                bool cond1 = (k == ULONG_MAX);
+                bool cond2 = (k < tcond);
+                bool finalCond = cond1 || cond2;
+
+                bool targetCond1 = (k2 >= 0);
+                bool targetCond2 = (k >= 0);
+                bool targetCond3 = (abs(k2) <= (ULONG_MAX/2)+1);
+                
+                if(targetCond1 || targetCond3) {
+                    if(targetCond2 == finalCond) {
+                        printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                                targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
+                        count[0]++;
+                        continue;
+                    }
+                    else {
+                        printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                                targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
+                        count[1]++;
+                        continue;
+                    }
                 }
                 else {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY FAIL\n", m, n, k, k, tcond);
-                    count[1]++;
-                }
-            }
-            else if (abs(i-j) >= 128) {
-                if(cond2) {
-                    printf("%3u - %3u = %4u: %3u < %4u: LOOSENLY PASS\n", m, n, k, k, tcond);
-                    count[2]++;
-                }
-                else {
-                    printf("%3u - %3u = %4u: %3u < %4u: LOOSENLY FAIL (delta: %4u\n", m, n, k, k, tcond, abs(i-j)-k);
-                    count[3]++;
-                }
-            }
-            else {
-                if(cond2) {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY PASS\n", m, n, k, k, tcond);
-                    count[0]++;
-                }
-                else {
-                    printf("%3u - %3u = %4u: %3u < %4u: STRICTLY FAIL (delta: %4u\n", m, n, k, k, tcond, abs(i-j)-k);
-                    count[1]++;
+                    if(targetCond2 == finalCond) {
+                        printf("LOOSENLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                                targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
+                        count[2]++;
+                        continue;
+                    }
+                    else {
+                        printf("LOOSENLY FAIL: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                                targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
+                        count[3]++;
+                        continue;
+                    }
                 }
             }
         }
