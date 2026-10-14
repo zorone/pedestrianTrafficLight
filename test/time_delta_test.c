@@ -32,13 +32,13 @@ void uint8Test() {
             
             if(targetCond1) {
                 if(targetCond2 == finalCond) {
-                    printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                    printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[0]++;
                     continue;
                 }
                 else {
-                    printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                    printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[1]++;
                     continue;
@@ -46,13 +46,13 @@ void uint8Test() {
             }
             else if(targetCond3) {
                 if(targetCond2 == finalCond) {
-                    printf("STRICTLY PASS: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                    printf("STRICTLY PASS: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[0]++;
                     continue;
                 }
                 else {
-                    printf("STRICTLY FAIL: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                    printf("STRICTLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[1]++;
                     continue;
@@ -60,13 +60,13 @@ void uint8Test() {
             }
             else {
                 if(targetCond2 == finalCond) {
-                    printf("LOOSENLY PASS: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                    printf("LOOSENLY PASS: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[2]++;
                     continue;
                 }
                 else {
-                    printf("LOOSENLY FAIL: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                    printf("LOOSENLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[3]++;
                     continue;
@@ -102,13 +102,13 @@ void ulongTest() {
                 
                 if(targetCond1) {
                     if(targetCond2 == finalCond) {
-                        printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                        printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[0]++;
                         continue;
                     }
                     else {
-                        printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                        printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[1]++;
                         continue;
@@ -116,13 +116,13 @@ void ulongTest() {
                 }
                 else if(targetCond3) {
                     if(targetCond2 == finalCond) {
-                        printf("STRICTLY PASS: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                        printf("STRICTLY PASS: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[0]++;
                         continue;
                     }
                     else {
-                        printf("STRICTLY FAIL: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                        printf("STRICTLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[1]++;
                         continue;
@@ -130,13 +130,13 @@ void ulongTest() {
                 }
                 else {
                     if(targetCond2 == finalCond) {
-                        printf("LOOSENLY PASS: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                        printf("LOOSENLY PASS: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[2]++;
                         continue;
                     }
                     else {
-                        printf("LOOSENLY FAIL: Case diff Negative: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
+                        printf("LOOSENLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[3]++;
                         continue;
