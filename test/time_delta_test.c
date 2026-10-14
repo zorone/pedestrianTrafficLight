@@ -85,8 +85,11 @@ void ulongTest() {
     unsigned long testPairMin[3] = {0,  ((ULONG_MAX/2)+1-256) , /*ULONG_MAX-256,*/ 0};
     unsigned long testPairMax[3] = {255, ((ULONG_MAX/2)+1+256), /*ULONG_MAX,*/ 0};
     for(int testPairIdx = 0; testPairIdx < 3; testPairIdx++){
-        for(unsigned long i = testPairMin[testPairIdx]; i <= testPairMax[testPairIdx]; i++) {
-            for(unsigned long j = testPairMin[testPairIdx]; j <= testPairMax[testPairIdx]; j++) {
+        unsigned long minBoundaryI = testPairMin[testPairIdx];
+        unsigned long minBoundaryJ = testPairMin[testPairIdx];
+        unsigned long maxBoundary = testPairMax[testPairIdx];
+        for(unsigned long i = minBoundaryI; i <= maxBoundary; i++) {
+            for(unsigned long j = minBoundaryJ; j <= maxBoundary; j++) {
                 unsigned long m = i, n = j;
                 unsigned long k = m-n;
                 unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
