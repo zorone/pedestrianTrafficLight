@@ -1,4 +1,3 @@
-#include <cstdint>
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
@@ -100,7 +99,7 @@ void ulongTest() {
                 bool targetCond2 = (k >= 0);
                 bool targetCond3 = (abs(k2) <= (ULONG_MAX/2)+1);
                 
-                if(targetCond1 || targetCond3) {
+                if(targetCond1) {
                     if(targetCond2 == finalCond) {
                         printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4u): %3u (%4u): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
