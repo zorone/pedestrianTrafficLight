@@ -20,10 +20,10 @@ bool isDue(unsigned long now, unsigned long time) {
     bool cond2 = ((mostSigBit^(~diff))+mostSigBit+2);
     bool res = cond1 || cond2;
     if(res) {
-        printf("%lu >= %lu", now, time);
+        printf("%lu >= %lu\n", now, time);
         return true;
     }
-    
-    printf("%lu < %lu", now, time);
+
+    printf("%lu < %lu\n", now, time);
     return false;
 }
