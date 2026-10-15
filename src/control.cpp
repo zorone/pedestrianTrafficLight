@@ -10,6 +10,8 @@ LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
 
+static uint8_t debugCounter = 0;
+
 void changeCarLightSignal(LightSignal signal) {
     for (int pin = 8; pin <= 10; pin++) {
         digitalWrite(pin, LOW);
@@ -126,5 +128,14 @@ bool isDue(unsigned long time) {
     unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
     bool cond1 = (diff == ULONG_MAX);
     bool cond2 = ((mostSigBit^(~diff))+mostSigBit+2);
-    return cond1 || cond2;              // Always true, even when now is overflow
+    bool res = cond1 || cond2;
+    if(res) {
+        DEBUG_INFO("%lu >= %lu", now, time);
+        return true;
+    }
+    if(!debugCounter) {
+        DEBUG_INFO("%lu < %lu", now, time);
+    }
+    debugCounter++;
+    return false;
 }
