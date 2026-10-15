@@ -14,7 +14,8 @@ int main(void) {
 }
 
 bool isDue(unsigned long now, unsigned long time) {
-    bool res = (now - time <= time) && (time <= now);
+    unsigned long diff = now - time;
+    bool res = ((diff <= time) && (time <= now)) || ((now >> 1)+1 <= diff);
     if(res) {
         printf("%lu >= %lu\n", now, time);
         return true;
