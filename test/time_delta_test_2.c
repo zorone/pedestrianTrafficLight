@@ -16,7 +16,7 @@ int main(void) {
 bool isDue(unsigned long now, unsigned long time) {
     unsigned long diff = now - time;
     unsigned long mostSigBit = ((unsigned long)(-1) & ((unsigned long)(-1) >> 1));
-    bool res = ((diff <= time) && (time <= now)) || ((now >> 1)+1 <= diff) || (time > now && diff <= mostSigBit);
+    bool res = ((diff <= time) && (time <= now)) || ((now >> 1)+1 <= diff) || ((time > now) && (diff <= mostSigBit));
     if(res) {
         printf("%lu >= %lu\n", now, time);
         return true;
