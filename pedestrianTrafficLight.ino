@@ -233,8 +233,16 @@ bool detectSignal(int pin, unsigned int damp) {
 bool isDue(unsigned long time) {
     unsigned long now = millis();
     unsigned long diff = now - time;
-    unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
-    bool cond1 = (diff == ULONG_MAX);
-    bool cond2 = ((mostSigBit^(~diff))+mostSigBit+2);
-    return cond1 || cond2;              // Always true, even when now is overflow
+    unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
+    bool res = ((diff <= time) && (time <= now)) || (time <= (now >> 1)) || ((time > now) && (diff <= mostSigBit));
+
+    if(res) {
+        DEBUG_INFO("%lu >= %lu", now, time);
+        return true;
+    }
+    if(!debugCounter) {
+        DEBUG_INFO("%lu < %lu", now, time);
+    }
+    debugCounter++;
+    return false;
 }
