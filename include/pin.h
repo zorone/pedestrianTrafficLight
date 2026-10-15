@@ -2,6 +2,7 @@
   #define __PEDESTRIAN_LIGHT_PIN_
   
   #define begSignalPin 2
+  #define begStatusPin 3
   
   #define pedestrianLightPin_GREEN 4
   #define pedestrianLightPin_RED 5
