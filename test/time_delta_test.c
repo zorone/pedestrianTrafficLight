@@ -19,7 +19,7 @@ void uint8Test() {
         for(int j = 0; j < 256; j++) {
             uint8_t m = i, n = j;
             uint8_t k = m-n;
-            uint8_t mostSigBit = ((uint8_t)(-1) & ((uint8_t)(-1) >> 1));
+            uint8_t mostSigBit = ((uint8_t)(-1) ^ ((uint8_t)(-1) >> 1));
             int16_t k2 = (int16_t)m-(int16_t)n;
             bool finalCond = ((k <= n) && (n <= m)) || ((m >> 1)+1 <= k) || ((n > m) && (k <= mostSigBit));
 
@@ -89,7 +89,7 @@ void ulongTest() {
             for( ; minBoundaryJ <= maxBoundary; minBoundaryJ++) {
                 unsigned long m = minBoundaryI, n = minBoundaryJ;
                 unsigned long k = m-n;
-                unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
+                unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                 long long k2 = (long long)m-(long long)n;
                 bool finalCond = (((k <= n) && (n <= m)) || ((m >> 1)+1 <= k) || ((n > m) && (k <= mostSigBit)));
 
