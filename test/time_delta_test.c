@@ -5,12 +5,12 @@
 #include <stdint.h>
 
 void uint8Test();
-void ulongTest();
+void isDue();
 
 int main(void) {
     uint8Test();
     getchar();
-    ulongTest();
+    isDue();
 }
 
 void uint8Test() {
@@ -80,7 +80,7 @@ void uint8Test() {
     printf("LOOSENLY FAIL: %d\n", count[3]);
 }
 
-void ulongTest() {
+void isDue() {
     long count[4] = {0, 0, 0, 0};
     unsigned long testPairMin[3] = {0,  ((ULONG_MAX/2)+1-256) , ULONG_MAX-256};
     unsigned long testPairMax[3] = {255, ((ULONG_MAX/2)+1+256), ULONG_MAX};
