@@ -1,4 +1,3 @@
-STRICTLY FAIL: Case diff Negative:   0 - 128: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   0 - 129: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   0 - 130: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   0 - 131: 125 (-131): 125 (-131): F: T
@@ -126,7 +125,6 @@ LOOSENLY FAIL: Case diff Negative:   0 - 252:   4 (-252):   4 (-252): F: T
 LOOSENLY FAIL: Case diff Negative:   0 - 253:   3 (-253):   3 (-253): F: T
 LOOSENLY FAIL: Case diff Negative:   0 - 254:   2 (-254):   2 (-254): F: T
 LOOSENLY FAIL: Case diff Negative:   0 - 255:   1 (-255):   1 (-255): F: T
-STRICTLY FAIL: Case diff Negative:   1 - 129: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   1 - 130: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   1 - 131: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   1 - 132: 125 (-131): 125 (-131): F: T
@@ -253,7 +251,6 @@ LOOSENLY FAIL: Case diff Negative:   1 - 252:   5 (-251):   5 (-251): F: T
 LOOSENLY FAIL: Case diff Negative:   1 - 253:   4 (-252):   4 (-252): F: T
 LOOSENLY FAIL: Case diff Negative:   1 - 254:   3 (-253):   3 (-253): F: T
 LOOSENLY FAIL: Case diff Negative:   1 - 255:   2 (-254):   2 (-254): F: T
-STRICTLY FAIL: Case diff Negative:   2 - 130: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   2 - 131: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   2 - 132: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   2 - 133: 125 (-131): 125 (-131): F: T
@@ -379,7 +376,6 @@ LOOSENLY FAIL: Case diff Negative:   2 - 252:   6 (-250):   6 (-250): F: T
 LOOSENLY FAIL: Case diff Negative:   2 - 253:   5 (-251):   5 (-251): F: T
 LOOSENLY FAIL: Case diff Negative:   2 - 254:   4 (-252):   4 (-252): F: T
 LOOSENLY FAIL: Case diff Negative:   2 - 255:   3 (-253):   3 (-253): F: T
-STRICTLY FAIL: Case diff Negative:   3 - 131: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   3 - 132: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   3 - 133: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   3 - 134: 125 (-131): 125 (-131): F: T
@@ -504,7 +500,6 @@ LOOSENLY FAIL: Case diff Negative:   3 - 252:   7 (-249):   7 (-249): F: T
 LOOSENLY FAIL: Case diff Negative:   3 - 253:   6 (-250):   6 (-250): F: T
 LOOSENLY FAIL: Case diff Negative:   3 - 254:   5 (-251):   5 (-251): F: T
 LOOSENLY FAIL: Case diff Negative:   3 - 255:   4 (-252):   4 (-252): F: T
-STRICTLY FAIL: Case diff Negative:   4 - 132: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   4 - 133: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   4 - 134: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   4 - 135: 125 (-131): 125 (-131): F: T
@@ -628,7 +623,6 @@ LOOSENLY FAIL: Case diff Negative:   4 - 252:   8 (-248):   8 (-248): F: T
 LOOSENLY FAIL: Case diff Negative:   4 - 253:   7 (-249):   7 (-249): F: T
 LOOSENLY FAIL: Case diff Negative:   4 - 254:   6 (-250):   6 (-250): F: T
 LOOSENLY FAIL: Case diff Negative:   4 - 255:   5 (-251):   5 (-251): F: T
-STRICTLY FAIL: Case diff Negative:   5 - 133: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   5 - 134: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   5 - 135: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   5 - 136: 125 (-131): 125 (-131): F: T
@@ -751,7 +745,6 @@ LOOSENLY FAIL: Case diff Negative:   5 - 252:   9 (-247):   9 (-247): F: T
 LOOSENLY FAIL: Case diff Negative:   5 - 253:   8 (-248):   8 (-248): F: T
 LOOSENLY FAIL: Case diff Negative:   5 - 254:   7 (-249):   7 (-249): F: T
 LOOSENLY FAIL: Case diff Negative:   5 - 255:   6 (-250):   6 (-250): F: T
-STRICTLY FAIL: Case diff Negative:   6 - 134: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   6 - 135: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   6 - 136: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   6 - 137: 125 (-131): 125 (-131): F: T
@@ -873,7 +866,6 @@ LOOSENLY FAIL: Case diff Negative:   6 - 252:  10 (-246):  10 (-246): F: T
 LOOSENLY FAIL: Case diff Negative:   6 - 253:   9 (-247):   9 (-247): F: T
 LOOSENLY FAIL: Case diff Negative:   6 - 254:   8 (-248):   8 (-248): F: T
 LOOSENLY FAIL: Case diff Negative:   6 - 255:   7 (-249):   7 (-249): F: T
-STRICTLY FAIL: Case diff Negative:   7 - 135: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   7 - 136: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   7 - 137: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   7 - 138: 125 (-131): 125 (-131): F: T
@@ -994,7 +986,6 @@ LOOSENLY FAIL: Case diff Negative:   7 - 252:  11 (-245):  11 (-245): F: T
 LOOSENLY FAIL: Case diff Negative:   7 - 253:  10 (-246):  10 (-246): F: T
 LOOSENLY FAIL: Case diff Negative:   7 - 254:   9 (-247):   9 (-247): F: T
 LOOSENLY FAIL: Case diff Negative:   7 - 255:   8 (-248):   8 (-248): F: T
-STRICTLY FAIL: Case diff Negative:   8 - 136: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   8 - 137: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   8 - 138: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   8 - 139: 125 (-131): 125 (-131): F: T
@@ -1114,7 +1105,6 @@ LOOSENLY FAIL: Case diff Negative:   8 - 252:  12 (-244):  12 (-244): F: T
 LOOSENLY FAIL: Case diff Negative:   8 - 253:  11 (-245):  11 (-245): F: T
 LOOSENLY FAIL: Case diff Negative:   8 - 254:  10 (-246):  10 (-246): F: T
 LOOSENLY FAIL: Case diff Negative:   8 - 255:   9 (-247):   9 (-247): F: T
-STRICTLY FAIL: Case diff Negative:   9 - 137: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:   9 - 138: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:   9 - 139: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:   9 - 140: 125 (-131): 125 (-131): F: T
@@ -1233,7 +1223,6 @@ LOOSENLY FAIL: Case diff Negative:   9 - 252:  13 (-243):  13 (-243): F: T
 LOOSENLY FAIL: Case diff Negative:   9 - 253:  12 (-244):  12 (-244): F: T
 LOOSENLY FAIL: Case diff Negative:   9 - 254:  11 (-245):  11 (-245): F: T
 LOOSENLY FAIL: Case diff Negative:   9 - 255:  10 (-246):  10 (-246): F: T
-STRICTLY FAIL: Case diff Negative:  10 - 138: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  10 - 139: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  10 - 140: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  10 - 141: 125 (-131): 125 (-131): F: T
@@ -1351,7 +1340,6 @@ LOOSENLY FAIL: Case diff Negative:  10 - 252:  14 (-242):  14 (-242): F: T
 LOOSENLY FAIL: Case diff Negative:  10 - 253:  13 (-243):  13 (-243): F: T
 LOOSENLY FAIL: Case diff Negative:  10 - 254:  12 (-244):  12 (-244): F: T
 LOOSENLY FAIL: Case diff Negative:  10 - 255:  11 (-245):  11 (-245): F: T
-STRICTLY FAIL: Case diff Negative:  11 - 139: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  11 - 140: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  11 - 141: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  11 - 142: 125 (-131): 125 (-131): F: T
@@ -1468,7 +1456,6 @@ LOOSENLY FAIL: Case diff Negative:  11 - 252:  15 (-241):  15 (-241): F: T
 LOOSENLY FAIL: Case diff Negative:  11 - 253:  14 (-242):  14 (-242): F: T
 LOOSENLY FAIL: Case diff Negative:  11 - 254:  13 (-243):  13 (-243): F: T
 LOOSENLY FAIL: Case diff Negative:  11 - 255:  12 (-244):  12 (-244): F: T
-STRICTLY FAIL: Case diff Negative:  12 - 140: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  12 - 141: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  12 - 142: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  12 - 143: 125 (-131): 125 (-131): F: T
@@ -1584,7 +1571,6 @@ LOOSENLY FAIL: Case diff Negative:  12 - 252:  16 (-240):  16 (-240): F: T
 LOOSENLY FAIL: Case diff Negative:  12 - 253:  15 (-241):  15 (-241): F: T
 LOOSENLY FAIL: Case diff Negative:  12 - 254:  14 (-242):  14 (-242): F: T
 LOOSENLY FAIL: Case diff Negative:  12 - 255:  13 (-243):  13 (-243): F: T
-STRICTLY FAIL: Case diff Negative:  13 - 141: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  13 - 142: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  13 - 143: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  13 - 144: 125 (-131): 125 (-131): F: T
@@ -1699,7 +1685,6 @@ LOOSENLY FAIL: Case diff Negative:  13 - 252:  17 (-239):  17 (-239): F: T
 LOOSENLY FAIL: Case diff Negative:  13 - 253:  16 (-240):  16 (-240): F: T
 LOOSENLY FAIL: Case diff Negative:  13 - 254:  15 (-241):  15 (-241): F: T
 LOOSENLY FAIL: Case diff Negative:  13 - 255:  14 (-242):  14 (-242): F: T
-STRICTLY FAIL: Case diff Negative:  14 - 142: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  14 - 143: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  14 - 144: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  14 - 145: 125 (-131): 125 (-131): F: T
@@ -1813,7 +1798,6 @@ LOOSENLY FAIL: Case diff Negative:  14 - 252:  18 (-238):  18 (-238): F: T
 LOOSENLY FAIL: Case diff Negative:  14 - 253:  17 (-239):  17 (-239): F: T
 LOOSENLY FAIL: Case diff Negative:  14 - 254:  16 (-240):  16 (-240): F: T
 LOOSENLY FAIL: Case diff Negative:  14 - 255:  15 (-241):  15 (-241): F: T
-STRICTLY FAIL: Case diff Negative:  15 - 143: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  15 - 144: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  15 - 145: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  15 - 146: 125 (-131): 125 (-131): F: T
@@ -1926,7 +1910,6 @@ LOOSENLY FAIL: Case diff Negative:  15 - 252:  19 (-237):  19 (-237): F: T
 LOOSENLY FAIL: Case diff Negative:  15 - 253:  18 (-238):  18 (-238): F: T
 LOOSENLY FAIL: Case diff Negative:  15 - 254:  17 (-239):  17 (-239): F: T
 LOOSENLY FAIL: Case diff Negative:  15 - 255:  16 (-240):  16 (-240): F: T
-STRICTLY FAIL: Case diff Negative:  16 - 144: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  16 - 145: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  16 - 146: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  16 - 147: 125 (-131): 125 (-131): F: T
@@ -2038,7 +2021,6 @@ LOOSENLY FAIL: Case diff Negative:  16 - 252:  20 (-236):  20 (-236): F: T
 LOOSENLY FAIL: Case diff Negative:  16 - 253:  19 (-237):  19 (-237): F: T
 LOOSENLY FAIL: Case diff Negative:  16 - 254:  18 (-238):  18 (-238): F: T
 LOOSENLY FAIL: Case diff Negative:  16 - 255:  17 (-239):  17 (-239): F: T
-STRICTLY FAIL: Case diff Negative:  17 - 145: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  17 - 146: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  17 - 147: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  17 - 148: 125 (-131): 125 (-131): F: T
@@ -2149,7 +2131,6 @@ LOOSENLY FAIL: Case diff Negative:  17 - 252:  21 (-235):  21 (-235): F: T
 LOOSENLY FAIL: Case diff Negative:  17 - 253:  20 (-236):  20 (-236): F: T
 LOOSENLY FAIL: Case diff Negative:  17 - 254:  19 (-237):  19 (-237): F: T
 LOOSENLY FAIL: Case diff Negative:  17 - 255:  18 (-238):  18 (-238): F: T
-STRICTLY FAIL: Case diff Negative:  18 - 146: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  18 - 147: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  18 - 148: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  18 - 149: 125 (-131): 125 (-131): F: T
@@ -2259,7 +2240,6 @@ LOOSENLY FAIL: Case diff Negative:  18 - 252:  22 (-234):  22 (-234): F: T
 LOOSENLY FAIL: Case diff Negative:  18 - 253:  21 (-235):  21 (-235): F: T
 LOOSENLY FAIL: Case diff Negative:  18 - 254:  20 (-236):  20 (-236): F: T
 LOOSENLY FAIL: Case diff Negative:  18 - 255:  19 (-237):  19 (-237): F: T
-STRICTLY FAIL: Case diff Negative:  19 - 147: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  19 - 148: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  19 - 149: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  19 - 150: 125 (-131): 125 (-131): F: T
@@ -2368,7 +2348,6 @@ LOOSENLY FAIL: Case diff Negative:  19 - 252:  23 (-233):  23 (-233): F: T
 LOOSENLY FAIL: Case diff Negative:  19 - 253:  22 (-234):  22 (-234): F: T
 LOOSENLY FAIL: Case diff Negative:  19 - 254:  21 (-235):  21 (-235): F: T
 LOOSENLY FAIL: Case diff Negative:  19 - 255:  20 (-236):  20 (-236): F: T
-STRICTLY FAIL: Case diff Negative:  20 - 148: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  20 - 149: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  20 - 150: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  20 - 151: 125 (-131): 125 (-131): F: T
@@ -2476,7 +2455,6 @@ LOOSENLY FAIL: Case diff Negative:  20 - 252:  24 (-232):  24 (-232): F: T
 LOOSENLY FAIL: Case diff Negative:  20 - 253:  23 (-233):  23 (-233): F: T
 LOOSENLY FAIL: Case diff Negative:  20 - 254:  22 (-234):  22 (-234): F: T
 LOOSENLY FAIL: Case diff Negative:  20 - 255:  21 (-235):  21 (-235): F: T
-STRICTLY FAIL: Case diff Negative:  21 - 149: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  21 - 150: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  21 - 151: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  21 - 152: 125 (-131): 125 (-131): F: T
@@ -2583,7 +2561,6 @@ LOOSENLY FAIL: Case diff Negative:  21 - 252:  25 (-231):  25 (-231): F: T
 LOOSENLY FAIL: Case diff Negative:  21 - 253:  24 (-232):  24 (-232): F: T
 LOOSENLY FAIL: Case diff Negative:  21 - 254:  23 (-233):  23 (-233): F: T
 LOOSENLY FAIL: Case diff Negative:  21 - 255:  22 (-234):  22 (-234): F: T
-STRICTLY FAIL: Case diff Negative:  22 - 150: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  22 - 151: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  22 - 152: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  22 - 153: 125 (-131): 125 (-131): F: T
@@ -2689,7 +2666,6 @@ LOOSENLY FAIL: Case diff Negative:  22 - 252:  26 (-230):  26 (-230): F: T
 LOOSENLY FAIL: Case diff Negative:  22 - 253:  25 (-231):  25 (-231): F: T
 LOOSENLY FAIL: Case diff Negative:  22 - 254:  24 (-232):  24 (-232): F: T
 LOOSENLY FAIL: Case diff Negative:  22 - 255:  23 (-233):  23 (-233): F: T
-STRICTLY FAIL: Case diff Negative:  23 - 151: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  23 - 152: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  23 - 153: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  23 - 154: 125 (-131): 125 (-131): F: T
@@ -2794,7 +2770,6 @@ LOOSENLY FAIL: Case diff Negative:  23 - 252:  27 (-229):  27 (-229): F: T
 LOOSENLY FAIL: Case diff Negative:  23 - 253:  26 (-230):  26 (-230): F: T
 LOOSENLY FAIL: Case diff Negative:  23 - 254:  25 (-231):  25 (-231): F: T
 LOOSENLY FAIL: Case diff Negative:  23 - 255:  24 (-232):  24 (-232): F: T
-STRICTLY FAIL: Case diff Negative:  24 - 152: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  24 - 153: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  24 - 154: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  24 - 155: 125 (-131): 125 (-131): F: T
@@ -2898,7 +2873,6 @@ LOOSENLY FAIL: Case diff Negative:  24 - 252:  28 (-228):  28 (-228): F: T
 LOOSENLY FAIL: Case diff Negative:  24 - 253:  27 (-229):  27 (-229): F: T
 LOOSENLY FAIL: Case diff Negative:  24 - 254:  26 (-230):  26 (-230): F: T
 LOOSENLY FAIL: Case diff Negative:  24 - 255:  25 (-231):  25 (-231): F: T
-STRICTLY FAIL: Case diff Negative:  25 - 153: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  25 - 154: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  25 - 155: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  25 - 156: 125 (-131): 125 (-131): F: T
@@ -3001,7 +2975,6 @@ LOOSENLY FAIL: Case diff Negative:  25 - 252:  29 (-227):  29 (-227): F: T
 LOOSENLY FAIL: Case diff Negative:  25 - 253:  28 (-228):  28 (-228): F: T
 LOOSENLY FAIL: Case diff Negative:  25 - 254:  27 (-229):  27 (-229): F: T
 LOOSENLY FAIL: Case diff Negative:  25 - 255:  26 (-230):  26 (-230): F: T
-STRICTLY FAIL: Case diff Negative:  26 - 154: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  26 - 155: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  26 - 156: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  26 - 157: 125 (-131): 125 (-131): F: T
@@ -3103,7 +3076,6 @@ LOOSENLY FAIL: Case diff Negative:  26 - 252:  30 (-226):  30 (-226): F: T
 LOOSENLY FAIL: Case diff Negative:  26 - 253:  29 (-227):  29 (-227): F: T
 LOOSENLY FAIL: Case diff Negative:  26 - 254:  28 (-228):  28 (-228): F: T
 LOOSENLY FAIL: Case diff Negative:  26 - 255:  27 (-229):  27 (-229): F: T
-STRICTLY FAIL: Case diff Negative:  27 - 155: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  27 - 156: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  27 - 157: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  27 - 158: 125 (-131): 125 (-131): F: T
@@ -3204,7 +3176,6 @@ LOOSENLY FAIL: Case diff Negative:  27 - 252:  31 (-225):  31 (-225): F: T
 LOOSENLY FAIL: Case diff Negative:  27 - 253:  30 (-226):  30 (-226): F: T
 LOOSENLY FAIL: Case diff Negative:  27 - 254:  29 (-227):  29 (-227): F: T
 LOOSENLY FAIL: Case diff Negative:  27 - 255:  28 (-228):  28 (-228): F: T
-STRICTLY FAIL: Case diff Negative:  28 - 156: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  28 - 157: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  28 - 158: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  28 - 159: 125 (-131): 125 (-131): F: T
@@ -3304,7 +3275,6 @@ LOOSENLY FAIL: Case diff Negative:  28 - 252:  32 (-224):  32 (-224): F: T
 LOOSENLY FAIL: Case diff Negative:  28 - 253:  31 (-225):  31 (-225): F: T
 LOOSENLY FAIL: Case diff Negative:  28 - 254:  30 (-226):  30 (-226): F: T
 LOOSENLY FAIL: Case diff Negative:  28 - 255:  29 (-227):  29 (-227): F: T
-STRICTLY FAIL: Case diff Negative:  29 - 157: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  29 - 158: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  29 - 159: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  29 - 160: 125 (-131): 125 (-131): F: T
@@ -3403,7 +3373,6 @@ LOOSENLY FAIL: Case diff Negative:  29 - 252:  33 (-223):  33 (-223): F: T
 LOOSENLY FAIL: Case diff Negative:  29 - 253:  32 (-224):  32 (-224): F: T
 LOOSENLY FAIL: Case diff Negative:  29 - 254:  31 (-225):  31 (-225): F: T
 LOOSENLY FAIL: Case diff Negative:  29 - 255:  30 (-226):  30 (-226): F: T
-STRICTLY FAIL: Case diff Negative:  30 - 158: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  30 - 159: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  30 - 160: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  30 - 161: 125 (-131): 125 (-131): F: T
@@ -3501,7 +3470,6 @@ LOOSENLY FAIL: Case diff Negative:  30 - 252:  34 (-222):  34 (-222): F: T
 LOOSENLY FAIL: Case diff Negative:  30 - 253:  33 (-223):  33 (-223): F: T
 LOOSENLY FAIL: Case diff Negative:  30 - 254:  32 (-224):  32 (-224): F: T
 LOOSENLY FAIL: Case diff Negative:  30 - 255:  31 (-225):  31 (-225): F: T
-STRICTLY FAIL: Case diff Negative:  31 - 159: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  31 - 160: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  31 - 161: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  31 - 162: 125 (-131): 125 (-131): F: T
@@ -3598,7 +3566,6 @@ LOOSENLY FAIL: Case diff Negative:  31 - 252:  35 (-221):  35 (-221): F: T
 LOOSENLY FAIL: Case diff Negative:  31 - 253:  34 (-222):  34 (-222): F: T
 LOOSENLY FAIL: Case diff Negative:  31 - 254:  33 (-223):  33 (-223): F: T
 LOOSENLY FAIL: Case diff Negative:  31 - 255:  32 (-224):  32 (-224): F: T
-STRICTLY FAIL: Case diff Negative:  32 - 160: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  32 - 161: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  32 - 162: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  32 - 163: 125 (-131): 125 (-131): F: T
@@ -3694,7 +3661,6 @@ LOOSENLY FAIL: Case diff Negative:  32 - 252:  36 (-220):  36 (-220): F: T
 LOOSENLY FAIL: Case diff Negative:  32 - 253:  35 (-221):  35 (-221): F: T
 LOOSENLY FAIL: Case diff Negative:  32 - 254:  34 (-222):  34 (-222): F: T
 LOOSENLY FAIL: Case diff Negative:  32 - 255:  33 (-223):  33 (-223): F: T
-STRICTLY FAIL: Case diff Negative:  33 - 161: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  33 - 162: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  33 - 163: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  33 - 164: 125 (-131): 125 (-131): F: T
@@ -3789,7 +3755,6 @@ LOOSENLY FAIL: Case diff Negative:  33 - 252:  37 (-219):  37 (-219): F: T
 LOOSENLY FAIL: Case diff Negative:  33 - 253:  36 (-220):  36 (-220): F: T
 LOOSENLY FAIL: Case diff Negative:  33 - 254:  35 (-221):  35 (-221): F: T
 LOOSENLY FAIL: Case diff Negative:  33 - 255:  34 (-222):  34 (-222): F: T
-STRICTLY FAIL: Case diff Negative:  34 - 162: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  34 - 163: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  34 - 164: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  34 - 165: 125 (-131): 125 (-131): F: T
@@ -3883,7 +3848,6 @@ LOOSENLY FAIL: Case diff Negative:  34 - 252:  38 (-218):  38 (-218): F: T
 LOOSENLY FAIL: Case diff Negative:  34 - 253:  37 (-219):  37 (-219): F: T
 LOOSENLY FAIL: Case diff Negative:  34 - 254:  36 (-220):  36 (-220): F: T
 LOOSENLY FAIL: Case diff Negative:  34 - 255:  35 (-221):  35 (-221): F: T
-STRICTLY FAIL: Case diff Negative:  35 - 163: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  35 - 164: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  35 - 165: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  35 - 166: 125 (-131): 125 (-131): F: T
@@ -3976,7 +3940,6 @@ LOOSENLY FAIL: Case diff Negative:  35 - 252:  39 (-217):  39 (-217): F: T
 LOOSENLY FAIL: Case diff Negative:  35 - 253:  38 (-218):  38 (-218): F: T
 LOOSENLY FAIL: Case diff Negative:  35 - 254:  37 (-219):  37 (-219): F: T
 LOOSENLY FAIL: Case diff Negative:  35 - 255:  36 (-220):  36 (-220): F: T
-STRICTLY FAIL: Case diff Negative:  36 - 164: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  36 - 165: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  36 - 166: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  36 - 167: 125 (-131): 125 (-131): F: T
@@ -4068,7 +4031,6 @@ LOOSENLY FAIL: Case diff Negative:  36 - 252:  40 (-216):  40 (-216): F: T
 LOOSENLY FAIL: Case diff Negative:  36 - 253:  39 (-217):  39 (-217): F: T
 LOOSENLY FAIL: Case diff Negative:  36 - 254:  38 (-218):  38 (-218): F: T
 LOOSENLY FAIL: Case diff Negative:  36 - 255:  37 (-219):  37 (-219): F: T
-STRICTLY FAIL: Case diff Negative:  37 - 165: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  37 - 166: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  37 - 167: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  37 - 168: 125 (-131): 125 (-131): F: T
@@ -4159,7 +4121,6 @@ LOOSENLY FAIL: Case diff Negative:  37 - 252:  41 (-215):  41 (-215): F: T
 LOOSENLY FAIL: Case diff Negative:  37 - 253:  40 (-216):  40 (-216): F: T
 LOOSENLY FAIL: Case diff Negative:  37 - 254:  39 (-217):  39 (-217): F: T
 LOOSENLY FAIL: Case diff Negative:  37 - 255:  38 (-218):  38 (-218): F: T
-STRICTLY FAIL: Case diff Negative:  38 - 166: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  38 - 167: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  38 - 168: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  38 - 169: 125 (-131): 125 (-131): F: T
@@ -4249,7 +4210,6 @@ LOOSENLY FAIL: Case diff Negative:  38 - 252:  42 (-214):  42 (-214): F: T
 LOOSENLY FAIL: Case diff Negative:  38 - 253:  41 (-215):  41 (-215): F: T
 LOOSENLY FAIL: Case diff Negative:  38 - 254:  40 (-216):  40 (-216): F: T
 LOOSENLY FAIL: Case diff Negative:  38 - 255:  39 (-217):  39 (-217): F: T
-STRICTLY FAIL: Case diff Negative:  39 - 167: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  39 - 168: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  39 - 169: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  39 - 170: 125 (-131): 125 (-131): F: T
@@ -4338,7 +4298,6 @@ LOOSENLY FAIL: Case diff Negative:  39 - 252:  43 (-213):  43 (-213): F: T
 LOOSENLY FAIL: Case diff Negative:  39 - 253:  42 (-214):  42 (-214): F: T
 LOOSENLY FAIL: Case diff Negative:  39 - 254:  41 (-215):  41 (-215): F: T
 LOOSENLY FAIL: Case diff Negative:  39 - 255:  40 (-216):  40 (-216): F: T
-STRICTLY FAIL: Case diff Negative:  40 - 168: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  40 - 169: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  40 - 170: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  40 - 171: 125 (-131): 125 (-131): F: T
@@ -4426,7 +4385,6 @@ LOOSENLY FAIL: Case diff Negative:  40 - 252:  44 (-212):  44 (-212): F: T
 LOOSENLY FAIL: Case diff Negative:  40 - 253:  43 (-213):  43 (-213): F: T
 LOOSENLY FAIL: Case diff Negative:  40 - 254:  42 (-214):  42 (-214): F: T
 LOOSENLY FAIL: Case diff Negative:  40 - 255:  41 (-215):  41 (-215): F: T
-STRICTLY FAIL: Case diff Negative:  41 - 169: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  41 - 170: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  41 - 171: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  41 - 172: 125 (-131): 125 (-131): F: T
@@ -4513,7 +4471,6 @@ LOOSENLY FAIL: Case diff Negative:  41 - 252:  45 (-211):  45 (-211): F: T
 LOOSENLY FAIL: Case diff Negative:  41 - 253:  44 (-212):  44 (-212): F: T
 LOOSENLY FAIL: Case diff Negative:  41 - 254:  43 (-213):  43 (-213): F: T
 LOOSENLY FAIL: Case diff Negative:  41 - 255:  42 (-214):  42 (-214): F: T
-STRICTLY FAIL: Case diff Negative:  42 - 170: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  42 - 171: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  42 - 172: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  42 - 173: 125 (-131): 125 (-131): F: T
@@ -4599,7 +4556,6 @@ LOOSENLY FAIL: Case diff Negative:  42 - 252:  46 (-210):  46 (-210): F: T
 LOOSENLY FAIL: Case diff Negative:  42 - 253:  45 (-211):  45 (-211): F: T
 LOOSENLY FAIL: Case diff Negative:  42 - 254:  44 (-212):  44 (-212): F: T
 LOOSENLY FAIL: Case diff Negative:  42 - 255:  43 (-213):  43 (-213): F: T
-STRICTLY FAIL: Case diff Negative:  43 - 171: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  43 - 172: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  43 - 173: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  43 - 174: 125 (-131): 125 (-131): F: T
@@ -4684,7 +4640,6 @@ LOOSENLY FAIL: Case diff Negative:  43 - 252:  47 (-209):  47 (-209): F: T
 LOOSENLY FAIL: Case diff Negative:  43 - 253:  46 (-210):  46 (-210): F: T
 LOOSENLY FAIL: Case diff Negative:  43 - 254:  45 (-211):  45 (-211): F: T
 LOOSENLY FAIL: Case diff Negative:  43 - 255:  44 (-212):  44 (-212): F: T
-STRICTLY FAIL: Case diff Negative:  44 - 172: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  44 - 173: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  44 - 174: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  44 - 175: 125 (-131): 125 (-131): F: T
@@ -4768,7 +4723,6 @@ LOOSENLY FAIL: Case diff Negative:  44 - 252:  48 (-208):  48 (-208): F: T
 LOOSENLY FAIL: Case diff Negative:  44 - 253:  47 (-209):  47 (-209): F: T
 LOOSENLY FAIL: Case diff Negative:  44 - 254:  46 (-210):  46 (-210): F: T
 LOOSENLY FAIL: Case diff Negative:  44 - 255:  45 (-211):  45 (-211): F: T
-STRICTLY FAIL: Case diff Negative:  45 - 173: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  45 - 174: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  45 - 175: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  45 - 176: 125 (-131): 125 (-131): F: T
@@ -4851,7 +4805,6 @@ LOOSENLY FAIL: Case diff Negative:  45 - 252:  49 (-207):  49 (-207): F: T
 LOOSENLY FAIL: Case diff Negative:  45 - 253:  48 (-208):  48 (-208): F: T
 LOOSENLY FAIL: Case diff Negative:  45 - 254:  47 (-209):  47 (-209): F: T
 LOOSENLY FAIL: Case diff Negative:  45 - 255:  46 (-210):  46 (-210): F: T
-STRICTLY FAIL: Case diff Negative:  46 - 174: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  46 - 175: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  46 - 176: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  46 - 177: 125 (-131): 125 (-131): F: T
@@ -4933,7 +4886,6 @@ LOOSENLY FAIL: Case diff Negative:  46 - 252:  50 (-206):  50 (-206): F: T
 LOOSENLY FAIL: Case diff Negative:  46 - 253:  49 (-207):  49 (-207): F: T
 LOOSENLY FAIL: Case diff Negative:  46 - 254:  48 (-208):  48 (-208): F: T
 LOOSENLY FAIL: Case diff Negative:  46 - 255:  47 (-209):  47 (-209): F: T
-STRICTLY FAIL: Case diff Negative:  47 - 175: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  47 - 176: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  47 - 177: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  47 - 178: 125 (-131): 125 (-131): F: T
@@ -5014,7 +4966,6 @@ LOOSENLY FAIL: Case diff Negative:  47 - 252:  51 (-205):  51 (-205): F: T
 LOOSENLY FAIL: Case diff Negative:  47 - 253:  50 (-206):  50 (-206): F: T
 LOOSENLY FAIL: Case diff Negative:  47 - 254:  49 (-207):  49 (-207): F: T
 LOOSENLY FAIL: Case diff Negative:  47 - 255:  48 (-208):  48 (-208): F: T
-STRICTLY FAIL: Case diff Negative:  48 - 176: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  48 - 177: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  48 - 178: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  48 - 179: 125 (-131): 125 (-131): F: T
@@ -5094,7 +5045,6 @@ LOOSENLY FAIL: Case diff Negative:  48 - 252:  52 (-204):  52 (-204): F: T
 LOOSENLY FAIL: Case diff Negative:  48 - 253:  51 (-205):  51 (-205): F: T
 LOOSENLY FAIL: Case diff Negative:  48 - 254:  50 (-206):  50 (-206): F: T
 LOOSENLY FAIL: Case diff Negative:  48 - 255:  49 (-207):  49 (-207): F: T
-STRICTLY FAIL: Case diff Negative:  49 - 177: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  49 - 178: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  49 - 179: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  49 - 180: 125 (-131): 125 (-131): F: T
@@ -5173,7 +5123,6 @@ LOOSENLY FAIL: Case diff Negative:  49 - 252:  53 (-203):  53 (-203): F: T
 LOOSENLY FAIL: Case diff Negative:  49 - 253:  52 (-204):  52 (-204): F: T
 LOOSENLY FAIL: Case diff Negative:  49 - 254:  51 (-205):  51 (-205): F: T
 LOOSENLY FAIL: Case diff Negative:  49 - 255:  50 (-206):  50 (-206): F: T
-STRICTLY FAIL: Case diff Negative:  50 - 178: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  50 - 179: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  50 - 180: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  50 - 181: 125 (-131): 125 (-131): F: T
@@ -5251,7 +5200,6 @@ LOOSENLY FAIL: Case diff Negative:  50 - 252:  54 (-202):  54 (-202): F: T
 LOOSENLY FAIL: Case diff Negative:  50 - 253:  53 (-203):  53 (-203): F: T
 LOOSENLY FAIL: Case diff Negative:  50 - 254:  52 (-204):  52 (-204): F: T
 LOOSENLY FAIL: Case diff Negative:  50 - 255:  51 (-205):  51 (-205): F: T
-STRICTLY FAIL: Case diff Negative:  51 - 179: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  51 - 180: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  51 - 181: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  51 - 182: 125 (-131): 125 (-131): F: T
@@ -5328,7 +5276,6 @@ LOOSENLY FAIL: Case diff Negative:  51 - 252:  55 (-201):  55 (-201): F: T
 LOOSENLY FAIL: Case diff Negative:  51 - 253:  54 (-202):  54 (-202): F: T
 LOOSENLY FAIL: Case diff Negative:  51 - 254:  53 (-203):  53 (-203): F: T
 LOOSENLY FAIL: Case diff Negative:  51 - 255:  52 (-204):  52 (-204): F: T
-STRICTLY FAIL: Case diff Negative:  52 - 180: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  52 - 181: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  52 - 182: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  52 - 183: 125 (-131): 125 (-131): F: T
@@ -5404,7 +5351,6 @@ LOOSENLY FAIL: Case diff Negative:  52 - 252:  56 (-200):  56 (-200): F: T
 LOOSENLY FAIL: Case diff Negative:  52 - 253:  55 (-201):  55 (-201): F: T
 LOOSENLY FAIL: Case diff Negative:  52 - 254:  54 (-202):  54 (-202): F: T
 LOOSENLY FAIL: Case diff Negative:  52 - 255:  53 (-203):  53 (-203): F: T
-STRICTLY FAIL: Case diff Negative:  53 - 181: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  53 - 182: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  53 - 183: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  53 - 184: 125 (-131): 125 (-131): F: T
@@ -5479,7 +5425,6 @@ LOOSENLY FAIL: Case diff Negative:  53 - 252:  57 (-199):  57 (-199): F: T
 LOOSENLY FAIL: Case diff Negative:  53 - 253:  56 (-200):  56 (-200): F: T
 LOOSENLY FAIL: Case diff Negative:  53 - 254:  55 (-201):  55 (-201): F: T
 LOOSENLY FAIL: Case diff Negative:  53 - 255:  54 (-202):  54 (-202): F: T
-STRICTLY FAIL: Case diff Negative:  54 - 182: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  54 - 183: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  54 - 184: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  54 - 185: 125 (-131): 125 (-131): F: T
@@ -5553,7 +5498,6 @@ LOOSENLY FAIL: Case diff Negative:  54 - 252:  58 (-198):  58 (-198): F: T
 LOOSENLY FAIL: Case diff Negative:  54 - 253:  57 (-199):  57 (-199): F: T
 LOOSENLY FAIL: Case diff Negative:  54 - 254:  56 (-200):  56 (-200): F: T
 LOOSENLY FAIL: Case diff Negative:  54 - 255:  55 (-201):  55 (-201): F: T
-STRICTLY FAIL: Case diff Negative:  55 - 183: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  55 - 184: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  55 - 185: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  55 - 186: 125 (-131): 125 (-131): F: T
@@ -5626,7 +5570,6 @@ LOOSENLY FAIL: Case diff Negative:  55 - 252:  59 (-197):  59 (-197): F: T
 LOOSENLY FAIL: Case diff Negative:  55 - 253:  58 (-198):  58 (-198): F: T
 LOOSENLY FAIL: Case diff Negative:  55 - 254:  57 (-199):  57 (-199): F: T
 LOOSENLY FAIL: Case diff Negative:  55 - 255:  56 (-200):  56 (-200): F: T
-STRICTLY FAIL: Case diff Negative:  56 - 184: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  56 - 185: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  56 - 186: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  56 - 187: 125 (-131): 125 (-131): F: T
@@ -5698,7 +5641,6 @@ LOOSENLY FAIL: Case diff Negative:  56 - 252:  60 (-196):  60 (-196): F: T
 LOOSENLY FAIL: Case diff Negative:  56 - 253:  59 (-197):  59 (-197): F: T
 LOOSENLY FAIL: Case diff Negative:  56 - 254:  58 (-198):  58 (-198): F: T
 LOOSENLY FAIL: Case diff Negative:  56 - 255:  57 (-199):  57 (-199): F: T
-STRICTLY FAIL: Case diff Negative:  57 - 185: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  57 - 186: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  57 - 187: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  57 - 188: 125 (-131): 125 (-131): F: T
@@ -5769,7 +5711,6 @@ LOOSENLY FAIL: Case diff Negative:  57 - 252:  61 (-195):  61 (-195): F: T
 LOOSENLY FAIL: Case diff Negative:  57 - 253:  60 (-196):  60 (-196): F: T
 LOOSENLY FAIL: Case diff Negative:  57 - 254:  59 (-197):  59 (-197): F: T
 LOOSENLY FAIL: Case diff Negative:  57 - 255:  58 (-198):  58 (-198): F: T
-STRICTLY FAIL: Case diff Negative:  58 - 186: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  58 - 187: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  58 - 188: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  58 - 189: 125 (-131): 125 (-131): F: T
@@ -5839,7 +5780,6 @@ LOOSENLY FAIL: Case diff Negative:  58 - 252:  62 (-194):  62 (-194): F: T
 LOOSENLY FAIL: Case diff Negative:  58 - 253:  61 (-195):  61 (-195): F: T
 LOOSENLY FAIL: Case diff Negative:  58 - 254:  60 (-196):  60 (-196): F: T
 LOOSENLY FAIL: Case diff Negative:  58 - 255:  59 (-197):  59 (-197): F: T
-STRICTLY FAIL: Case diff Negative:  59 - 187: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  59 - 188: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  59 - 189: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  59 - 190: 125 (-131): 125 (-131): F: T
@@ -5908,7 +5848,6 @@ LOOSENLY FAIL: Case diff Negative:  59 - 252:  63 (-193):  63 (-193): F: T
 LOOSENLY FAIL: Case diff Negative:  59 - 253:  62 (-194):  62 (-194): F: T
 LOOSENLY FAIL: Case diff Negative:  59 - 254:  61 (-195):  61 (-195): F: T
 LOOSENLY FAIL: Case diff Negative:  59 - 255:  60 (-196):  60 (-196): F: T
-STRICTLY FAIL: Case diff Negative:  60 - 188: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  60 - 189: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  60 - 190: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  60 - 191: 125 (-131): 125 (-131): F: T
@@ -5976,7 +5915,6 @@ LOOSENLY FAIL: Case diff Negative:  60 - 252:  64 (-192):  64 (-192): F: T
 LOOSENLY FAIL: Case diff Negative:  60 - 253:  63 (-193):  63 (-193): F: T
 LOOSENLY FAIL: Case diff Negative:  60 - 254:  62 (-194):  62 (-194): F: T
 LOOSENLY FAIL: Case diff Negative:  60 - 255:  61 (-195):  61 (-195): F: T
-STRICTLY FAIL: Case diff Negative:  61 - 189: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  61 - 190: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  61 - 191: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  61 - 192: 125 (-131): 125 (-131): F: T
@@ -6043,7 +5981,6 @@ LOOSENLY FAIL: Case diff Negative:  61 - 252:  65 (-191):  65 (-191): F: T
 LOOSENLY FAIL: Case diff Negative:  61 - 253:  64 (-192):  64 (-192): F: T
 LOOSENLY FAIL: Case diff Negative:  61 - 254:  63 (-193):  63 (-193): F: T
 LOOSENLY FAIL: Case diff Negative:  61 - 255:  62 (-194):  62 (-194): F: T
-STRICTLY FAIL: Case diff Negative:  62 - 190: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  62 - 191: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  62 - 192: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  62 - 193: 125 (-131): 125 (-131): F: T
@@ -6109,7 +6046,6 @@ LOOSENLY FAIL: Case diff Negative:  62 - 252:  66 (-190):  66 (-190): F: T
 LOOSENLY FAIL: Case diff Negative:  62 - 253:  65 (-191):  65 (-191): F: T
 LOOSENLY FAIL: Case diff Negative:  62 - 254:  64 (-192):  64 (-192): F: T
 LOOSENLY FAIL: Case diff Negative:  62 - 255:  63 (-193):  63 (-193): F: T
-STRICTLY FAIL: Case diff Negative:  63 - 191: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  63 - 192: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  63 - 193: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  63 - 194: 125 (-131): 125 (-131): F: T
@@ -6174,7 +6110,6 @@ LOOSENLY FAIL: Case diff Negative:  63 - 252:  67 (-189):  67 (-189): F: T
 LOOSENLY FAIL: Case diff Negative:  63 - 253:  66 (-190):  66 (-190): F: T
 LOOSENLY FAIL: Case diff Negative:  63 - 254:  65 (-191):  65 (-191): F: T
 LOOSENLY FAIL: Case diff Negative:  63 - 255:  64 (-192):  64 (-192): F: T
-STRICTLY FAIL: Case diff Negative:  64 - 192: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  64 - 193: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  64 - 194: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  64 - 195: 125 (-131): 125 (-131): F: T
@@ -6238,7 +6173,6 @@ LOOSENLY FAIL: Case diff Negative:  64 - 252:  68 (-188):  68 (-188): F: T
 LOOSENLY FAIL: Case diff Negative:  64 - 253:  67 (-189):  67 (-189): F: T
 LOOSENLY FAIL: Case diff Negative:  64 - 254:  66 (-190):  66 (-190): F: T
 LOOSENLY FAIL: Case diff Negative:  64 - 255:  65 (-191):  65 (-191): F: T
-STRICTLY FAIL: Case diff Negative:  65 - 193: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  65 - 194: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  65 - 195: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  65 - 196: 125 (-131): 125 (-131): F: T
@@ -6301,7 +6235,6 @@ LOOSENLY FAIL: Case diff Negative:  65 - 252:  69 (-187):  69 (-187): F: T
 LOOSENLY FAIL: Case diff Negative:  65 - 253:  68 (-188):  68 (-188): F: T
 LOOSENLY FAIL: Case diff Negative:  65 - 254:  67 (-189):  67 (-189): F: T
 LOOSENLY FAIL: Case diff Negative:  65 - 255:  66 (-190):  66 (-190): F: T
-STRICTLY FAIL: Case diff Negative:  66 - 194: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  66 - 195: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  66 - 196: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  66 - 197: 125 (-131): 125 (-131): F: T
@@ -6363,7 +6296,6 @@ LOOSENLY FAIL: Case diff Negative:  66 - 252:  70 (-186):  70 (-186): F: T
 LOOSENLY FAIL: Case diff Negative:  66 - 253:  69 (-187):  69 (-187): F: T
 LOOSENLY FAIL: Case diff Negative:  66 - 254:  68 (-188):  68 (-188): F: T
 LOOSENLY FAIL: Case diff Negative:  66 - 255:  67 (-189):  67 (-189): F: T
-STRICTLY FAIL: Case diff Negative:  67 - 195: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  67 - 196: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  67 - 197: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  67 - 198: 125 (-131): 125 (-131): F: T
@@ -6424,7 +6356,6 @@ LOOSENLY FAIL: Case diff Negative:  67 - 252:  71 (-185):  71 (-185): F: T
 LOOSENLY FAIL: Case diff Negative:  67 - 253:  70 (-186):  70 (-186): F: T
 LOOSENLY FAIL: Case diff Negative:  67 - 254:  69 (-187):  69 (-187): F: T
 LOOSENLY FAIL: Case diff Negative:  67 - 255:  68 (-188):  68 (-188): F: T
-STRICTLY FAIL: Case diff Negative:  68 - 196: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  68 - 197: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  68 - 198: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  68 - 199: 125 (-131): 125 (-131): F: T
@@ -6484,7 +6415,6 @@ LOOSENLY FAIL: Case diff Negative:  68 - 252:  72 (-184):  72 (-184): F: T
 LOOSENLY FAIL: Case diff Negative:  68 - 253:  71 (-185):  71 (-185): F: T
 LOOSENLY FAIL: Case diff Negative:  68 - 254:  70 (-186):  70 (-186): F: T
 LOOSENLY FAIL: Case diff Negative:  68 - 255:  69 (-187):  69 (-187): F: T
-STRICTLY FAIL: Case diff Negative:  69 - 197: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  69 - 198: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  69 - 199: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  69 - 200: 125 (-131): 125 (-131): F: T
@@ -6543,7 +6473,6 @@ LOOSENLY FAIL: Case diff Negative:  69 - 252:  73 (-183):  73 (-183): F: T
 LOOSENLY FAIL: Case diff Negative:  69 - 253:  72 (-184):  72 (-184): F: T
 LOOSENLY FAIL: Case diff Negative:  69 - 254:  71 (-185):  71 (-185): F: T
 LOOSENLY FAIL: Case diff Negative:  69 - 255:  70 (-186):  70 (-186): F: T
-STRICTLY FAIL: Case diff Negative:  70 - 198: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  70 - 199: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  70 - 200: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  70 - 201: 125 (-131): 125 (-131): F: T
@@ -6601,7 +6530,6 @@ LOOSENLY FAIL: Case diff Negative:  70 - 252:  74 (-182):  74 (-182): F: T
 LOOSENLY FAIL: Case diff Negative:  70 - 253:  73 (-183):  73 (-183): F: T
 LOOSENLY FAIL: Case diff Negative:  70 - 254:  72 (-184):  72 (-184): F: T
 LOOSENLY FAIL: Case diff Negative:  70 - 255:  71 (-185):  71 (-185): F: T
-STRICTLY FAIL: Case diff Negative:  71 - 199: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  71 - 200: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  71 - 201: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  71 - 202: 125 (-131): 125 (-131): F: T
@@ -6658,7 +6586,6 @@ LOOSENLY FAIL: Case diff Negative:  71 - 252:  75 (-181):  75 (-181): F: T
 LOOSENLY FAIL: Case diff Negative:  71 - 253:  74 (-182):  74 (-182): F: T
 LOOSENLY FAIL: Case diff Negative:  71 - 254:  73 (-183):  73 (-183): F: T
 LOOSENLY FAIL: Case diff Negative:  71 - 255:  72 (-184):  72 (-184): F: T
-STRICTLY FAIL: Case diff Negative:  72 - 200: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  72 - 201: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  72 - 202: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  72 - 203: 125 (-131): 125 (-131): F: T
@@ -6714,7 +6641,6 @@ LOOSENLY FAIL: Case diff Negative:  72 - 252:  76 (-180):  76 (-180): F: T
 LOOSENLY FAIL: Case diff Negative:  72 - 253:  75 (-181):  75 (-181): F: T
 LOOSENLY FAIL: Case diff Negative:  72 - 254:  74 (-182):  74 (-182): F: T
 LOOSENLY FAIL: Case diff Negative:  72 - 255:  73 (-183):  73 (-183): F: T
-STRICTLY FAIL: Case diff Negative:  73 - 201: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  73 - 202: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  73 - 203: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  73 - 204: 125 (-131): 125 (-131): F: T
@@ -6769,7 +6695,6 @@ LOOSENLY FAIL: Case diff Negative:  73 - 252:  77 (-179):  77 (-179): F: T
 LOOSENLY FAIL: Case diff Negative:  73 - 253:  76 (-180):  76 (-180): F: T
 LOOSENLY FAIL: Case diff Negative:  73 - 254:  75 (-181):  75 (-181): F: T
 LOOSENLY FAIL: Case diff Negative:  73 - 255:  74 (-182):  74 (-182): F: T
-STRICTLY FAIL: Case diff Negative:  74 - 202: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  74 - 203: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  74 - 204: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  74 - 205: 125 (-131): 125 (-131): F: T
@@ -6823,7 +6748,6 @@ LOOSENLY FAIL: Case diff Negative:  74 - 252:  78 (-178):  78 (-178): F: T
 LOOSENLY FAIL: Case diff Negative:  74 - 253:  77 (-179):  77 (-179): F: T
 LOOSENLY FAIL: Case diff Negative:  74 - 254:  76 (-180):  76 (-180): F: T
 LOOSENLY FAIL: Case diff Negative:  74 - 255:  75 (-181):  75 (-181): F: T
-STRICTLY FAIL: Case diff Negative:  75 - 203: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  75 - 204: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  75 - 205: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  75 - 206: 125 (-131): 125 (-131): F: T
@@ -6876,7 +6800,6 @@ LOOSENLY FAIL: Case diff Negative:  75 - 252:  79 (-177):  79 (-177): F: T
 LOOSENLY FAIL: Case diff Negative:  75 - 253:  78 (-178):  78 (-178): F: T
 LOOSENLY FAIL: Case diff Negative:  75 - 254:  77 (-179):  77 (-179): F: T
 LOOSENLY FAIL: Case diff Negative:  75 - 255:  76 (-180):  76 (-180): F: T
-STRICTLY FAIL: Case diff Negative:  76 - 204: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  76 - 205: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  76 - 206: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  76 - 207: 125 (-131): 125 (-131): F: T
@@ -6928,7 +6851,6 @@ LOOSENLY FAIL: Case diff Negative:  76 - 252:  80 (-176):  80 (-176): F: T
 LOOSENLY FAIL: Case diff Negative:  76 - 253:  79 (-177):  79 (-177): F: T
 LOOSENLY FAIL: Case diff Negative:  76 - 254:  78 (-178):  78 (-178): F: T
 LOOSENLY FAIL: Case diff Negative:  76 - 255:  77 (-179):  77 (-179): F: T
-STRICTLY FAIL: Case diff Negative:  77 - 205: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  77 - 206: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  77 - 207: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  77 - 208: 125 (-131): 125 (-131): F: T
@@ -6979,7 +6901,6 @@ LOOSENLY FAIL: Case diff Negative:  77 - 252:  81 (-175):  81 (-175): F: T
 LOOSENLY FAIL: Case diff Negative:  77 - 253:  80 (-176):  80 (-176): F: T
 LOOSENLY FAIL: Case diff Negative:  77 - 254:  79 (-177):  79 (-177): F: T
 LOOSENLY FAIL: Case diff Negative:  77 - 255:  78 (-178):  78 (-178): F: T
-STRICTLY FAIL: Case diff Negative:  78 - 206: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  78 - 207: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  78 - 208: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  78 - 209: 125 (-131): 125 (-131): F: T
@@ -7029,7 +6950,6 @@ LOOSENLY FAIL: Case diff Negative:  78 - 252:  82 (-174):  82 (-174): F: T
 LOOSENLY FAIL: Case diff Negative:  78 - 253:  81 (-175):  81 (-175): F: T
 LOOSENLY FAIL: Case diff Negative:  78 - 254:  80 (-176):  80 (-176): F: T
 LOOSENLY FAIL: Case diff Negative:  78 - 255:  79 (-177):  79 (-177): F: T
-STRICTLY FAIL: Case diff Negative:  79 - 207: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  79 - 208: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  79 - 209: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  79 - 210: 125 (-131): 125 (-131): F: T
@@ -7078,7 +6998,6 @@ LOOSENLY FAIL: Case diff Negative:  79 - 252:  83 (-173):  83 (-173): F: T
 LOOSENLY FAIL: Case diff Negative:  79 - 253:  82 (-174):  82 (-174): F: T
 LOOSENLY FAIL: Case diff Negative:  79 - 254:  81 (-175):  81 (-175): F: T
 LOOSENLY FAIL: Case diff Negative:  79 - 255:  80 (-176):  80 (-176): F: T
-STRICTLY FAIL: Case diff Negative:  80 - 208: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  80 - 209: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  80 - 210: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  80 - 211: 125 (-131): 125 (-131): F: T
@@ -7126,7 +7045,6 @@ LOOSENLY FAIL: Case diff Negative:  80 - 252:  84 (-172):  84 (-172): F: T
 LOOSENLY FAIL: Case diff Negative:  80 - 253:  83 (-173):  83 (-173): F: T
 LOOSENLY FAIL: Case diff Negative:  80 - 254:  82 (-174):  82 (-174): F: T
 LOOSENLY FAIL: Case diff Negative:  80 - 255:  81 (-175):  81 (-175): F: T
-STRICTLY FAIL: Case diff Negative:  81 - 209: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  81 - 210: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  81 - 211: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  81 - 212: 125 (-131): 125 (-131): F: T
@@ -7173,7 +7091,6 @@ LOOSENLY FAIL: Case diff Negative:  81 - 252:  85 (-171):  85 (-171): F: T
 LOOSENLY FAIL: Case diff Negative:  81 - 253:  84 (-172):  84 (-172): F: T
 LOOSENLY FAIL: Case diff Negative:  81 - 254:  83 (-173):  83 (-173): F: T
 LOOSENLY FAIL: Case diff Negative:  81 - 255:  82 (-174):  82 (-174): F: T
-STRICTLY FAIL: Case diff Negative:  82 - 210: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  82 - 211: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  82 - 212: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  82 - 213: 125 (-131): 125 (-131): F: T
@@ -7219,7 +7136,6 @@ LOOSENLY FAIL: Case diff Negative:  82 - 252:  86 (-170):  86 (-170): F: T
 LOOSENLY FAIL: Case diff Negative:  82 - 253:  85 (-171):  85 (-171): F: T
 LOOSENLY FAIL: Case diff Negative:  82 - 254:  84 (-172):  84 (-172): F: T
 LOOSENLY FAIL: Case diff Negative:  82 - 255:  83 (-173):  83 (-173): F: T
-STRICTLY FAIL: Case diff Negative:  83 - 211: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  83 - 212: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  83 - 213: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  83 - 214: 125 (-131): 125 (-131): F: T
@@ -7264,7 +7180,6 @@ LOOSENLY FAIL: Case diff Negative:  83 - 252:  87 (-169):  87 (-169): F: T
 LOOSENLY FAIL: Case diff Negative:  83 - 253:  86 (-170):  86 (-170): F: T
 LOOSENLY FAIL: Case diff Negative:  83 - 254:  85 (-171):  85 (-171): F: T
 LOOSENLY FAIL: Case diff Negative:  83 - 255:  84 (-172):  84 (-172): F: T
-STRICTLY FAIL: Case diff Negative:  84 - 212: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  84 - 213: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  84 - 214: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  84 - 215: 125 (-131): 125 (-131): F: T
@@ -7308,7 +7223,6 @@ LOOSENLY FAIL: Case diff Negative:  84 - 252:  88 (-168):  88 (-168): F: T
 LOOSENLY FAIL: Case diff Negative:  84 - 253:  87 (-169):  87 (-169): F: T
 LOOSENLY FAIL: Case diff Negative:  84 - 254:  86 (-170):  86 (-170): F: T
 LOOSENLY FAIL: Case diff Negative:  84 - 255:  85 (-171):  85 (-171): F: T
-STRICTLY FAIL: Case diff Negative:  85 - 213: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  85 - 214: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  85 - 215: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  85 - 216: 125 (-131): 125 (-131): F: T
@@ -7351,7 +7265,6 @@ LOOSENLY FAIL: Case diff Negative:  85 - 252:  89 (-167):  89 (-167): F: T
 LOOSENLY FAIL: Case diff Negative:  85 - 253:  88 (-168):  88 (-168): F: T
 LOOSENLY FAIL: Case diff Negative:  85 - 254:  87 (-169):  87 (-169): F: T
 LOOSENLY FAIL: Case diff Negative:  85 - 255:  86 (-170):  86 (-170): F: T
-STRICTLY FAIL: Case diff Negative:  86 - 214: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  86 - 215: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  86 - 216: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  86 - 217: 125 (-131): 125 (-131): F: T
@@ -7393,7 +7306,6 @@ LOOSENLY FAIL: Case diff Negative:  86 - 252:  90 (-166):  90 (-166): F: T
 LOOSENLY FAIL: Case diff Negative:  86 - 253:  89 (-167):  89 (-167): F: T
 LOOSENLY FAIL: Case diff Negative:  86 - 254:  88 (-168):  88 (-168): F: T
 LOOSENLY FAIL: Case diff Negative:  86 - 255:  87 (-169):  87 (-169): F: T
-STRICTLY FAIL: Case diff Negative:  87 - 215: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  87 - 216: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  87 - 217: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  87 - 218: 125 (-131): 125 (-131): F: T
@@ -7434,7 +7346,6 @@ LOOSENLY FAIL: Case diff Negative:  87 - 252:  91 (-165):  91 (-165): F: T
 LOOSENLY FAIL: Case diff Negative:  87 - 253:  90 (-166):  90 (-166): F: T
 LOOSENLY FAIL: Case diff Negative:  87 - 254:  89 (-167):  89 (-167): F: T
 LOOSENLY FAIL: Case diff Negative:  87 - 255:  88 (-168):  88 (-168): F: T
-STRICTLY FAIL: Case diff Negative:  88 - 216: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  88 - 217: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  88 - 218: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  88 - 219: 125 (-131): 125 (-131): F: T
@@ -7474,7 +7385,6 @@ LOOSENLY FAIL: Case diff Negative:  88 - 252:  92 (-164):  92 (-164): F: T
 LOOSENLY FAIL: Case diff Negative:  88 - 253:  91 (-165):  91 (-165): F: T
 LOOSENLY FAIL: Case diff Negative:  88 - 254:  90 (-166):  90 (-166): F: T
 LOOSENLY FAIL: Case diff Negative:  88 - 255:  89 (-167):  89 (-167): F: T
-STRICTLY FAIL: Case diff Negative:  89 - 217: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  89 - 218: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  89 - 219: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  89 - 220: 125 (-131): 125 (-131): F: T
@@ -7513,7 +7423,6 @@ LOOSENLY FAIL: Case diff Negative:  89 - 252:  93 (-163):  93 (-163): F: T
 LOOSENLY FAIL: Case diff Negative:  89 - 253:  92 (-164):  92 (-164): F: T
 LOOSENLY FAIL: Case diff Negative:  89 - 254:  91 (-165):  91 (-165): F: T
 LOOSENLY FAIL: Case diff Negative:  89 - 255:  90 (-166):  90 (-166): F: T
-STRICTLY FAIL: Case diff Negative:  90 - 218: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  90 - 219: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  90 - 220: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  90 - 221: 125 (-131): 125 (-131): F: T
@@ -7551,7 +7460,6 @@ LOOSENLY FAIL: Case diff Negative:  90 - 252:  94 (-162):  94 (-162): F: T
 LOOSENLY FAIL: Case diff Negative:  90 - 253:  93 (-163):  93 (-163): F: T
 LOOSENLY FAIL: Case diff Negative:  90 - 254:  92 (-164):  92 (-164): F: T
 LOOSENLY FAIL: Case diff Negative:  90 - 255:  91 (-165):  91 (-165): F: T
-STRICTLY FAIL: Case diff Negative:  91 - 219: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  91 - 220: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  91 - 221: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  91 - 222: 125 (-131): 125 (-131): F: T
@@ -7588,7 +7496,6 @@ LOOSENLY FAIL: Case diff Negative:  91 - 252:  95 (-161):  95 (-161): F: T
 LOOSENLY FAIL: Case diff Negative:  91 - 253:  94 (-162):  94 (-162): F: T
 LOOSENLY FAIL: Case diff Negative:  91 - 254:  93 (-163):  93 (-163): F: T
 LOOSENLY FAIL: Case diff Negative:  91 - 255:  92 (-164):  92 (-164): F: T
-STRICTLY FAIL: Case diff Negative:  92 - 220: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  92 - 221: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  92 - 222: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  92 - 223: 125 (-131): 125 (-131): F: T
@@ -7624,7 +7531,6 @@ LOOSENLY FAIL: Case diff Negative:  92 - 252:  96 (-160):  96 (-160): F: T
 LOOSENLY FAIL: Case diff Negative:  92 - 253:  95 (-161):  95 (-161): F: T
 LOOSENLY FAIL: Case diff Negative:  92 - 254:  94 (-162):  94 (-162): F: T
 LOOSENLY FAIL: Case diff Negative:  92 - 255:  93 (-163):  93 (-163): F: T
-STRICTLY FAIL: Case diff Negative:  93 - 221: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  93 - 222: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  93 - 223: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  93 - 224: 125 (-131): 125 (-131): F: T
@@ -7659,7 +7565,6 @@ LOOSENLY FAIL: Case diff Negative:  93 - 252:  97 (-159):  97 (-159): F: T
 LOOSENLY FAIL: Case diff Negative:  93 - 253:  96 (-160):  96 (-160): F: T
 LOOSENLY FAIL: Case diff Negative:  93 - 254:  95 (-161):  95 (-161): F: T
 LOOSENLY FAIL: Case diff Negative:  93 - 255:  94 (-162):  94 (-162): F: T
-STRICTLY FAIL: Case diff Negative:  94 - 222: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  94 - 223: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  94 - 224: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  94 - 225: 125 (-131): 125 (-131): F: T
@@ -7693,7 +7598,6 @@ LOOSENLY FAIL: Case diff Negative:  94 - 252:  98 (-158):  98 (-158): F: T
 LOOSENLY FAIL: Case diff Negative:  94 - 253:  97 (-159):  97 (-159): F: T
 LOOSENLY FAIL: Case diff Negative:  94 - 254:  96 (-160):  96 (-160): F: T
 LOOSENLY FAIL: Case diff Negative:  94 - 255:  95 (-161):  95 (-161): F: T
-STRICTLY FAIL: Case diff Negative:  95 - 223: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  95 - 224: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  95 - 225: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  95 - 226: 125 (-131): 125 (-131): F: T
@@ -7726,7 +7630,6 @@ LOOSENLY FAIL: Case diff Negative:  95 - 252:  99 (-157):  99 (-157): F: T
 LOOSENLY FAIL: Case diff Negative:  95 - 253:  98 (-158):  98 (-158): F: T
 LOOSENLY FAIL: Case diff Negative:  95 - 254:  97 (-159):  97 (-159): F: T
 LOOSENLY FAIL: Case diff Negative:  95 - 255:  96 (-160):  96 (-160): F: T
-STRICTLY FAIL: Case diff Negative:  96 - 224: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  96 - 225: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  96 - 226: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  96 - 227: 125 (-131): 125 (-131): F: T
@@ -7758,7 +7661,6 @@ LOOSENLY FAIL: Case diff Negative:  96 - 252: 100 (-156): 100 (-156): F: T
 LOOSENLY FAIL: Case diff Negative:  96 - 253:  99 (-157):  99 (-157): F: T
 LOOSENLY FAIL: Case diff Negative:  96 - 254:  98 (-158):  98 (-158): F: T
 LOOSENLY FAIL: Case diff Negative:  96 - 255:  97 (-159):  97 (-159): F: T
-STRICTLY FAIL: Case diff Negative:  97 - 225: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  97 - 226: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  97 - 227: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  97 - 228: 125 (-131): 125 (-131): F: T
@@ -7789,7 +7691,6 @@ LOOSENLY FAIL: Case diff Negative:  97 - 252: 101 (-155): 101 (-155): F: T
 LOOSENLY FAIL: Case diff Negative:  97 - 253: 100 (-156): 100 (-156): F: T
 LOOSENLY FAIL: Case diff Negative:  97 - 254:  99 (-157):  99 (-157): F: T
 LOOSENLY FAIL: Case diff Negative:  97 - 255:  98 (-158):  98 (-158): F: T
-STRICTLY FAIL: Case diff Negative:  98 - 226: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  98 - 227: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  98 - 228: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  98 - 229: 125 (-131): 125 (-131): F: T
@@ -7819,7 +7720,6 @@ LOOSENLY FAIL: Case diff Negative:  98 - 252: 102 (-154): 102 (-154): F: T
 LOOSENLY FAIL: Case diff Negative:  98 - 253: 101 (-155): 101 (-155): F: T
 LOOSENLY FAIL: Case diff Negative:  98 - 254: 100 (-156): 100 (-156): F: T
 LOOSENLY FAIL: Case diff Negative:  98 - 255:  99 (-157):  99 (-157): F: T
-STRICTLY FAIL: Case diff Negative:  99 - 227: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative:  99 - 228: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative:  99 - 229: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative:  99 - 230: 125 (-131): 125 (-131): F: T
@@ -7848,7 +7748,6 @@ LOOSENLY FAIL: Case diff Negative:  99 - 252: 103 (-153): 103 (-153): F: T
 LOOSENLY FAIL: Case diff Negative:  99 - 253: 102 (-154): 102 (-154): F: T
 LOOSENLY FAIL: Case diff Negative:  99 - 254: 101 (-155): 101 (-155): F: T
 LOOSENLY FAIL: Case diff Negative:  99 - 255: 100 (-156): 100 (-156): F: T
-STRICTLY FAIL: Case diff Negative: 100 - 228: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 100 - 229: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 100 - 230: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 100 - 231: 125 (-131): 125 (-131): F: T
@@ -7876,7 +7775,6 @@ LOOSENLY FAIL: Case diff Negative: 100 - 252: 104 (-152): 104 (-152): F: T
 LOOSENLY FAIL: Case diff Negative: 100 - 253: 103 (-153): 103 (-153): F: T
 LOOSENLY FAIL: Case diff Negative: 100 - 254: 102 (-154): 102 (-154): F: T
 LOOSENLY FAIL: Case diff Negative: 100 - 255: 101 (-155): 101 (-155): F: T
-STRICTLY FAIL: Case diff Negative: 101 - 229: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 101 - 230: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 101 - 231: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 101 - 232: 125 (-131): 125 (-131): F: T
@@ -7903,7 +7801,6 @@ LOOSENLY FAIL: Case diff Negative: 101 - 252: 105 (-151): 105 (-151): F: T
 LOOSENLY FAIL: Case diff Negative: 101 - 253: 104 (-152): 104 (-152): F: T
 LOOSENLY FAIL: Case diff Negative: 101 - 254: 103 (-153): 103 (-153): F: T
 LOOSENLY FAIL: Case diff Negative: 101 - 255: 102 (-154): 102 (-154): F: T
-STRICTLY FAIL: Case diff Negative: 102 - 230: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 102 - 231: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 102 - 232: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 102 - 233: 125 (-131): 125 (-131): F: T
@@ -7929,7 +7826,6 @@ LOOSENLY FAIL: Case diff Negative: 102 - 252: 106 (-150): 106 (-150): F: T
 LOOSENLY FAIL: Case diff Negative: 102 - 253: 105 (-151): 105 (-151): F: T
 LOOSENLY FAIL: Case diff Negative: 102 - 254: 104 (-152): 104 (-152): F: T
 LOOSENLY FAIL: Case diff Negative: 102 - 255: 103 (-153): 103 (-153): F: T
-STRICTLY FAIL: Case diff Negative: 103 - 231: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 103 - 232: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 103 - 233: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 103 - 234: 125 (-131): 125 (-131): F: T
@@ -7954,7 +7850,6 @@ LOOSENLY FAIL: Case diff Negative: 103 - 252: 107 (-149): 107 (-149): F: T
 LOOSENLY FAIL: Case diff Negative: 103 - 253: 106 (-150): 106 (-150): F: T
 LOOSENLY FAIL: Case diff Negative: 103 - 254: 105 (-151): 105 (-151): F: T
 LOOSENLY FAIL: Case diff Negative: 103 - 255: 104 (-152): 104 (-152): F: T
-STRICTLY FAIL: Case diff Negative: 104 - 232: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 104 - 233: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 104 - 234: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 104 - 235: 125 (-131): 125 (-131): F: T
@@ -7978,7 +7873,6 @@ LOOSENLY FAIL: Case diff Negative: 104 - 252: 108 (-148): 108 (-148): F: T
 LOOSENLY FAIL: Case diff Negative: 104 - 253: 107 (-149): 107 (-149): F: T
 LOOSENLY FAIL: Case diff Negative: 104 - 254: 106 (-150): 106 (-150): F: T
 LOOSENLY FAIL: Case diff Negative: 104 - 255: 105 (-151): 105 (-151): F: T
-STRICTLY FAIL: Case diff Negative: 105 - 233: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 105 - 234: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 105 - 235: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 105 - 236: 125 (-131): 125 (-131): F: T
@@ -8001,7 +7895,6 @@ LOOSENLY FAIL: Case diff Negative: 105 - 252: 109 (-147): 109 (-147): F: T
 LOOSENLY FAIL: Case diff Negative: 105 - 253: 108 (-148): 108 (-148): F: T
 LOOSENLY FAIL: Case diff Negative: 105 - 254: 107 (-149): 107 (-149): F: T
 LOOSENLY FAIL: Case diff Negative: 105 - 255: 106 (-150): 106 (-150): F: T
-STRICTLY FAIL: Case diff Negative: 106 - 234: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 106 - 235: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 106 - 236: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 106 - 237: 125 (-131): 125 (-131): F: T
@@ -8023,7 +7916,6 @@ LOOSENLY FAIL: Case diff Negative: 106 - 252: 110 (-146): 110 (-146): F: T
 LOOSENLY FAIL: Case diff Negative: 106 - 253: 109 (-147): 109 (-147): F: T
 LOOSENLY FAIL: Case diff Negative: 106 - 254: 108 (-148): 108 (-148): F: T
 LOOSENLY FAIL: Case diff Negative: 106 - 255: 107 (-149): 107 (-149): F: T
-STRICTLY FAIL: Case diff Negative: 107 - 235: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 107 - 236: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 107 - 237: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 107 - 238: 125 (-131): 125 (-131): F: T
@@ -8044,7 +7936,6 @@ LOOSENLY FAIL: Case diff Negative: 107 - 252: 111 (-145): 111 (-145): F: T
 LOOSENLY FAIL: Case diff Negative: 107 - 253: 110 (-146): 110 (-146): F: T
 LOOSENLY FAIL: Case diff Negative: 107 - 254: 109 (-147): 109 (-147): F: T
 LOOSENLY FAIL: Case diff Negative: 107 - 255: 108 (-148): 108 (-148): F: T
-STRICTLY FAIL: Case diff Negative: 108 - 236: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 108 - 237: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 108 - 238: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 108 - 239: 125 (-131): 125 (-131): F: T
@@ -8064,7 +7955,6 @@ LOOSENLY FAIL: Case diff Negative: 108 - 252: 112 (-144): 112 (-144): F: T
 LOOSENLY FAIL: Case diff Negative: 108 - 253: 111 (-145): 111 (-145): F: T
 LOOSENLY FAIL: Case diff Negative: 108 - 254: 110 (-146): 110 (-146): F: T
 LOOSENLY FAIL: Case diff Negative: 108 - 255: 109 (-147): 109 (-147): F: T
-STRICTLY FAIL: Case diff Negative: 109 - 237: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 109 - 238: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 109 - 239: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 109 - 240: 125 (-131): 125 (-131): F: T
@@ -8083,7 +7973,6 @@ LOOSENLY FAIL: Case diff Negative: 109 - 252: 113 (-143): 113 (-143): F: T
 LOOSENLY FAIL: Case diff Negative: 109 - 253: 112 (-144): 112 (-144): F: T
 LOOSENLY FAIL: Case diff Negative: 109 - 254: 111 (-145): 111 (-145): F: T
 LOOSENLY FAIL: Case diff Negative: 109 - 255: 110 (-146): 110 (-146): F: T
-STRICTLY FAIL: Case diff Negative: 110 - 238: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 110 - 239: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 110 - 240: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 110 - 241: 125 (-131): 125 (-131): F: T
@@ -8101,7 +7990,6 @@ LOOSENLY FAIL: Case diff Negative: 110 - 252: 114 (-142): 114 (-142): F: T
 LOOSENLY FAIL: Case diff Negative: 110 - 253: 113 (-143): 113 (-143): F: T
 LOOSENLY FAIL: Case diff Negative: 110 - 254: 112 (-144): 112 (-144): F: T
 LOOSENLY FAIL: Case diff Negative: 110 - 255: 111 (-145): 111 (-145): F: T
-STRICTLY FAIL: Case diff Negative: 111 - 239: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 111 - 240: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 111 - 241: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 111 - 242: 125 (-131): 125 (-131): F: T
@@ -8118,7 +8006,6 @@ LOOSENLY FAIL: Case diff Negative: 111 - 252: 115 (-141): 115 (-141): F: T
 LOOSENLY FAIL: Case diff Negative: 111 - 253: 114 (-142): 114 (-142): F: T
 LOOSENLY FAIL: Case diff Negative: 111 - 254: 113 (-143): 113 (-143): F: T
 LOOSENLY FAIL: Case diff Negative: 111 - 255: 112 (-144): 112 (-144): F: T
-STRICTLY FAIL: Case diff Negative: 112 - 240: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 112 - 241: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 112 - 242: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 112 - 243: 125 (-131): 125 (-131): F: T
@@ -8134,7 +8021,6 @@ LOOSENLY FAIL: Case diff Negative: 112 - 252: 116 (-140): 116 (-140): F: T
 LOOSENLY FAIL: Case diff Negative: 112 - 253: 115 (-141): 115 (-141): F: T
 LOOSENLY FAIL: Case diff Negative: 112 - 254: 114 (-142): 114 (-142): F: T
 LOOSENLY FAIL: Case diff Negative: 112 - 255: 113 (-143): 113 (-143): F: T
-STRICTLY FAIL: Case diff Negative: 113 - 241: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 113 - 242: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 113 - 243: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 113 - 244: 125 (-131): 125 (-131): F: T
@@ -8149,7 +8035,6 @@ LOOSENLY FAIL: Case diff Negative: 113 - 252: 117 (-139): 117 (-139): F: T
 LOOSENLY FAIL: Case diff Negative: 113 - 253: 116 (-140): 116 (-140): F: T
 LOOSENLY FAIL: Case diff Negative: 113 - 254: 115 (-141): 115 (-141): F: T
 LOOSENLY FAIL: Case diff Negative: 113 - 255: 114 (-142): 114 (-142): F: T
-STRICTLY FAIL: Case diff Negative: 114 - 242: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 114 - 243: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 114 - 244: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 114 - 245: 125 (-131): 125 (-131): F: T
@@ -8163,7 +8048,6 @@ LOOSENLY FAIL: Case diff Negative: 114 - 252: 118 (-138): 118 (-138): F: T
 LOOSENLY FAIL: Case diff Negative: 114 - 253: 117 (-139): 117 (-139): F: T
 LOOSENLY FAIL: Case diff Negative: 114 - 254: 116 (-140): 116 (-140): F: T
 LOOSENLY FAIL: Case diff Negative: 114 - 255: 115 (-141): 115 (-141): F: T
-STRICTLY FAIL: Case diff Negative: 115 - 243: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 115 - 244: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 115 - 245: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 115 - 246: 125 (-131): 125 (-131): F: T
@@ -8176,7 +8060,6 @@ LOOSENLY FAIL: Case diff Negative: 115 - 252: 119 (-137): 119 (-137): F: T
 LOOSENLY FAIL: Case diff Negative: 115 - 253: 118 (-138): 118 (-138): F: T
 LOOSENLY FAIL: Case diff Negative: 115 - 254: 117 (-139): 117 (-139): F: T
 LOOSENLY FAIL: Case diff Negative: 115 - 255: 116 (-140): 116 (-140): F: T
-STRICTLY FAIL: Case diff Negative: 116 - 244: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 116 - 245: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 116 - 246: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 116 - 247: 125 (-131): 125 (-131): F: T
@@ -8188,7 +8071,6 @@ LOOSENLY FAIL: Case diff Negative: 116 - 252: 120 (-136): 120 (-136): F: T
 LOOSENLY FAIL: Case diff Negative: 116 - 253: 119 (-137): 119 (-137): F: T
 LOOSENLY FAIL: Case diff Negative: 116 - 254: 118 (-138): 118 (-138): F: T
 LOOSENLY FAIL: Case diff Negative: 116 - 255: 117 (-139): 117 (-139): F: T
-STRICTLY FAIL: Case diff Negative: 117 - 245: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 117 - 246: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 117 - 247: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 117 - 248: 125 (-131): 125 (-131): F: T
@@ -8199,7 +8081,6 @@ LOOSENLY FAIL: Case diff Negative: 117 - 252: 121 (-135): 121 (-135): F: T
 LOOSENLY FAIL: Case diff Negative: 117 - 253: 120 (-136): 120 (-136): F: T
 LOOSENLY FAIL: Case diff Negative: 117 - 254: 119 (-137): 119 (-137): F: T
 LOOSENLY FAIL: Case diff Negative: 117 - 255: 118 (-138): 118 (-138): F: T
-STRICTLY FAIL: Case diff Negative: 118 - 246: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 118 - 247: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 118 - 248: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 118 - 249: 125 (-131): 125 (-131): F: T
@@ -8209,7 +8090,6 @@ LOOSENLY FAIL: Case diff Negative: 118 - 252: 122 (-134): 122 (-134): F: T
 LOOSENLY FAIL: Case diff Negative: 118 - 253: 121 (-135): 121 (-135): F: T
 LOOSENLY FAIL: Case diff Negative: 118 - 254: 120 (-136): 120 (-136): F: T
 LOOSENLY FAIL: Case diff Negative: 118 - 255: 119 (-137): 119 (-137): F: T
-STRICTLY FAIL: Case diff Negative: 119 - 247: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 119 - 248: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 119 - 249: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 119 - 250: 125 (-131): 125 (-131): F: T
@@ -8218,7 +8098,6 @@ LOOSENLY FAIL: Case diff Negative: 119 - 252: 123 (-133): 123 (-133): F: T
 LOOSENLY FAIL: Case diff Negative: 119 - 253: 122 (-134): 122 (-134): F: T
 LOOSENLY FAIL: Case diff Negative: 119 - 254: 121 (-135): 121 (-135): F: T
 LOOSENLY FAIL: Case diff Negative: 119 - 255: 120 (-136): 120 (-136): F: T
-STRICTLY FAIL: Case diff Negative: 120 - 248: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 120 - 249: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 120 - 250: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 120 - 251: 125 (-131): 125 (-131): F: T
@@ -8226,31 +8105,24 @@ LOOSENLY FAIL: Case diff Negative: 120 - 252: 124 (-132): 124 (-132): F: T
 LOOSENLY FAIL: Case diff Negative: 120 - 253: 123 (-133): 123 (-133): F: T
 LOOSENLY FAIL: Case diff Negative: 120 - 254: 122 (-134): 122 (-134): F: T
 LOOSENLY FAIL: Case diff Negative: 120 - 255: 121 (-135): 121 (-135): F: T
-STRICTLY FAIL: Case diff Negative: 121 - 249: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 121 - 250: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 121 - 251: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 121 - 252: 125 (-131): 125 (-131): F: T
 LOOSENLY FAIL: Case diff Negative: 121 - 253: 124 (-132): 124 (-132): F: T
 LOOSENLY FAIL: Case diff Negative: 121 - 254: 123 (-133): 123 (-133): F: T
 LOOSENLY FAIL: Case diff Negative: 121 - 255: 122 (-134): 122 (-134): F: T
-STRICTLY FAIL: Case diff Negative: 122 - 250: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 122 - 251: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 122 - 252: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 122 - 253: 125 (-131): 125 (-131): F: T
 LOOSENLY FAIL: Case diff Negative: 122 - 254: 124 (-132): 124 (-132): F: T
 LOOSENLY FAIL: Case diff Negative: 122 - 255: 123 (-133): 123 (-133): F: T
-STRICTLY FAIL: Case diff Negative: 123 - 251: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 123 - 252: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 123 - 253: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 123 - 254: 125 (-131): 125 (-131): F: T
 LOOSENLY FAIL: Case diff Negative: 123 - 255: 124 (-132): 124 (-132): F: T
-STRICTLY FAIL: Case diff Negative: 124 - 252: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 124 - 253: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 124 - 254: 126 (-130): 126 (-130): F: T
 LOOSENLY FAIL: Case diff Negative: 124 - 255: 125 (-131): 125 (-131): F: T
-STRICTLY FAIL: Case diff Negative: 125 - 253: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 125 - 254: 127 (-129): 127 (-129): F: T
 LOOSENLY FAIL: Case diff Negative: 125 - 255: 126 (-130): 126 (-130): F: T
-STRICTLY FAIL: Case diff Negative: 126 - 254: 128 (-128): 128 (-128): F: T
 LOOSENLY FAIL: Case diff Negative: 126 - 255: 127 (-129): 127 (-129): F: T
-STRICTLY FAIL: Case diff Negative: 127 - 255: 128 (-128): 128 (-128): F: T
