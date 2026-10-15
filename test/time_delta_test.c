@@ -5,12 +5,12 @@
 #include <stdint.h>
 
 void uint8Test();
-void isDue();
+void ulongTest();
 
 int main(void) {
     uint8Test();
     getchar();
-    isDue();
+    ulongTest();
 }
 
 void uint8Test() {
@@ -21,10 +21,7 @@ void uint8Test() {
             uint8_t k = m-n;
             uint8_t mostSigBit = ((uint8_t)(-1) & ((uint8_t)(-1) >> 1));
             int16_t k2 = (int16_t)m-(int16_t)n;
-            uint8_t tcond = ((mostSigBit^(~k))+mostSigBit+2);
-            bool cond1 = (k == (uint8_t)(-1));
-            bool cond2 = (k < tcond);
-            bool finalCond = cond1 || cond2;
+            bool finalCond = (k < n);
 
             bool targetCond1 = (k2 >= 0);
             bool targetCond2 = (k >= 0);
@@ -80,7 +77,7 @@ void uint8Test() {
     printf("LOOSENLY FAIL: %d\n", count[3]);
 }
 
-void isDue() {
+void ulongTest() {
     long count[4] = {0, 0, 0, 0};
     unsigned long testPairMin[3] = {0,  ((ULONG_MAX/2)+1-256) , ULONG_MAX-256};
     unsigned long testPairMax[3] = {255, ((ULONG_MAX/2)+1+256), ULONG_MAX};
@@ -94,10 +91,7 @@ void isDue() {
                 unsigned long k = m-n;
                 unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
                 long long k2 = (long long)m-(long long)n;
-                unsigned long tcond = ((mostSigBit^(~k))+mostSigBit+2);
-                bool cond1 = (k == ULONG_MAX);
-                bool cond2 = (k < tcond);
-                bool finalCond = cond1 || cond2;
+                bool finalCond = (k < n);
 
                 bool targetCond1 = (k2 >= 0);
                 bool targetCond2 = (k >= 0);
