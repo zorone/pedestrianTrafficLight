@@ -88,8 +88,8 @@ void ulongTest() {
         unsigned long minBoundaryI = testPairMin[testPairIdx];
         unsigned long minBoundaryJ = testPairMin[testPairIdx];
         unsigned long maxBoundary = testPairMax[testPairIdx];
-        for( ; (long long)minBoundaryI <= (long long)maxBoundary; minBoundaryI++) {
-            for( ; (long long)minBoundaryJ <= (long long)maxBoundary; minBoundaryJ++) {
+        for( ; minBoundaryI <= maxBoundary; minBoundaryI++) {
+            for( ; minBoundaryJ <= maxBoundary; minBoundaryJ++) {
                 unsigned long m = minBoundaryI, n = minBoundaryJ;
                 unsigned long k = m-n;
                 unsigned long mostSigBit = (ULONG_MAX & (ULONG_MAX >> 1));
@@ -108,13 +108,11 @@ void ulongTest() {
                         printf("STRICTLY PASS: Case diff Positive: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[0]++;
-                        continue;
                     }
                     else {
                         printf("STRICTLY FAIL: Case diff Positive: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[1]++;
-                        continue;
                     }
                 }
                 else if(targetCond3) {
@@ -122,13 +120,11 @@ void ulongTest() {
                         printf("STRICTLY PASS: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[0]++;
-                        continue;
                     }
                     else {
                         printf("STRICTLY FAIL: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[1]++;
-                        continue;
                     }
                 }
                 else {
@@ -136,16 +132,17 @@ void ulongTest() {
                         printf("LOOSENLY PASS: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[2]++;
-                        continue;
                     }
                     else {
                         printf("LOOSENLY FAIL: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                 targetCond2 ? 'T': 'F', finalCond ? 'T': 'F');
                         count[3]++;
-                        continue;
                     }
                 }
+
+                if(minBoundaryJ == maxBoundary) break;
             }
+            if(minBoundaryI == maxBoundary) break;
         }
     }
     printf("STRICTLY PASS: %d\n", count[0]);
