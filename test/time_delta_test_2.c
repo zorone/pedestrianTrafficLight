@@ -9,7 +9,7 @@ int main(void) {
     unsigned long now, time;
     while(true) {
         scanf("%lu %lu", &now, &time);
-
+        isDue(now, time);
     }
 }
 
