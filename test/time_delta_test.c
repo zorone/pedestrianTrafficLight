@@ -81,7 +81,7 @@ void uint8Test() {
 }
 
 void ulongTest() {
-    int count[4] = {0, 0, 0, 0};
+    long count[4] = {0, 0, 0, 0};
     unsigned long testPairMin[3] = {0,  ((ULONG_MAX/2)+1-256) , ULONG_MAX-256};
     unsigned long testPairMax[3] = {255, ((ULONG_MAX/2)+1+256), ULONG_MAX};
     for(int testPairIdx = 0; testPairIdx < 3; testPairIdx++){
