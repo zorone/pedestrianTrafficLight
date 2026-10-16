@@ -3,6 +3,9 @@
 #include <Arduino.h>
 #include <Arduino_DebugUtils.h>
 
+#define begSignalPin 2
+#define begStatusPin 3
+
 #define pedestrianLightPin_GREEN 4
 #define pedestrianLightPin_RED 5
 #define pedestrianCountdownPin_GREEN 6
@@ -21,6 +24,8 @@ void setup() {
     Serial.begin(9600);
     Debug.timestampOn();
 
+    pinMode(begSignalPin, INPUT_PULLUP);
+    pinMode(begStatusPin, OUTPUT);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
     pinMode(pedestrianLightPin_RED, OUTPUT);
     pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
@@ -45,5 +50,5 @@ void setup() {
 }
 
 void loop() {
-  
+    digitalWrite(begStatusPin, !digitalRead(begSignalPin));
 }

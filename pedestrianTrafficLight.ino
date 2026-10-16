@@ -5,6 +5,7 @@ void unreachable();
 void halt();
 
 #define begSignalPin 2
+#define begStatusPin 3
 
 #define pedestrianLightPin_GREEN 4
 #define pedestrianLightPin_RED 5
@@ -43,6 +44,7 @@ void setup() {
     Debug.timestampOn();
 
     pinMode(begSignalPin, INPUT_PULLUP);
+    pinMode(begStatusPin, OUTPUT);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
     pinMode(pedestrianLightPin_RED, OUTPUT);
     pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
@@ -58,6 +60,7 @@ void setup() {
     delay(5 * 1000ul);   // Wait for all devices to become ready. 
     
     DEBUG_INFO("Devices ready.");
+    digitalWrite(begStatusPin, LOW);
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
     changeCarCountdownSignal(green, hide);
@@ -65,6 +68,7 @@ void setup() {
 
     DEBUG_INFO("Ready");
     detectSignal(begSignalPin, 30);
+    digitalWrite(begStatusPin, HIGH);
     DEBUG_INFO("%d", digitalRead(begSignalPin));
 }
 
@@ -87,6 +91,7 @@ void loop() {
     DEBUG_INFO("Car: Red");
 
     delay(2 * 1000 + 50);
+    digitalWrite(begStatusPin, LOW);
     changePedestrianLightSignal(green);
     changePedestrianCountdownSignal(green, show);
     DEBUG_INFO("Pedestrian: Green");
@@ -106,6 +111,7 @@ void loop() {
     timeout = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
     detectSignal(begSignalPin, 30);
+    digitalWrite(begStatusPin, HIGH);
     DEBUG_INFO("%d", digitalRead(begSignalPin));
     while(!isDue(timeout)) {;}
 }
