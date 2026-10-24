@@ -38,6 +38,7 @@ bool detectSignal(int pin, unsigned int damp);
 bool isDue(unsigned long time);
 
 unsigned long timeout = 0;
+static uint8_t debugCounter = 0;
 
 void setup() {
     Serial.begin(9600);
