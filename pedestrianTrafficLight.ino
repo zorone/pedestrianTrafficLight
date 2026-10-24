@@ -1,9 +1,10 @@
-#include <Arduino_DebugUtils.h>
+#include <limits.h>
 
 void unreachable();
 void halt();
 
 #define begSignalPin 2
+#define begStatusPin 3
 
 #define pedestrianLightPin_GREEN 4
 #define pedestrianLightPin_RED 5
@@ -38,10 +39,8 @@ bool isDue(unsigned long time);
 unsigned long timeout = 0;
 
 void setup() {
-    Serial.begin(9600);
-    Debug.timestampOn();
-
     pinMode(begSignalPin, INPUT_PULLUP);
+    pinMode(begStatusPin, OUTPUT);
     pinMode(pedestrianLightPin_GREEN, OUTPUT);
     pinMode(pedestrianLightPin_RED, OUTPUT);
     pinMode(pedestrianCountdownPin_GREEN, OUTPUT);
@@ -52,16 +51,17 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
+
+    delay(5 * 1000ul);   // Wait for all devices to become ready. 
     
+    digitalWrite(begStatusPin, LOW);
     changeCarLightSignal(green);
     changePedestrianLightSignal(red);
     changeCarCountdownSignal(green, hide);
     changePedestrianCountdownSignal(red, hide);
 
-    DEBUG_INFO("Ready");
     detectSignal(begSignalPin, 30);
-    DEBUG_INFO("%d", digitalRead(begSignalPin));
-    DEBUG_INFO("Start!");
+    digitalWrite(begStatusPin, HIGH);
 }
 
 void loop() {
@@ -77,6 +77,7 @@ void loop() {
     changeCarCountdownSignal(red, show);
 
     delay(2 * 1000 + 50);
+    digitalWrite(begStatusPin, LOW);
     changePedestrianLightSignal(green);
     changePedestrianCountdownSignal(green, show);
 
@@ -89,21 +90,22 @@ void loop() {
     changeCarCountdownSignal(green, hide);
 
     timeout = millis() + 60ul * 1000;
-    DEBUG_INFO("Ready");
     detectSignal(begSignalPin, 30);
-    DEBUG_INFO("%d", digitalRead(begSignalPin));
+    digitalWrite(begStatusPin, HIGH);
     while(!isDue(timeout)) {;}
-    DEBUG_INFO("Start!");
 }
 
 void unreachable() {
-    // Serial.begin(9600);
-    Serial.println("Error: Hardware have reached unreachable state!!!");
     halt();
 }
 
 void halt() {
-    for (;;) {}
+    for (;;) {
+        delay(250);
+        digitalWrite(begStatusPin, HIGH);
+        delay(250);
+        digitalWrite(begStatusPin, LOW);
+    }
 }
 
 void changeCarLightSignal(LightSignal signal) {
@@ -115,8 +117,6 @@ void changeCarLightSignal(LightSignal signal) {
         case orange: digitalWrite(carLightPin_ORANGE, HIGH); break;
         case red: digitalWrite(carLightPin_RED, HIGH); break;
         default:
-            Serial.print("changeCarLightSignal(): unreachable state: ");
-            Serial.println(signal);
             unreachable();
     }
 }
@@ -130,10 +130,6 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
                 case orange: digitalWrite(carCountdownPin_ORANGE, LOW); break;
                 case red: digitalWrite(carCountdownPin_RED, LOW); break;
                 default:
-                    Serial.print("changeCarCountdownSignal: unreachable state: ");
-                    Serial.print(lightSignal);
-                    Serial.print(" ");
-                    Serial.print(displaySignal);
                     unreachable();
             }
             break;
@@ -143,16 +139,10 @@ void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displayS
                 case orange: digitalWrite(carCountdownPin_ORANGE, HIGH); break;
                 case red: digitalWrite(carCountdownPin_RED, HIGH); break;
                 default:
-                    Serial.print("changeCarCountdownSignal(): unreachable state: ");
-                    Serial.print(lightSignal);
-                    Serial.print(" ");
-                    Serial.println(displaySignal);
                     unreachable();
             }
             break;
         default:
-            Serial.print("changeCarCountdownSignal(): unreachable state: ");
-            Serial.println(displaySignal);
             unreachable();
     }
 }
@@ -164,8 +154,6 @@ void changePedestrianLightSignal(LightSignal signal) {
         case red: digitalWrite(pedestrianLightPin_RED, HIGH); break;
         case orange:
         default:
-            Serial.print("changePedestrianLightSignal: unreachable state: ");
-            Serial.println(signal);
             unreachable();
     }
 }
@@ -179,10 +167,6 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
                 case red: digitalWrite(pedestrianCountdownPin_RED, LOW); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(lightSignal);
-                    Serial.print(" ");
-                    Serial.println(displaySignal);
                     unreachable();
             }
             break;
@@ -192,16 +176,10 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
                 case red: digitalWrite(pedestrianCountdownPin_RED, HIGH); break;
                 case orange:
                 default:
-                    Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-                    Serial.print(lightSignal);
-                    Serial.print(" ");
-                    Serial.println(displaySignal);
                     unreachable();
             }
             break;
         default:
-            Serial.print("changePedestrianCountdownSignal: unreachable state: ");
-            Serial.println(displaySignal);
             unreachable();
     }
 }
@@ -209,7 +187,6 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
 bool detectSignal(int pin, unsigned int damp) {
     unsigned int initial = 0;
     while(initial < damp) {
-        DEBUG_INFO("%u", initial);
         if(digitalRead(pin) == HIGH) initial++;
         else if(initial > 0) initial--;
     }
@@ -218,5 +195,7 @@ bool detectSignal(int pin, unsigned int damp) {
 
 bool isDue(unsigned long time) {
     unsigned long now = millis();
-    return (now - time) < time;    // Always true, even when now is overflow
+    unsigned long diff = now - time;
+    unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
+    return ((diff <= time) && (time <= now)) || (time <= (now >> 1)) || ((time > now) && (diff <= mostSigBit));
 }
