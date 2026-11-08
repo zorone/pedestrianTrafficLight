@@ -59,11 +59,18 @@ This `WIP_fallback` has been push to branch `master` since tag `v0.5` and later 
 `pedestrianTrafficLight_test/` folder is unfinished work. It intends to be receiver board to test if the controlling board (which is this Platformio project) is working correctly and the timing is within the constraint time.  
 
 `src/` folder is where I put all the core of the codes. Almost all important stuffs will reside here.  
-  `main.cpp` is where the program first executed. Take a look here to see how the program will perform in general.  
+  `main.cpp` is the starting point of the program. Take a look here to see how the program will perform in general.  
   `common.cpp` is where the implementation of common function reside.  
-  `control.cpp` is where the implementation of signal control and timing comparison reside.  
+  `control.cpp` is where the implementation of signal control and timing comparison logic reside.  
 
 `test/` folder is where I write the tests to test against the logic of the code. Although this `test/` folder also appear in normal Platformio project. I didn't make use of the Platformio Unit Test Capability. I wrote it as another regular program. So Platformio's testing feature will not work here. You need to compile and run manually, which we will discuss later on.  
+  `allPin_test.ino`, file for testing if the overall circuit is working or not. Useful when you first connecting the circuit, and test if the hardware is working correctly.  
+  `countdownDisplay_test.ino`, file for testing the countdown display on real deployment. This file test whether each display light up in the correct order. Useful for fixing the hardware and wiring problem.  
+  `time_delta_test.c`, this file is purely for testing the `isDue()` logic. Check if the condition that is produced is the same as what we're expected.  
+  `time_delta_test_2.c`, same as `time_delta_test.c`, but you'll need to provide the value to test against the logic. Useful to test for edge case that `time_delta_test.c` might not be able to capture.  
+  `time_delta_test.py`, this is the predecessor of `time_delta_test.c`. The result doesn't work correctly so I switch to C language.  
+  `time_delta_test_result.txt`, this is generated file produce from `time_delta_test.c`, so we can easier spot the problem by searching within the file, and take a glimpse of the output. (It's the limitation of the terminal, it can't show data that are too far away from the recent output.)  
+  `time_delta_test_result_failed.txt`, this is filtered the result from `time_delta_test_result.txt`. So we can focus on what results that went wrong.  
 
 `.gitignore` file, is the file to tell git which files would you not like to track, so you won't accidentally add it into the repo.  
 
@@ -75,13 +82,13 @@ This `WIP_fallback` has been push to branch `master` since tag `v0.5` and later 
 
 To use this repository, You will need 3 main components.  
 1. [Visual Studio Code](https://code.visualstudio.com/download) or its derivative  
-2. [Platformio IDE](https://docs.platformio.org/en/latest/integration/ide/vscode.html)  
-3. [Atmel AVR platform](https://docs.platformio.org/en/latest/platforms/atmelavr.html?utm_source=platformio&utm_medium=piohome)  
+1. [Platformio IDE](https://docs.platformio.org/en/latest/integration/ide/vscode.html)  
+1. [Atmel AVR platform](https://docs.platformio.org/en/latest/platforms/atmelavr.html?utm_source=platformio&utm_medium=piohome)  
 
 And lastly, we'll need hardware to run on.  
 
 We'll need:  
 1. Arduino Uno  
-2. Wiring  
-3. LED light (If you can get traffic Light Form Factor, I'd recommend getting that instead.)  
-4. (optional) Latching Switch
+1. Wiring  
+1. LED light (If you can get traffic Light Form Factor, I'd recommend getting that instead.)  
+1. (optional) Latching Switch
