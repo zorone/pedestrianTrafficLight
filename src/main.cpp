@@ -49,6 +49,7 @@ void setup() {
         detectResult = detectSignal(begSignalPin, 30);
         if(detectResult == 127) {
             digitalWrite(begStatusPin, HIGH);
+            detectResult = 0;
             break;
         }
     }
@@ -104,6 +105,7 @@ void loop() {
         detectResult = detectSignal(begSignalPin, 30);
         if(detectResult == 127) {
             digitalWrite(begStatusPin, HIGH);
+            detectResult = 0;
             break;
         }
     }
