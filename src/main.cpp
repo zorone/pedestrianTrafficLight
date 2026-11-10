@@ -23,7 +23,9 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
-
+    pinMode(motionSensorSupplyPin, OUTPUT);
+    digitalWrite(motionSensorSupplyPin, LOW);
+    
     DEBUG_INFO("Wait for devices...");
     delay(5 * 1000ul);   // Wait for all devices to become ready. 
 

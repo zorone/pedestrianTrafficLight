@@ -1,5 +1,6 @@
 #ifndef __PEDESTRIAN_LIGHT_PIN_
   #define __PEDESTRIAN_LIGHT_PIN_
+  #include <pins_arduino.h>
   
   #define begSignalPin 2
   #define begStatusPin 3
@@ -15,4 +16,6 @@
   #define carCountdownPin_GREEN 11
   #define carCountdownPin_ORANGE 12
   #define carCountdownPin_RED 13
+
+  #define motionSensorSupplyPin A5
 #endif

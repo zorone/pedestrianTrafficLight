@@ -3,15 +3,15 @@ LED traffic light 8mm
 Width:
 End-to-End width: 6.00cm/2.36 inch
 End-to-End w/o Pin 5.35cm/2.11 inch
-Pin+Base 0.87cm/0.35 inch
-Base 0.27cm/0.10 inch
-Pin 0.65cm/0.26inch
-Buttom Holder 0.78cm/0.30 inch
+Pin+Base 0.87cm/0.34 inch
+Base 0.27cm/0.11 inch
+Pin 0.65cm/0.26 inch
+Buttom Holder 0.78cm/0.31 inch
 Before Hole 0.10cm/0.04 inch
 Hole 0.36cm/0.14 inch
 After Hole 0.30cm/0.12 inch
 Stem 1.17cm/0.46 inch
-Head 3.40cm/1.32 inch
+Head 3.40cm/1.34 inch
 light 0.80cm/0.31 inch
 Gap before red light 0.16cm/0.06 inch
 Gap between light 0.30cm/0.12 inch
@@ -20,9 +20,9 @@ Gap after green light (Before the stem part) 0.24cm/0.09 inch
 Height:
 End-to-End Height: 1.98cm/0.78 inch
 Stem: 0.46cm/0.18 inch
-Head: 1.22cm/0.49 inch
-Light: 0.80cm/0.30 inch
-Gap Above the light: 0.21cm/0.09 inch
-Gap Below the light: 0.21cm/0.09 inch
-Before Hole: 0.06cm/0.03 inch
+Head: 1.22cm/0.48 inch
+Light: 0.80cm/0.31 inch
+Gap Above the light: 0.21cm/0.08 inch
+Gap Below the light: 0.21cm/0.08 inch
+Before Hole: 0.06cm/0.02 inch
 After Hole: 0.08cm/0.03 inch

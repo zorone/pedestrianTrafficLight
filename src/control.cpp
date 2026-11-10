@@ -112,14 +112,21 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
     }
 }
 
-bool detectSignal(int pin, unsigned int damp) {
+int8_t detectSignal(int pin, unsigned int damp) {
     unsigned int initial = 0;
-    while(initial < damp) {
+    if(initial < damp) {
         DEBUG_INFO("%u", initial);
-        if(digitalRead(pin) == HIGH) initial++;
-        else if(initial > 0) initial--;
+        if(digitalRead(pin) == HIGH) {
+            initial++;
+            return 1;
+        }
+        else if(initial > 0) {
+            initial--;
+            return -1;
+        }
+        else return 0;
     }
-    return true;
+    return 127;
 }
 
 bool isDue(unsigned long time) {
