@@ -7,7 +7,6 @@
 
 unsigned long timeout[] = {0, 0};
 bool timeIsOver[] = {false, false};
-uint8_t detectResult = 0;
 
 void setup() {
     Serial.begin(9600);
@@ -46,10 +45,9 @@ void setup() {
             timeIsOver[0] = true;
         }
 
-        detectResult = detectSignal(begSignalPin, 30);
+        int8_t detectResult = detectSignal(begSignalPin, 30);
         if(detectResult == 127) {
             digitalWrite(begStatusPin, HIGH);
-            detectResult = 0;
             break;
         }
     }
@@ -102,10 +100,9 @@ void loop() {
             timeIsOver[0] = true;
         }
 
-        detectResult = detectSignal(begSignalPin, 30);
+        int8_t detectResult = detectSignal(begSignalPin, 30);
         if(detectResult == 127) {
             digitalWrite(begStatusPin, HIGH);
-            detectResult = 0;
             break;
         }
     }
