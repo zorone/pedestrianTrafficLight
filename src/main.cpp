@@ -45,8 +45,7 @@ void setup() {
             timeIsOver[0] = true;
         }
 
-        int8_t detectResult = detectSignal(begSignalPin, 30);
-        if(detectResult == 127) {
+        if(detectSignal(begSignalPin, 30) == 127) {
             digitalWrite(begStatusPin, HIGH);
             break;
         }
@@ -74,6 +73,7 @@ void loop() {
 
     delay(2 * 1000 + 50);
     digitalWrite(begStatusPin, LOW);
+    digitalWrite(motionSensorSupplyPin, HIGH);
     changePedestrianLightSignal(green);
     changePedestrianCountdownSignal(green, show);
     DEBUG_INFO("Pedestrian: Green");
@@ -100,8 +100,7 @@ void loop() {
             timeIsOver[0] = true;
         }
 
-        int8_t detectResult = detectSignal(begSignalPin, 30);
-        if(detectResult == 127) {
+        if(detectSignal(begSignalPin, 30) == 127) {
             digitalWrite(begStatusPin, HIGH);
             break;
         }
