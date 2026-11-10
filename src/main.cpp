@@ -5,7 +5,9 @@
 #include "pin.h"
 #include "control.h"
 
-unsigned long timeout = 0;
+unsigned long timeout[] = {0, 0};
+bool timeIsOver[] = {false, false};
+uint8_t detectResult = 0;
 
 void setup() {
     Serial.begin(9600);
@@ -24,10 +26,11 @@ void setup() {
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
     pinMode(motionSensorSupplyPin, OUTPUT);
-    digitalWrite(motionSensorSupplyPin, LOW);
-    
+    digitalWrite(motionSensorSupplyPin, HIGH);
+
     DEBUG_INFO("Wait for devices...");
     delay(5 * 1000ul);   // Wait for all devices to become ready. 
+    timeout[0] = millis() + (10 * 1000ul);
 
     DEBUG_INFO("Devices ready.");
     digitalWrite(begStatusPin, LOW);
@@ -37,8 +40,18 @@ void setup() {
     changePedestrianCountdownSignal(red, hide);
 
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 30);
-    digitalWrite(begStatusPin, HIGH);
+    while(true) {
+        if(isDue(timeout[0]) && timeIsOver[0]) {
+            digitalWrite(motionSensorSupplyPin, LOW);
+            timeIsOver[0] = true;
+        }
+
+        detectResult = detectSignal(begSignalPin, 30);
+        if(detectResult == 127) {
+            digitalWrite(begStatusPin, HIGH);
+            break;
+        }
+    }
     DEBUG_INFO("%d", digitalRead(begSignalPin));
 }
 
@@ -78,11 +91,23 @@ void loop() {
     DEBUG_INFO("Turn off Countdown");
     DEBUG_INFO("Finish Sequence");
 
-    timeout = millis() + 60ul * 1000;
+    timeout[0] = millis() + 10ul * 1000;
+    timeIsOver[0] = false;
+    timeout[1] = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 30);
-    digitalWrite(begStatusPin, HIGH);
+    while(true) {
+        if(isDue(timeout[0]) && timeIsOver[0]) {
+            digitalWrite(motionSensorSupplyPin, LOW);
+            timeIsOver[0] = true;
+        }
+
+        detectResult = detectSignal(begSignalPin, 30);
+        if(detectResult == 127) {
+            digitalWrite(begStatusPin, HIGH);
+            break;
+        }
+    }
     DEBUG_INFO("%d", digitalRead(begSignalPin));
-    while(!isDue(timeout)) {;}
+    while(!isDue(timeout[1])) {;}
     DEBUG_INFO("Start!");
 }
