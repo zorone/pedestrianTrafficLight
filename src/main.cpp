@@ -45,7 +45,7 @@ void setup() {
             timeIsOver[0] = true;
         }
 
-        int8_t detectSignalResult = detectSignal(begSignalPin, 15);
+        int8_t detectSignalResult = detectSignal(begSignalPin, 12);
         DEBUG_INFO("detectSignal = %d", detectSignalResult);
         if(detectSignalResult == 127) {
             digitalWrite(begStatusPin, HIGH);
@@ -102,7 +102,7 @@ void loop() {
             timeIsOver[0] = true;
         }
 
-        int8_t detectSignalResult = detectSignal(begSignalPin, 15);
+        int8_t detectSignalResult = detectSignal(begSignalPin, 12);
         if(detectSignalResult == 127) {
             digitalWrite(begStatusPin, HIGH);
             break;
