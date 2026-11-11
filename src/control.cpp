@@ -116,7 +116,7 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
 int8_t detectSignal(int pin, unsigned int damp) {
     DEBUG_INFO("initial = %u", initial);
     if(initial < damp) {
-        if(digitalRead(pin) == HIGH) {
+        if(digitalRead(pin) == LOW) {
             initial++;
             return 1;
         }
