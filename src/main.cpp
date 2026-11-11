@@ -40,12 +40,14 @@ void setup() {
 
     DEBUG_INFO("Ready");
     while(true) {
-        if(isDue(timeout[0]) && timeIsOver[0]) {
+        if(isDue(timeout[0]) && !timeIsOver[0]) {
             digitalWrite(motionSensorSupplyPin, LOW);
             timeIsOver[0] = true;
         }
 
-        if(detectSignal(begSignalPin, 30) == 127) {
+        int8_t detectSignalResult = detectSignal(begSignalPin, 30);
+        DEBUG_INFO("detectSignal = %d", detectSignalResult);
+        if(detectSignalResult == 127) {
             digitalWrite(begStatusPin, HIGH);
             break;
         }
@@ -95,12 +97,13 @@ void loop() {
     timeout[1] = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
     while(true) {
-        if(isDue(timeout[0]) && timeIsOver[0]) {
+        if(isDue(timeout[0]) && !timeIsOver[0]) {
             digitalWrite(motionSensorSupplyPin, LOW);
             timeIsOver[0] = true;
         }
 
-        if(detectSignal(begSignalPin, 30) == 127) {
+        int8_t detectSignalResult = detectSignal(begSignalPin, 30);
+        if(detectSignalResult == 127) {
             digitalWrite(begStatusPin, HIGH);
             break;
         }
