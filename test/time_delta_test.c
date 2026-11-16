@@ -80,10 +80,10 @@ void uint8Test() {
 void ulongTest() {
     long count[4] = {0, 0, 0, 0};
     unsigned long testPair[3][2] = {{0, 255}, {((ULONG_MAX/2)+1-256), ((ULONG_MAX/2)+1+256)}, {ULONG_MAX-256, ULONG_MAX}};
-    for(unsigned long testPairFirstIdx = 0; testPairFirstIdx < 3; testPairFirstIdx++) {
-        for(unsigned long testPairLastIdx = 0; testPairLastIdx < 3; testPairLastIdx++) {
+    for(unsigned long testPairFirstIdx = 0; testPairFirstIdx < 3; ++testPairFirstIdx) {
+        for(unsigned long testPairLastIdx = 0; testPairLastIdx < 3; ++testPairLastIdx) {
             for(unsigned long m = testPair[testPairFirstIdx][0]; m <= testPair[testPairFirstIdx][1]; m++) {
-                for(unsigned long n = testPair[testPairLastIdx][0]; m <= testPair[testPairLastIdx][1]; n++) {
+                for(unsigned long n = testPair[testPairLastIdx][0]; n <= testPair[testPairLastIdx][1]; n++) {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     long long k2 = (long long)m-(long long)n;
@@ -129,7 +129,9 @@ void ulongTest() {
                             count[3]++;
                         }
                     }
+                    if(n == ULONG_MAX) break;
                 }
+                if(m == ULONG_MAX) break;
             }
         }
     }
