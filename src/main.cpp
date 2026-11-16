@@ -5,7 +5,8 @@
 #include "pin.h"
 #include "control.h"
 
-unsigned long timeout = 0;
+unsigned long timeout[] = {0, 0};
+bool timeIsOver[] = {false, false};
 
 void setup() {
     Serial.begin(9600);
@@ -23,9 +24,12 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
+    pinMode(motionSensorSupplyPin, OUTPUT);
+    digitalWrite(motionSensorSupplyPin, HIGH);
 
     DEBUG_INFO("Wait for devices...");
     delay(5 * 1000ul);   // Wait for all devices to become ready. 
+    timeout[0] = millis() + (10 * 1000ul);
 
     DEBUG_INFO("Devices ready.");
     digitalWrite(begStatusPin, LOW);
@@ -35,8 +39,19 @@ void setup() {
     changePedestrianCountdownSignal(red, hide);
 
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 30);
-    digitalWrite(begStatusPin, HIGH);
+    while(true) {
+        if(isDue(timeout[0]) && !timeIsOver[0]) {
+            digitalWrite(motionSensorSupplyPin, LOW);
+            timeIsOver[0] = true;
+        }
+
+        int8_t detectSignalResult = detectSignal(begSignalPin, 12);
+        DEBUG_INFO("detectSignal = %d", detectSignalResult);
+        if(detectSignalResult == 127) {
+            digitalWrite(begStatusPin, HIGH);
+            break;
+        }
+    }
     DEBUG_INFO("%d", digitalRead(begSignalPin));
 }
 
@@ -60,6 +75,7 @@ void loop() {
 
     delay(2 * 1000 + 50);
     digitalWrite(begStatusPin, LOW);
+    digitalWrite(motionSensorSupplyPin, HIGH);
     changePedestrianLightSignal(green);
     changePedestrianCountdownSignal(green, show);
     DEBUG_INFO("Pedestrian: Green");
@@ -76,11 +92,26 @@ void loop() {
     DEBUG_INFO("Turn off Countdown");
     DEBUG_INFO("Finish Sequence");
 
-    timeout = millis() + 60ul * 1000;
+    timeout[0] = millis() + 10ul * 1000;
+    timeIsOver[0] = false;
+    timeout[1] = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 30);
-    digitalWrite(begStatusPin, HIGH);
+    while(true) {
+        if(isDue(timeout[0]) && !timeIsOver[0]) {
+            digitalWrite(motionSensorSupplyPin, LOW);
+            timeIsOver[0] = true;
+        }
+
+        int8_t detectSignalResult = detectSignal(begSignalPin, 12);
+        if(detectSignalResult == 127) {
+            digitalWrite(begStatusPin, HIGH);
+            break;
+        }
+    }
+    while(!isDue(timeout[0])) {;}
+    digitalWrite(motionSensorSupplyPin, LOW);
+    timeIsOver[0] = true;
     DEBUG_INFO("%d", digitalRead(begSignalPin));
-    while(!isDue(timeout)) {;}
+    while(!isDue(timeout[1])) {;}
     DEBUG_INFO("Start!");
 }

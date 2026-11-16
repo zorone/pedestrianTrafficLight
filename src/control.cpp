@@ -9,6 +9,7 @@ LightSignal carSignal = green;
 LightSignal pedestrianSignal = red;
 CountdownDisplay carCountdown = hide;
 CountdownDisplay pedestrianCountdown = hide;
+unsigned int initial = 0;
 
 static uint8_t debugCounter = 0;
 
@@ -112,14 +113,21 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
     }
 }
 
-bool detectSignal(int pin, unsigned int damp) {
-    unsigned int initial = 0;
-    while(initial < damp) {
-        DEBUG_INFO("%u", initial);
-        if(digitalRead(pin) == HIGH) initial++;
-        else if(initial > 0) initial--;
+int8_t detectSignal(int pin, unsigned int damp) {
+    DEBUG_INFO("initial = %u", initial);
+    if(initial < damp) {
+        if(digitalRead(pin) == HIGH) {
+            initial++;
+            return 1;
+        }
+        else if(initial > 0) {
+            initial--;
+            return -1;
+        }
+        else return 0;
     }
-    return true;
+    initial = 0;
+    return 127;
 }
 
 bool isDue(unsigned long time) {
