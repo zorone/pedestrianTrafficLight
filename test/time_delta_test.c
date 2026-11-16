@@ -87,11 +87,11 @@ void ulongTest() {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     long long k2 = (long long)m-(long long)n;
-                    bool finalCond = ((k <= n) && (n <= m)) || (n <= (m >> 1)) || ((n > m) && (k <= mostSigBit));
+                    bool finalCond = ((k <= n) && (n <= m)) || (n <= (m >> 1)) || ((n > m) && (k < mostSigBit));
 
                     bool targetCond1 = (k2 >= 0);
                     bool targetCond2 = (k >= 0);
-                    bool targetCond3 = (abs(k2) <= (ULONG_MAX/2)+1);
+                    bool targetCond3 = (llabs(k2) <= (ULONG_MAX/2)+1);
                     
                     if(targetCond1) {
                         if(targetCond1 == finalCond) {
