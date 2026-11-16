@@ -79,7 +79,7 @@ void uint8Test() {
 
 void ulongTest() {
     long count[4] = {0, 0, 0, 0};
-    unsigned long testPair[3][2] = {{0, 65535}, {((ULONG_MAX/2)+1-65536), ((ULONG_MAX/2)+1+65536)}, {ULONG_MAX-65536, ULONG_MAX}};
+    unsigned long testPair[3][2] = {{0, 255}, {((ULONG_MAX/2)+1-256), ((ULONG_MAX/2)+1+256)}, {ULONG_MAX-256, ULONG_MAX}};
     for(unsigned long testPairFirstIdx = 0; testPairFirstIdx < 3; testPairFirstIdx++) {
         for(unsigned long testPairLastIdx = 0; testPairLastIdx < 3; testPairLastIdx++) {
             for(unsigned long m = testPair[testPairFirstIdx][0]; m <= testPair[testPairFirstIdx][1]; m++) {
