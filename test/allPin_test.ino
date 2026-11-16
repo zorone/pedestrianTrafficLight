@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <Arduino_DebugUtils.h>
+#include <pins_arduino.h>
 
 #define begSignalPin 2
 #define begStatusPin 3
@@ -17,6 +18,8 @@
 #define carCountdownPin_GREEN 11
 #define carCountdownPin_ORANGE 12
 #define carCountdownPin_RED 13
+
+#define motionSensorSupplyPin A5
 
 unsigned long timeout = 0;
 
@@ -36,6 +39,7 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
+    pinMode(motionSensorSupplyPin, OUTPUT);
 
     digitalWrite(pedestrianLightPin_GREEN, HIGH);
     digitalWrite(pedestrianLightPin_RED, HIGH);
@@ -47,8 +51,14 @@ void setup() {
     digitalWrite(carCountdownPin_GREEN, HIGH);
     digitalWrite(carCountdownPin_ORANGE, HIGH);
     digitalWrite(carCountdownPin_RED, HIGH);
+
+    digitalWrite(begStatusPin, HIGH);
+    digitalWrite(motionSensorSupplyPin, HIGH);
+
+    delay(10000u);
 }
 
 void loop() {
     digitalWrite(begStatusPin, !digitalRead(begSignalPin));
+    digitalWrite(motionSensorSupplyPin, digitalRead(begSignalPin));
 }

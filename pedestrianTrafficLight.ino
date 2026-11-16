@@ -1,5 +1,7 @@
 #include <limits.h>
+#include <stdint.h>
 #include <Arduino_DebugUtils.h>
+#include <pins_arduino.h>
 
 void unreachable();
 void halt();
@@ -19,6 +21,8 @@ void halt();
 #define carCountdownPin_ORANGE 12
 #define carCountdownPin_RED 13
 
+#define motionSensorSupplyPin A5
+
 typedef enum {
     green,
     orange,
@@ -34,10 +38,13 @@ void changeCarLightSignal(LightSignal signal);
 void changeCarCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
 void changePedestrianLightSignal(LightSignal signal);
 void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay displaySignal);
-bool detectSignal(int pin, unsigned int damp);
+int8_t detectSignal(int pin, unsigned int damp);
 bool isDue(unsigned long time);
 
-unsigned long timeout = 0;
+unsigned long timeout[] = {0, 0};
+bool timeIsOver[] = {false, false};
+unsigned int initial = 0;
+
 static uint8_t debugCounter = 0;
 
 void setup() {
@@ -56,9 +63,12 @@ void setup() {
     pinMode(carCountdownPin_GREEN, OUTPUT);
     pinMode(carCountdownPin_ORANGE, OUTPUT);
     pinMode(carCountdownPin_RED, OUTPUT);
+    pinMode(motionSensorSupplyPin, OUTPUT);
+    digitalWrite(motionSensorSupplyPin, HIGH);
 
     DEBUG_INFO("Wait for devices...");
     delay(5 * 1000ul);   // Wait for all devices to become ready. 
+    timeout[0] = millis() + (10 * 1000ul);
     
     DEBUG_INFO("Devices ready.");
     digitalWrite(begStatusPin, LOW);
@@ -68,8 +78,19 @@ void setup() {
     changePedestrianCountdownSignal(red, hide);
 
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 30);
-    digitalWrite(begStatusPin, HIGH);
+    while(true) {
+        if(isDue(timeout[0]) && !timeIsOver[0]) {
+            digitalWrite(motionSensorSupplyPin, LOW);
+            timeIsOver[0] = true;
+        }
+
+        int8_t detectSignalResult = detectSignal(begSignalPin, 12);
+        DEBUG_INFO("detectSignal = %d", detectSignalResult);
+        if(detectSignalResult == 127) {
+            digitalWrite(begStatusPin, HIGH);
+            break;
+        }
+    }
     DEBUG_INFO("%d", digitalRead(begSignalPin));
 }
 
@@ -93,6 +114,7 @@ void loop() {
 
     delay(2 * 1000 + 50);
     digitalWrite(begStatusPin, LOW);
+    digitalWrite(motionSensorSupplyPin, HIGH);
     changePedestrianLightSignal(green);
     changePedestrianCountdownSignal(green, show);
     DEBUG_INFO("Pedestrian: Green");
@@ -109,12 +131,27 @@ void loop() {
     DEBUG_INFO("Turn off Countdown");
     DEBUG_INFO("Finish Sequence");
 
-    timeout = millis() + 60ul * 1000;
+    timeout[0] = millis() + 10ul * 1000;
+    timeIsOver[0] = false;
+    timeout[1] = millis() + 60ul * 1000;
     DEBUG_INFO("Ready");
-    detectSignal(begSignalPin, 30);
-    digitalWrite(begStatusPin, HIGH);
+    while(true) {
+        if(isDue(timeout[0]) && !timeIsOver[0]) {
+            digitalWrite(motionSensorSupplyPin, LOW);
+            timeIsOver[0] = true;
+        }
+
+        int8_t detectSignalResult = detectSignal(begSignalPin, 12);
+        if(detectSignalResult == 127) {
+            digitalWrite(begStatusPin, HIGH);
+            break;
+        }
+    }
+    while(!isDue(timeout[0])) {;}
+    digitalWrite(motionSensorSupplyPin, LOW);
+    timeIsOver[0] = true;
     DEBUG_INFO("%d", digitalRead(begSignalPin));
-    while(!isDue(timeout)) {;}
+    while(!isDue(timeout[1])) {;}
 }
 
 void unreachable() {
@@ -227,14 +264,21 @@ void changePedestrianCountdownSignal(LightSignal lightSignal, CountdownDisplay d
     }
 }
 
-bool detectSignal(int pin, unsigned int damp) {
-    unsigned int initial = 0;
-    while(initial < damp) {
-        DEBUG_INFO("%u", initial);
-        if(digitalRead(pin) == HIGH) initial++;
-        else if(initial > 0) initial--;
+int8_t detectSignal(int pin, unsigned int damp) {
+    DEBUG_INFO("initial = %u", initial);
+    if(initial < damp) {
+        if(digitalRead(pin) == HIGH) {
+            initial++;
+            return 1;
+        }
+        else if(initial > 0) {
+            initial--;
+            return -1;
+        }
+        else return 0;
     }
-    return true;
+    initial = 0;
+    return 127;
 }
 
 bool isDue(unsigned long time) {
