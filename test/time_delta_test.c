@@ -135,7 +135,7 @@ void ulongTest() {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     uint128_t k2 = (uint128_t)m-(uint128_t)n;
-                    bool finalCond = ((k <= n) && (n <= m)) ||  ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit));
+                    bool finalCond = ((k <= n) && (n <= m)) ||  ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && (n-m < mostSigBit));
 
                     bool targetCond1 = (k2 >= 0);
                     bool targetCond2 = (k >= 0);
