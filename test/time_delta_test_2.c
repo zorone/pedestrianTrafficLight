@@ -19,8 +19,8 @@ bool isDue(unsigned long now, unsigned long time) {
                || ((time > now) && (diff <= mostSigBit))
                || ((time - (now & ~mostSigBit) < mostSigBit) && (now & mostSigBit))
                || (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit))
-               || (((now & ~mostSigBit) <= k) && ((now & ~mostSigBit) == mostSigBit))
-               || (((now & ~mostSigBit) <= m) && (now & ~mostSigBit) == mostSigBit);
+               || (((now & ~mostSigBit) <= diff) && ((now & ~mostSigBit) == mostSigBit))
+               || (((now & ~mostSigBit) <= now) && (now & ~mostSigBit) == mostSigBit);
 
     if(res) {
         printf("%lu >= %lu\n", now, time);
