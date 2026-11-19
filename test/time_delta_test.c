@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdint.h>
-#include <string.h>
 
 // Source - https://stackoverflow.com/a/3208376
 // Posted by William Whyte, modified by community. See post 'Timeline' for change history
@@ -24,6 +23,10 @@
 void uint8Test();
 void ulongTest();
 
+const char* truthinessReport[4] = {
+    " True Positive", " True Negative", "False Positive", "False Negative"
+};
+
 int main(void) {
     uint8Test();
     getchar();
@@ -32,7 +35,7 @@ int main(void) {
 
 void uint8Test() {
     int count[4] = {0, 0, 0, 0};
-    char truthinessReport[15] = "";
+    int truthinessReportIdx = -1;
     for(int i = 0; i < 256; i++) {
         for(int j = 0; j < 256; j++) {
             uint8_t m = i, n = j;
@@ -47,17 +50,17 @@ void uint8Test() {
             
             if(targetCond1) {
                 if(targetCond1 == finalCond) {
-                    if(finalCond) strncpy(truthinessReport, " True Positive", 15);
-                    else strncpy(truthinessReport, " True Negative", 15);
-                    printf("STRICTLY PASS: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
+                    if(finalCond) truthinessReportIdx = 0;
+                    else truthinessReportIdx = 1;
+                    printf("STRICTLY PASS: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[0]++;
                     continue;
                 }
                 else {
-                    if(finalCond) strncpy(truthinessReport, "False Positive", 15);
-                    else strncpy(truthinessReport, "False Negative", 15);
-                    printf("STRICTLY FAIL: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
+                    if(finalCond) truthinessReportIdx = 2;
+                    else truthinessReportIdx = 3;
+                    printf("STRICTLY FAIL: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     printf("   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
                     printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(n));
@@ -68,17 +71,17 @@ void uint8Test() {
             }
             else if(targetCond3) {
                 if(targetCond1 == finalCond) {
-                    if(finalCond) strncpy(truthinessReport, " True Positive", 15);
-                    else strncpy(truthinessReport, " True Negative", 15);
-                    printf("STRICTLY PASS: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
+                    if(finalCond) truthinessReportIdx = 0;
+                    else truthinessReportIdx = 1;
+                    printf("STRICTLY PASS: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[0]++;
                     continue;
                 }
                 else {
-                    if(finalCond) strncpy(truthinessReport, "False Positive", 15);
-                    else strncpy(truthinessReport, "False Negative", 15);
-                    printf("STRICTLY FAIL: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
+                    if(finalCond) truthinessReportIdx = 2;
+                    else truthinessReportIdx = 3;
+                    printf("STRICTLY FAIL: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     printf("   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
                     printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(n));
@@ -89,9 +92,9 @@ void uint8Test() {
             }
             else {
                 if(targetCond1 == finalCond) {
-                    if(finalCond) strncpy(truthinessReport, " True Positive", 15);
-                    else strncpy(truthinessReport, " True Negative", 15);
-                    printf("LOOSENLY PASS: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
+                    if(finalCond) truthinessReportIdx = 0;
+                    else truthinessReportIdx = 1;
+                    printf("LOOSENLY PASS: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     printf("   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
                     printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(n));
@@ -100,9 +103,9 @@ void uint8Test() {
                     continue;
                 }
                 else {
-                    if(finalCond) strncpy(truthinessReport, "False Positive", 15);
-                    else strncpy(truthinessReport, "False Negative", 15);
-                    printf("LOOSENLY FAIL: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
+                    if(finalCond) truthinessReportIdx = 2;
+                    else truthinessReportIdx = 3;
+                    printf("LOOSENLY FAIL: Case diff Negative: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     printf("   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
                     printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(n));
@@ -122,6 +125,8 @@ void uint8Test() {
 void ulongTest() {
     long count[4] = {0, 0, 0, 0};
     unsigned long testPair[3][2] = {{0, 255}, {((ULONG_MAX/2)+1-256), ((ULONG_MAX/2)+1+256)}, {ULONG_MAX-256, ULONG_MAX}};
+    int truthinessReportIdx = -1;
+
     for(unsigned long testPairFirstIdx = 0; testPairFirstIdx < 3; ++testPairFirstIdx) {
         for(unsigned long testPairLastIdx = 0; testPairLastIdx < 3; ++testPairLastIdx) {
             for(unsigned long m = testPair[testPairFirstIdx][0]; m <= testPair[testPairFirstIdx][1]; m++) {
@@ -136,13 +141,17 @@ void ulongTest() {
                     bool targetCond3 = (llabs(k2) <= (ULONG_MAX/2)+1);
                     
                     if(targetCond1) {
+                        if(finalCond) truthinessReportIdx = 0;
+                        else truthinessReportIdx = 1;
                         if(targetCond1 == finalCond) {
-                            printf("STRICTLY PASS: Case diff Positive: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
+                            printf("STRICTLY PASS: Case diff Positive: %s: %20lu - %20lu: %20lu (%21lld): %20lu (%21lld): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             count[0]++;
                         }
                         else {
-                            printf("STRICTLY FAIL: Case diff Positive: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
+                            if(finalCond) truthinessReportIdx = 2;
+                            else truthinessReportIdx = 3;
+                            printf("STRICTLY FAIL: Case diff Positive: %s: %20lu - %20lu: %20lu (%21lld): %20lu (%21lld): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
@@ -167,12 +176,16 @@ void ulongTest() {
                     }
                     else if(targetCond3) {
                         if(targetCond1 == finalCond) {
-                            printf("STRICTLY PASS: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
+                            if(finalCond) truthinessReportIdx = 0;
+                            else truthinessReportIdx = 1;
+                            printf("STRICTLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu (%21lld): %20lu (%21lld): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             count[0]++;
                         }
                         else {
-                            printf("STRICTLY FAIL: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
+                            if(finalCond) truthinessReportIdx = 2;
+                            else truthinessReportIdx = 3;
+                            printf("STRICTLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu (%21lld): %20lu (%21lld): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
@@ -197,7 +210,9 @@ void ulongTest() {
                     }
                     else {
                         if(targetCond1 == finalCond) {
-                            printf("LOOSENLY PASS: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
+                            if(finalCond) truthinessReportIdx = 0;
+                            else truthinessReportIdx = 1;
+                            printf("LOOSENLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu (%21lld): %20lu (%21lld): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
@@ -210,7 +225,7 @@ void ulongTest() {
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
                                 BYTE_TO_BINARY(n>>56), BYTE_TO_BINARY(n>>48), BYTE_TO_BINARY(n>>40), BYTE_TO_BINARY(n>>32),
                                 BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
-                            );
+                            );truthinessReport[truthinessReportIdx], 
                             printf("\n  diff: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n\n",
@@ -220,7 +235,9 @@ void ulongTest() {
                             count[2]++;
                         }
                         else {
-                            printf("LOOSENLY FAIL: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
+                            if(finalCond) truthinessReportIdx = 2;
+                            else truthinessReportIdx = 3;
+                            printf("LOOSENLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu (%21lld): %20lu (%21lld): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
