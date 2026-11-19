@@ -20,9 +20,11 @@
   ((byte) & 0x01 ? '1' : '0') 
 
 typedef unsigned _BitInt(128) uint128_t;
+typedef signed _BitInt(128) int128_t;
 
 void uint8Test();
 void ulongTest();
+uint128_t abs_i128t(int128_t number);
 
 const char* truthinessReport[4] = {
     " True Positive", " True Negative", "False Positive", "False Negative"
@@ -43,7 +45,7 @@ void uint8Test() {
             uint8_t k = m-n;
             uint8_t mostSigBit = ((uint8_t)(-1) ^ ((uint8_t)(-1) >> 1));
             int16_t k2 = (int16_t)m-(int16_t)n;
-            bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && ((n-m >= mostSigBit) || (n-m < mostSigBit)));
+            bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && ((n-m >= mostSigBit)));
 
             bool targetCond1 = (k2 >= 0);
             bool targetCond2 = (k >= 0);
@@ -134,12 +136,12 @@ void ulongTest() {
                 for(unsigned long n = testPair[testPairLastIdx][0]; n <= testPair[testPairLastIdx][1]; n++) {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
-                    uint128_t k2 = (uint128_t)m-(uint128_t)n;
+                    int128_t k2 = (int128_t)m-(int128_t)n;
                     bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit));
 
                     bool targetCond1 = (k2 >= 0);
                     bool targetCond2 = (k >= 0);
-                    bool targetCond3 = (llabs(k2) <= (ULONG_MAX/2)+1);
+                    bool targetCond3 = (abs_i128t(k2) <= (ULONG_MAX/2)+1);
                     
                     if(targetCond1) {
                         if(finalCond) truthinessReportIdx = 0;
@@ -271,4 +273,9 @@ void ulongTest() {
     printf("STRICTLY FAIL: %ld\n", count[1]);
     printf("LOOSENLY PASS: %ld\n", count[2]);
     printf("LOOSENLY FAIL: %ld\n", count[3]);
+}
+
+uint128_t abs_i128t(int128_t number) {
+    if(number >= 0) return number;
+    return ~(number-1);
 }
