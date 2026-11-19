@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdint.h>
+#include <string.h>
 
 // Source - https://stackoverflow.com/a/3208376
 // Posted by William Whyte, modified by community. See post 'Timeline' for change history
@@ -31,6 +32,7 @@ int main(void) {
 
 void uint8Test() {
     int count[4] = {0, 0, 0, 0};
+    char truthinessReport[15] = "";
     for(int i = 0; i < 256; i++) {
         for(int j = 0; j < 256; j++) {
             uint8_t m = i, n = j;
@@ -45,7 +47,9 @@ void uint8Test() {
             
             if(targetCond1) {
                 if(targetCond1 == finalCond) {
-                    printf("STRICTLY PASS: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
+                    if(targetCond1) strncpy(truthinessReport, " True Positive", 15);
+                    else strncpy(truthinessReport, "False Negative", 15);
+                    printf("STRICTLY PASS: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     count[0]++;
                     continue;
