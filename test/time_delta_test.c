@@ -45,8 +45,7 @@ void uint8Test() {
             uint8_t k = m-n;
             uint8_t mostSigBit = ((uint8_t)(-1) ^ ((uint8_t)(-1) >> 1));
             int16_t k2 = (int16_t)m-(int16_t)n;
-            bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && ((n-m >= mostSigBit))) || (((m & ~mostSigBit) <= k) && (m & ~mostSigBit) == mostSigBit) || (((n & ~mostSigBit) <= k) && (n & ~mostSigBit) == mostSigBit);
-
+            bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit)) || (((m & ~mostSigBit) <= k) && (m & ~mostSigBit) == mostSigBit) || (((m & ~mostSigBit) <= m) && (m & ~mostSigBit) == mostSigBit);
             bool targetCond1 = (k2 >= 0);
             bool targetCond2 = (k >= 0);
             bool targetCond3 = (abs(k2) <= ((uint8_t)(-1)/2)+1);
@@ -137,7 +136,7 @@ void ulongTest() {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     int128_t k2 = (int128_t)m-(int128_t)n;
-                    bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit)) || (((m & ~mostSigBit) <= k) && (m & ~mostSigBit) == mostSigBit) || ((((m & ~mostSigBit) <= k) || (m & ~mostSigBit)-n <= m) && (n & ~mostSigBit) == mostSigBit);
+                    bool finalCond = ((k <= n) && (n <= m)) || ((n <= (m >> 1)) && ((k & ~mostSigBit) == k)) || ((n > m) && (k < mostSigBit)) || ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit)) || (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit)) || (((m & ~mostSigBit) <= k) && (m & ~mostSigBit) == mostSigBit) || (((m & ~mostSigBit) <= m) && (m & ~mostSigBit) == mostSigBit);
 
                     bool targetCond1 = (k2 >= 0);
                     bool targetCond2 = (k >= 0);
