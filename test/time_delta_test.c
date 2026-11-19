@@ -53,8 +53,8 @@ void uint8Test() {
                 else {
                     printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
-                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
-                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
+                    printf("\n   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[1]++;
                     continue;
                 }
@@ -69,8 +69,8 @@ void uint8Test() {
                 else {
                     printf("STRICTLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
-                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
-                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
+                    printf("\n   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[1]++;
                     continue;
                 }
@@ -79,16 +79,16 @@ void uint8Test() {
                 if(targetCond1 == finalCond) {
                     printf("LOOSENLY PASS: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
-                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
-                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
+                    printf("\n   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[2]++;
                     continue;
                 }
                 else {
                     printf("LOOSENLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
-                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
-                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
+                    printf("\n   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[3]++;
                     continue;
                 }
@@ -126,8 +126,18 @@ void ulongTest() {
                         else {
                             printf("STRICTLY FAIL: Case diff Positive: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
-                            printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
-                            printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>56), BYTE_TO_BINARY(m>>48), BYTE_TO_BINARY(m>>40), BYTE_TO_BINARY(m>>32),
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n",
+                                BYTE_TO_BINARY(n>>56), BYTE_TO_BINARY(n>>48), BYTE_TO_BINARY(n>>40), BYTE_TO_BINARY(n>>32),
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
                             count[1]++;
                         }
                     }
@@ -140,6 +150,18 @@ void ulongTest() {
                         else {
                             printf("STRICTLY FAIL: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>56), BYTE_TO_BINARY(m>>48), BYTE_TO_BINARY(m>>40), BYTE_TO_BINARY(m>>32),
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n",
+                                BYTE_TO_BINARY(n>>56), BYTE_TO_BINARY(n>>48), BYTE_TO_BINARY(n>>40), BYTE_TO_BINARY(n>>32),
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
                             count[1]++;
                         }
                     }
@@ -147,11 +169,35 @@ void ulongTest() {
                         if(targetCond1 == finalCond) {
                             printf("LOOSENLY PASS: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>56), BYTE_TO_BINARY(m>>48), BYTE_TO_BINARY(m>>40), BYTE_TO_BINARY(m>>32),
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n",
+                                BYTE_TO_BINARY(n>>56), BYTE_TO_BINARY(n>>48), BYTE_TO_BINARY(n>>40), BYTE_TO_BINARY(n>>32),
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
                             count[2]++;
                         }
                         else {
                             printf("LOOSENLY FAIL: Case diff Negative: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>56), BYTE_TO_BINARY(m>>48), BYTE_TO_BINARY(m>>40), BYTE_TO_BINARY(m>>32),
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n",
+                                BYTE_TO_BINARY(n>>56), BYTE_TO_BINARY(n>>48), BYTE_TO_BINARY(n>>40), BYTE_TO_BINARY(n>>32),
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
                             count[3]++;
                         }
                     }
