@@ -47,7 +47,7 @@ void uint8Test() {
             
             if(targetCond1) {
                 if(targetCond1 == finalCond) {
-                    if(targetCond1) strncpy(truthinessReport, " True Positive", 15);
+                    if(finalCond) strncpy(truthinessReport, " True Positive", 15);
                     else strncpy(truthinessReport, "False Negative", 15);
                     printf("STRICTLY PASS: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
@@ -55,7 +55,9 @@ void uint8Test() {
                     continue;
                 }
                 else {
-                    printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
+                    if(finalCond) strncpy(truthinessReport, "False Positive", 15);
+                    else strncpy(truthinessReport, " True Negative", 15);
+                    printf("STRICTLY FAIL: Case diff Positive: %s: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", truthinessReport, m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                     printf("   now: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
                     printf("\n  time: 0b" BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(n));
