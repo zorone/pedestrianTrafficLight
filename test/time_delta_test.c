@@ -4,6 +4,22 @@
 #include <limits.h>
 #include <stdint.h>
 
+// Source - https://stackoverflow.com/a/3208376
+// Posted by William Whyte, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-11-19, License - CC BY-SA 4.0
+
+#define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
+#define BYTE_TO_BINARY(byte)  \
+  ((byte) & 0x80 ? '1' : '0'), \
+  ((byte) & 0x40 ? '1' : '0'), \
+  ((byte) & 0x20 ? '1' : '0'), \
+  ((byte) & 0x10 ? '1' : '0'), \
+  ((byte) & 0x08 ? '1' : '0'), \
+  ((byte) & 0x04 ? '1' : '0'), \
+  ((byte) & 0x02 ? '1' : '0'), \
+  ((byte) & 0x01 ? '1' : '0') 
+
+
 void uint8Test();
 void ulongTest();
 
@@ -37,6 +53,8 @@ void uint8Test() {
                 else {
                     printf("STRICTLY FAIL: Case diff Positive: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[1]++;
                     continue;
                 }
@@ -51,6 +69,8 @@ void uint8Test() {
                 else {
                     printf("STRICTLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[1]++;
                     continue;
                 }
@@ -59,12 +79,16 @@ void uint8Test() {
                 if(targetCond1 == finalCond) {
                     printf("LOOSENLY PASS: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[2]++;
                     continue;
                 }
                 else {
                     printf("LOOSENLY FAIL: Case diff Negative: %3u - %3u: %3u (%4d): %3u (%4d): %c: %c\n", m, n, k, k2, k, k2,
                             targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                    printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                    printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                     count[3]++;
                     continue;
                 }
@@ -102,6 +126,8 @@ void ulongTest() {
                         else {
                             printf("STRICTLY FAIL: Case diff Positive: %20lu - %20lu: %20lu (%21ld): %20lu (%21ld): %c: %c\n", m, n, k, k2, k, k2,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("\n   now: " BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(m));
+                            printf("\n  time: " BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(n));
                             count[1]++;
                         }
                     }
