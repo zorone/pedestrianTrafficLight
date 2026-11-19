@@ -145,14 +145,14 @@ void ulongTest() {
                         if(finalCond) truthinessReportIdx = 0;
                         else truthinessReportIdx = 1;
                         if(targetCond1 == finalCond) {
-                            printf("STRICTLY PASS: Case diff Positive: %s: %20lu - %20lu: %20lu (%21llu): %20lu (%21llu): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
+                            printf("STRICTLY PASS: Case diff Positive: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             count[0]++;
                         }
                         else {
                             if(finalCond) truthinessReportIdx = 2;
                             else truthinessReportIdx = 3;
-                            printf("STRICTLY FAIL: Case diff Positive: %s: %20lu - %20lu: %20lu (%21llu): %20lu (%21llu): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
+                            printf("STRICTLY FAIL: Case diff Positive: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
@@ -179,14 +179,14 @@ void ulongTest() {
                         if(targetCond1 == finalCond) {
                             if(finalCond) truthinessReportIdx = 0;
                             else truthinessReportIdx = 1;
-                            printf("STRICTLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu (%21llu): %20lu (%21llu): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
+                            printf("STRICTLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             count[0]++;
                         }
                         else {
                             if(finalCond) truthinessReportIdx = 2;
                             else truthinessReportIdx = 3;
-                            printf("STRICTLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu (%21llu): %20lu (%21llu): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
+                            printf("STRICTLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
@@ -213,7 +213,7 @@ void ulongTest() {
                         if(targetCond1 == finalCond) {
                             if(finalCond) truthinessReportIdx = 0;
                             else truthinessReportIdx = 1;
-                            printf("LOOSENLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu (%21llu): %20lu (%21llu): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
+                            printf("LOOSENLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
@@ -238,7 +238,7 @@ void ulongTest() {
                         else {
                             if(finalCond) truthinessReportIdx = 2;
                             else truthinessReportIdx = 3;
-                            printf("LOOSENLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu (%21llu): %20lu (%21llu): %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k2, k, k2,
+                            printf("LOOSENLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
                                     targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
                             printf("   now: 0b" 
                                 BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " "
