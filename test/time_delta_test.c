@@ -148,7 +148,7 @@ void ulongTest() {
                     bool cond3 = ((n > m) && (k < mostSigBit));
                     bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
                     bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit));
-                    bool cond6 = (((m & ~mostSigBit) <= k) && (m & mostSigBit) == mostSigBit);
+                    bool cond6 = (((m & ~mostSigBit) <= k) && (m & ~mostSigBit) == mostSigBit);
                     bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit)-n <= k);
                     bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
 
