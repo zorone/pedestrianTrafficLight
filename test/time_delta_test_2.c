@@ -9,12 +9,10 @@ bool isDue_ulong(unsigned long now, unsigned long time);
 int main(void) {
     unsigned long now, time;
     unsigned int mode;
-    bool *(isDue)(unsigned long, unsigned long);
-    scanf("%u", &mode);
-    if(mode == 8) isDue = isDue_u8;
-    else if(mode == 64) *(isDue) = isDue_ulong;
     while(true) {
-        scanf("%lu %lu", &now, &time);
+        scanf("%u %lu %lu", &mode, &now, &time);
+        if(mode == 8) isDue_u8(now, time);
+        else if(mode == 64) isDue_ulong(now, time);
     }
 }
 
