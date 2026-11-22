@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <limits.h>
 
-bool isDue_u8(unsigned long now, unsigned long time);
+bool isDue_u8(uint8_t now, uint8_t time);
 bool isDue_ulong(unsigned long now, unsigned long time);
 
 int main(void) {
