@@ -256,9 +256,9 @@ void uint32Test() {
                             count[3]++;
                         }
                     }
-                    if(n == ULONG_MAX) break;
+                    if(n == U32_MAX) break;
                 }
-                if(m == ULONG_MAX) break;
+                if(m == U32_MAX) break;
             }
         }
     }
