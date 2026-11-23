@@ -23,6 +23,7 @@ typedef unsigned _BitInt(128) uint128_t;
 typedef signed _BitInt(128) int128_t;
 
 void uint8Test();
+void uint32Test();
 void ulongTest();
 uint128_t abs_i128t(int128_t number);
 
@@ -32,6 +33,8 @@ const char* truthinessReport[4] = {
 
 int main(void) {
     uint8Test();
+    getchar();
+    uint32Test();
     getchar();
     ulongTest();
 }
@@ -130,6 +133,141 @@ void uint8Test() {
     printf("LOOSENLY PASS: %d\n", count[2]);
     printf("LOOSENLY FAIL: %d\n", count[3]);
 }
+
+void uint32Test() {
+    long count[4] = {0, 0, 0, 0};
+    uint32_t U32_MAX = (uint32_t)-1;
+    uint32_t testPair[3][2] = {{0, 255}, {((U32_MAX/2)+1-256), ((U32_MAX/2)+1+256)}, {U32_MAX-256, U32_MAX}};
+    int truthinessReportIdx = -1;
+
+    for(uint32_t testPairFirstIdx = 0; testPairFirstIdx < 3; ++testPairFirstIdx) {
+        for(uint32_t testPairLastIdx = 0; testPairLastIdx < 3; ++testPairLastIdx) {
+            for(uint32_t m = testPair[testPairFirstIdx][0]; m <= testPair[testPairFirstIdx][1]; m++) {
+                for(uint32_t n = testPair[testPairLastIdx][0]; n <= testPair[testPairLastIdx][1]; n++) {
+                    uint32_t k = m-n;
+                    uint32_t mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
+                    int64_t k2 = (int64_t)m-(int64_t)n;
+                    bool cond1 = ((k <= n) && (n <= m));
+                    bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
+                    bool cond3 = ((n > m) && (k < mostSigBit));
+                    bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
+                    bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
+                    bool cond6 = (m == n);
+                    bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit) - n <= k);
+                    bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
+
+                    bool targetCond1 = (k2 >= 0);
+                    bool targetCond2 = (k >= 0);
+                    bool targetCond3 = (llabs(k2) <= (ULONG_MAX/2)+1);
+                    
+                    if(targetCond1) {
+                        if(finalCond) truthinessReportIdx = 0;
+                        else truthinessReportIdx = 1;
+                        if(targetCond1 == finalCond) {
+                            printf("STRICTLY PASS: Case diff Positive: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
+                                    targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            count[0]++;
+                        }
+                        else {
+                            if(finalCond) truthinessReportIdx = 2;
+                            else truthinessReportIdx = 3;
+                            printf("STRICTLY FAIL: Case diff Positive: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
+                                    targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n  time: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
+                            printf("\n  diff: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n\n",
+                                BYTE_TO_BINARY(k>>24), BYTE_TO_BINARY(k>>16), BYTE_TO_BINARY(k>>8), BYTE_TO_BINARY(k)
+                            );
+                            count[1]++;
+                        }
+                    }
+                    else if(targetCond3) {
+                        if(targetCond1 == finalCond) {
+                            if(finalCond) truthinessReportIdx = 0;
+                            else truthinessReportIdx = 1;
+                            printf("STRICTLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
+                                    targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            count[0]++;
+                        }
+                        else {
+                            if(finalCond) truthinessReportIdx = 2;
+                            else truthinessReportIdx = 3;
+                            printf("STRICTLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
+                                    targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n  time: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
+                            printf("\n  diff: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n\n",
+                                BYTE_TO_BINARY(k>>24), BYTE_TO_BINARY(k>>16), BYTE_TO_BINARY(k>>8), BYTE_TO_BINARY(k)
+                            );
+                            count[1]++;
+                        }
+                    }
+                    else {
+                        if(targetCond1 == finalCond) {
+                            if(finalCond) truthinessReportIdx = 0;
+                            else truthinessReportIdx = 1;
+                            printf("LOOSENLY PASS: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
+                                    targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n  time: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );truthinessReport[truthinessReportIdx], 
+                            printf("\n  diff: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n\n",
+                                BYTE_TO_BINARY(k>>24), BYTE_TO_BINARY(k>>16), BYTE_TO_BINARY(k>>8), BYTE_TO_BINARY(k)
+                            );
+                            count[2]++;
+                        }
+                        else {
+                            if(finalCond) truthinessReportIdx = 2;
+                            else truthinessReportIdx = 3;
+                            printf("LOOSENLY FAIL: Case diff Negative: %s: %20lu - %20lu: %20lu: %20lu: %c: %c\n", truthinessReport[truthinessReportIdx], m, n, k, k,
+                                    targetCond1 ? 'T': 'F', finalCond ? 'T': 'F');
+                            printf("   now: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(m>>24), BYTE_TO_BINARY(m>>16), BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m)
+                            );
+                            printf("\n  time: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN,
+                                BYTE_TO_BINARY(n>>24), BYTE_TO_BINARY(n>>16), BYTE_TO_BINARY(n>>8), BYTE_TO_BINARY(n)
+                            );
+                            printf("\n  diff: 0b" 
+                                BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN " " BYTE_TO_BINARY_PATTERN "\n\n",
+                                BYTE_TO_BINARY(k>>24), BYTE_TO_BINARY(k>>16), BYTE_TO_BINARY(k>>8), BYTE_TO_BINARY(k)
+                            );
+                            count[3]++;
+                        }
+                    }
+                    if(n == ULONG_MAX) break;
+                }
+                if(m == ULONG_MAX) break;
+            }
+        }
+    }
+    printf("STRICTLY PASS: %ld\n", count[0]);
+    printf("STRICTLY FAIL: %ld\n", count[1]);
+    printf("LOOSENLY PASS: %ld\n", count[2]);
+    printf("LOOSENLY FAIL: %ld\n", count[3]);
+}
+
 
 void ulongTest() {
     long count[4] = {0, 0, 0, 0};
