@@ -145,7 +145,7 @@ void uint32Test() {
             for(uint32_t m = testPair[testPairFirstIdx][0]; m <= testPair[testPairFirstIdx][1]; m++) {
                 for(uint32_t n = testPair[testPairLastIdx][0]; n <= testPair[testPairLastIdx][1]; n++) {
                     uint32_t k = m-n;
-                    uint32_t mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
+                    uint32_t mostSigBit = (U32_MAX ^ (U32_MAX >> 1));
                     int64_t k2 = (int64_t)m-(int64_t)n;
                     bool cond1 = ((k <= n) && (n <= m));
                     bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));

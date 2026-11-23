@@ -39,7 +39,7 @@ bool isDue_u8(uint8_t now, uint8_t time) {
     return false;
 }
 
-bool isDue_u32(uint8_t now, uint8_t time) {
+bool isDue_u32(uint32_t now, uint32_t time) {
     uint32_t diff = now - time;
     uint32_t mostSigBit = ((uint32_t)(-1) ^ ((uint32_t)(-1) >> 1));
     bool cond1 = ((diff <= time) && (time <= now));
