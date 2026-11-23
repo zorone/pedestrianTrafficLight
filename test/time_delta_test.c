@@ -58,7 +58,7 @@ void uint8Test() {
             bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
             bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
             bool targetCond2 = (k >= 0);
-            bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) || (((m ^ n) & mostSigBit) != mostSigBit);
+            bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) && (((m ^ n) & mostSigBit) != mostSigBit);
             
             if(targetCond1) {
                 if(targetCond1 == finalCond) {
@@ -158,7 +158,7 @@ void uint32Test() {
 
                     bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
                     bool targetCond2 = (k >= 0);
-                    bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) || (((m ^ n) & mostSigBit) != mostSigBit);
+                    bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) && (((m ^ n) & mostSigBit) != mostSigBit);
                     
                     if(targetCond1) {
                         if(finalCond) truthinessReportIdx = 0;
