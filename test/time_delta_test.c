@@ -47,7 +47,7 @@ void uint8Test() {
             int16_t k2 = (int16_t)m-(int16_t)n;
             bool cond1 = ((k <= n) && (n <= m));
             bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
-            bool cond3 = ((n > m) && (k <= mostSigBit));
+            bool cond3 = ((n > m) && (k < mostSigBit));
             bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
             bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit));
             bool cond6 = (((m & ~mostSigBit) <= k) && (m & mostSigBit) == mostSigBit);
@@ -143,7 +143,7 @@ void ulongTest() {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     int128_t k2 = (int128_t)m-(int128_t)n;
-                    bool cond1 = ((k <= n) && (n <= m));
+                    bool cond1 = ((k <= n) && (n < m));
                     bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
                     bool cond3 = ((n > m) && (k <= mostSigBit));
                     bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
