@@ -158,7 +158,7 @@ void uint32Test() {
 
                     bool targetCond1 = (k2 >= 0);
                     bool targetCond2 = (k >= 0);
-                    bool targetCond3 = (llabs(k2) <= (ULONG_MAX/2)+1);
+                    bool targetCond3 = (llabs(k2) <= (U32_MAX/2)+1);
                     
                     if(targetCond1) {
                         if(finalCond) truthinessReportIdx = 0;
