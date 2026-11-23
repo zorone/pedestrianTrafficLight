@@ -49,9 +49,9 @@ void uint8Test() {
             bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
             bool cond3 = ((n > m) && (k < mostSigBit));
             bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
-            bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit));
+            bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
             bool cond6 = (m == n);
-            bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit)-n <= k);
+            bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit) - n <= k);
             bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
             bool targetCond1 = (k2 >= 0);
             bool targetCond2 = (k >= 0);
@@ -143,13 +143,13 @@ void ulongTest() {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     int128_t k2 = (int128_t)m-(int128_t)n;
-                    bool cond1 = ((k <= n) && (n < m));
+                    bool cond1 = ((k <= n) && (n <= m));
                     bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
-                    bool cond3 = ((n > m) && (k <= mostSigBit));
+                    bool cond3 = ((n > m) && (k < mostSigBit));
                     bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
-                    bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n-m >= mostSigBit));
+                    bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
                     bool cond6 = (m == n);
-                    bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit)-n <= k);
+                    bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit) - n <= k);
                     bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
 
                     bool targetCond1 = (k2 >= 0);

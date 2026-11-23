@@ -24,7 +24,7 @@ bool isDue_u8(uint8_t now, uint8_t time) {
     bool cond3 = ((time > now) && (diff < mostSigBit));
     bool cond4 = ((time - (now & ~mostSigBit) < mostSigBit) && (now & mostSigBit));
     bool cond5 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
-    bool cond6 = (((now & ~mostSigBit) <= diff) && (now & mostSigBit) == mostSigBit);
+    bool cond6 = (now == time);
     bool cond7 = (((now & mostSigBit) == mostSigBit) && (time & mostSigBit) != mostSigBit) && ((now & ~mostSigBit) - time <= diff);
     bool res = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
     
@@ -45,7 +45,7 @@ bool isDue_ulong(unsigned long now, unsigned long time) {
     bool cond3 = ((time > now) && (diff < mostSigBit));
     bool cond4 = ((time - (now & ~mostSigBit) < mostSigBit) && (now & mostSigBit));
     bool cond5 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
-    bool cond6 = (((now & ~mostSigBit) <= diff) && (now & mostSigBit) == mostSigBit);
+    bool cond6 = (now == time);
     bool cond7 = (((now & mostSigBit) == mostSigBit) && (time & mostSigBit) != mostSigBit) && ((now & ~mostSigBit) - time <= diff);
     bool res = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
     
