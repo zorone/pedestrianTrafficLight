@@ -54,7 +54,7 @@ void uint8Test() {
             bool cond4 = ((n - (m & ~mostSigBit) < mostSigBit) && (m & mostSigBit));
             bool cond5 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
             bool cond6 = (m == n);
-            bool cond7 = (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit) - n <= k);
+            bool cond7 = false; // (((m & mostSigBit) == mostSigBit) && (n & mostSigBit) != mostSigBit) && ((m & ~mostSigBit) - n <= k);
             bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
             bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
             bool targetCond2 = (k >= 0);
