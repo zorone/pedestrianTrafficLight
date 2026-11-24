@@ -53,7 +53,9 @@ void uint8Test() {
             bool cond3 = ((n > m) && (k < mostSigBit));
             bool cond4 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
             bool cond5 = (m == n);
-            bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5;
+            bool cond6 = (((m&n) >= mostSigBit) && (m >= n));
+            bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5 || cond6;
+
             bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
             bool targetCond2 = (k >= 0);
             bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) && (((m ^ n) & mostSigBit) != mostSigBit);
@@ -150,7 +152,8 @@ void uint32Test() {
                     bool cond3 = ((n > m) && (k < mostSigBit));
                     bool cond4 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
                     bool cond5 = (m == n);
-                    bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5;
+                    bool cond6 = (((m&n) >= mostSigBit) && (m >= n));
+                    bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5 || cond6;
 
                     bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
                     bool targetCond2 = (k >= 0);
@@ -282,7 +285,8 @@ void ulongTest() {
                     bool cond3 = ((n > m) && (k < mostSigBit));
                     bool cond4 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
                     bool cond5 = (m == n);
-                    bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5;
+                    bool cond6 = (((m&n) >= mostSigBit) && (m >= n));
+                    bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5 || cond6;
 
                     bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
                     bool targetCond2 = (k >= 0);
