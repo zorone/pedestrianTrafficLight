@@ -24,11 +24,9 @@ bool isDue_u8(uint8_t now, uint8_t time) {
     bool cond1 = ((diff <= time) && (time <= now));
     bool cond2 = ((time <= (now >> 1)) && ((diff & ~mostSigBit) == diff));
     bool cond3 = ((time > now) && (diff < mostSigBit));
-    bool cond4 = ((time - (now & ~mostSigBit) < mostSigBit) && (now & mostSigBit));
-    bool cond5 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
-    bool cond6 = (now == time);
-    bool cond7 = (((now & mostSigBit) == mostSigBit) && (time & mostSigBit) != mostSigBit) && ((now & ~mostSigBit) - time <= diff);
-    bool res = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
+    bool cond4 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
+    bool cond5 = (now == time);
+    bool res = cond1 || cond2 || cond3 || cond4 || cond5;
     
     if(res) {
         printf("%u >= %u\n", now, time);
@@ -45,11 +43,9 @@ bool isDue_u32(uint32_t now, uint32_t time) {
     bool cond1 = ((diff <= time) && (time <= now));
     bool cond2 = ((time <= (now >> 1)) && ((diff & ~mostSigBit) == diff));
     bool cond3 = ((time > now) && (diff < mostSigBit));
-    bool cond4 = ((time - (now & ~mostSigBit) < mostSigBit) && (now & mostSigBit));
-    bool cond5 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
-    bool cond6 = (now == time);
-    bool cond7 = (((now & mostSigBit) == mostSigBit) && (time & mostSigBit) != mostSigBit) && ((now & ~mostSigBit) - time <= diff);
-    bool res = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
+    bool cond4 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
+    bool cond5 = (now == time);
+    bool res = cond1 || cond2 || cond3 || cond4 || cond5;
     
     if(res) {
         printf("%lu >= %lu\n", now, time);
@@ -66,11 +62,9 @@ bool isDue_ulong(unsigned long now, unsigned long time) {
     bool cond1 = ((diff <= time) && (time <= now));
     bool cond2 = ((time <= (now >> 1)) && ((diff & ~mostSigBit) == diff));
     bool cond3 = ((time > now) && (diff < mostSigBit));
-    bool cond4 = ((time - (now & ~mostSigBit) < mostSigBit) && (now & mostSigBit));
-    bool cond5 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
-    bool cond6 = (now == time);
-    bool cond7 = (((now & mostSigBit) == mostSigBit) && (time & mostSigBit) != mostSigBit) && ((now & ~mostSigBit) - time <= diff);
-    bool res = cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7;
+    bool cond4 = (!(now & mostSigBit) && !(time & mostSigBit) && (time - now >= mostSigBit));
+    bool cond5 = (now == time);
+    bool res = cond1 || cond2 || cond3 || cond4 || cond5;
     
     if(res) {
         printf("%lu >= %lu\n", now, time);
