@@ -48,17 +48,16 @@ void uint8Test() {
             uint8_t k = m-n;
             uint8_t mostSigBit = ((uint8_t)(-1) ^ ((uint8_t)(-1) >> 1));
             int16_t k2 = (int16_t)m-(int16_t)n;
-            bool cond1 = ((k <= n) && (n <= m) && (m < mostSigBit));
-            bool cond2 = ((n <= (m >> 1)) && (!(n & mostSigBit))) && (m < mostSigBit);
+            bool cond1 = ((k <= n) && (n <= m));
+            bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
             bool cond3 = ((n > m) && (k < mostSigBit));
             bool cond4 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
             bool cond5 = (m == n);
-            bool cond6 = (((m&n) >= mostSigBit) && (m >= n));
-            bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5 || cond6;
+            bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5;
 
             bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
             bool targetCond2 = (k >= 0);
-            bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) && (((m ^ n) & mostSigBit) != mostSigBit);
+            bool targetCond3 = (abs(k2) <= ((uint8_t)(-1)/2)+1);
             
             if(targetCond1) {
                 if(targetCond1 == finalCond) {
@@ -147,17 +146,16 @@ void uint32Test() {
                     uint32_t k = m-n;
                     uint32_t mostSigBit = (U32_MAX ^ (U32_MAX >> 1));
                     int64_t k2 = (int64_t)m-(int64_t)n;
-                    bool cond1 = ((k <= n) && (n <= m) && (m < mostSigBit));
-                    bool cond2 = ((n <= (m >> 1)) && (!(n & mostSigBit))) && (m < mostSigBit);
+                    bool cond1 = ((k <= n) && (n <= m));
+                    bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
                     bool cond3 = ((n > m) && (k < mostSigBit));
                     bool cond4 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
                     bool cond5 = (m == n);
-                    bool cond6 = (((m&n) >= mostSigBit) && (m >= n));
-                    bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5 || cond6;
+                    bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5;
 
                     bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
                     bool targetCond2 = (k >= 0);
-                    bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) && (((m ^ n) & mostSigBit) != mostSigBit);
+                    bool targetCond3 = (llabs(k2) <= (U32_MAX/2)+1);
                     
                     if(targetCond1) {
                         if(finalCond) truthinessReportIdx = 0;
@@ -280,17 +278,16 @@ void ulongTest() {
                     unsigned long k = m-n;
                     unsigned long mostSigBit = (ULONG_MAX ^ (ULONG_MAX >> 1));
                     int128_t k2 = (int128_t)m-(int128_t)n;
-                    bool cond1 = ((k <= n) && (n <= m) && (m < mostSigBit));
-                    bool cond2 = ((n <= (m >> 1)) && (!(n & mostSigBit))) && (m < mostSigBit);
+                    bool cond1 = ((k <= n) && (n <= m));
+                    bool cond2 = ((n <= (m >> 1)) && ((k & ~mostSigBit) == k));
                     bool cond3 = ((n > m) && (k < mostSigBit));
                     bool cond4 = (!(m & mostSigBit) && !(n & mostSigBit) && (n - m >= mostSigBit));
                     bool cond5 = (m == n);
-                    bool cond6 = (((m&n) >= mostSigBit) && (m >= n));
-                    bool finalCond = cond1 || cond2 || cond3  || cond4 || cond5 || cond6;
+                    bool finalCond = cond1 || cond2 || cond3 || cond4 || cond5;
 
                     bool targetCond1 = ((k2 >= 0) && !((m ^ n) & mostSigBit)) || ((n & mostSigBit) && (k < mostSigBit));
                     bool targetCond2 = (k >= 0);
-                    bool targetCond3 = (((m ^ n) & mostSigBit) && (m & mostSigBit)) && (((m ^ n) & mostSigBit) != mostSigBit);
+                    bool targetCond3 = (abs_i128t(k2) <= (ULONG_MAX/2)+1);
                     
                     if(targetCond1) {
                         if(finalCond) truthinessReportIdx = 0;
