@@ -17,5 +17,6 @@
   #define carCountdownPin_ORANGE 12
   #define carCountdownPin_RED 13
 
+  #define speakerPin A4
   #define motionSensorSupplyPin A5
 #endif
